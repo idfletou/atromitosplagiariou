@@ -7,8 +7,9 @@ export const site = {
   nickname: "Ατρόμητος",
   founded: 1952,
   town: "Πλαγιάρι, Θεσσαλονίκη",
-  // Used for absolute URLs (sitemap, Open Graph). Update after deploy.
-  url: "https://atromitos-fc.pages.dev",
+  // Used for absolute URLs (sitemap, Open Graph). Currently the Cloudflare
+  // Pages URL — change to the custom domain once it's connected.
+  url: "https://atromitosplagiariou.pages.dev",
   description:
     "Επίσημη ιστοσελίδα του Ατρόμητου Πλαγιαρίου F.C. — νέα, αγώνες, ρόστερ και η ιστορία του συλλόγου.",
   email: "info@atromitos-plagiariou.gr", // TODO
