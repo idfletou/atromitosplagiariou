@@ -81,25 +81,30 @@ Shared components: `TeamPhoto.astro` (photo banner, shows a placeholder when no
 
 ## News (Sanity CMS)
 
-News is read by `src/lib/news.ts`: **if `PUBLIC_SANITY_PROJECT_ID` is set it
-pulls from Sanity, otherwise it falls back to `src/data/sample-news.ts`** (three
-placeholder posts) so the site always builds. No code change needed to switch.
+**Status: LIVE & fully automatic** (set up 2026-09-26). Editors publish → the
+public site rebuilds itself and the post is live in ~1–2 min. No developer needed.
 
-### How editors add a news post (once Sanity is set up)
-1. Go to the deployed **Sanity Studio** URL (editors log in from any device/phone).
-2. Create a new **Άρθρο (post)**: title, slug (auto), excerpt, category, date,
-   cover image, body.
-3. Publish. Because the site is statically built, a **Sanity webhook → Cloudflare
-   deploy hook** rebuilds the site and the post is live in ~1–2 minutes.
+- **Editor Studio:** https://atromitos-plagiariou.sanity.studio (team logs in here
+  from any device/phone).
+- **Sanity project:** id `8xb5eyjm`, dataset `production`. Studio source lives
+  in-repo at **`studio/`** (its own package; Cloudflare ignores it and builds only
+  the site root). Redeploy the Studio after schema changes: `cd studio && npm run deploy`.
+- The site reads news in `src/lib/news.ts`: **if `PUBLIC_SANITY_PROJECT_ID` is set
+  it pulls from Sanity, else it falls back to `src/data/sample-news.ts`**. The env
+  vars are set both locally (`.env`, gitignored) and in Cloudflare Production, so
+  live + local both use Sanity. (For local dev *without* Sanity, blank the env var;
+  it then uses the sample posts.)
 
-### Setting up Sanity (one time)
-Full walkthrough in **`sanity/README.md`**. Summary: `npm create sanity@latest`
-(clean template) → copy the schema from `sanity/schemaTypes/` into the studio →
-put the project id in `.env` (see `.env.example`) → `cd studio && npm run deploy`
-→ add a webhook pointing at a Cloudflare deploy hook. The post schema field names
-must match the GROQ queries in `src/lib/news.ts`.
+### How editors add a news post
+1. Open **https://atromitos-plagiariou.sanity.studio**, log in.
+2. **Άρθρο → +**: title, slug (auto), excerpt, category, date, cover image, body.
+3. **Publish.** A Sanity webhook hits a Cloudflare deploy hook → the site rebuilds
+   and the post appears in ~1–2 min. Deleting/editing a post works the same way.
 
-For local dev without Sanity, edit `src/data/sample-news.ts`.
+### Editing the schema
+The post schema is `studio/schemaTypes/postType.ts` (mirrored in `sanity/schemaTypes/`).
+Field names must match the GROQ queries in `src/lib/news.ts`. After changing it,
+`cd studio && npm run deploy`. Full original setup walkthrough: `sanity/README.md`.
 
 ## Standings & Cup (auto-scraped from epsm.gr)
 
@@ -135,12 +140,15 @@ and legend labels are tidied (`displayColor()` / `cleanLabel()`).
 Build settings already configured in the Pages project: framework preset **Astro**,
 build command **`npm run build`**, output dir **`dist`**, production branch **`main`**.
 
+Configured:
+- **Env vars** (Cloudflare Production, plain text): `PUBLIC_SANITY_PROJECT_ID=8xb5eyjm`,
+  `PUBLIC_SANITY_DATASET=production` — live site reads news from Sanity.
+- **Deploy hook** on branch `main` (Settings → Builds & deployments), pointed at by a
+  **Sanity webhook** (create/update/delete of `post`) — publishing news auto-rebuilds
+  the site. (The standings/cup GitHub Action doesn't use the hook — its commits already
+  trigger Cloudflare's git build.)
+
 Still to do:
-- **Env vars** (add in Cloudflare once Sanity is set up): `PUBLIC_SANITY_PROJECT_ID`,
-  `PUBLIC_SANITY_DATASET` (= `production`). Until then the site builds with sample news.
-- **Deploy hook** (Settings → Builds & deployments) pointed at by a **Sanity webhook**,
-  so publishing a news post triggers a rebuild. (The standings/cup GitHub Action doesn't
-  need the hook — its commits to the repo already trigger Cloudflare's git build.)
 - **Custom domain:** when connected (Pages project → Custom domains), update `site.url`
   in `src/data/site.ts` to it (used for canonical/OG URLs).
 
