@@ -1,0 +1,47 @@
+---
+import { stadium } from "../data/site";
+
+// Keyless Google Maps embed (no API key needed). To use an exact pin, set
+// `stadium.mapQuery` to "lat,lng" in site.ts, or replace `embed` below with the
+// src from Google Maps → Share → "Embed a map".
+const q = encodeURIComponent(stadium.mapQuery);
+const embed = `https://maps.google.com/maps?q=${q}&z=17&hl=el&output=embed`;
+const link = `https://www.google.com/maps/search/?api=1&query=${q}`;
+---
+
+<div>
+  {/* The map is a non-interactive preview: the whole thing links to Google
+      Maps. The iframe is nudged up so Google's top-left "Χάρτες" control is
+      cropped out of view, while the bottom attribution stays visible. */}
+  <div class="relative h-52 overflow-hidden rounded-lg border border-brand-800">
+    <iframe
+      src={embed}
+      title={`Χάρτης — ${stadium.name}`}
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      aria-hidden="true"
+      tabindex="-1"
+      class="pointer-events-none absolute inset-x-0 w-full"
+      style="top:-46px; height:calc(100% + 46px); border:0;"
+    ></iframe>
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener"
+      class="absolute inset-0"
+      aria-label={`Άνοιγμα χάρτη στο Google Maps — ${stadium.name}`}
+    ></a>
+  </div>
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener"
+    class="mt-2 inline-flex items-center gap-1 text-sm text-brand-200 hover:text-white hover:underline"
+  >
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10Z" />
+      <circle cx="12" cy="11" r="2" />
+    </svg>
+    {stadium.name}
+  </a>
+</div>

@@ -1,0 +1,37 @@
+name: Update standings & cup
+
+# Scrapes the league table and cup run from epsm.gr and commits the JSON in
+# src/data/. The commit triggers a Cloudflare Pages rebuild, so the site
+# refreshes ~1-2 min later. If a scrape fails or looks empty, that script exits
+# without writing, so the last-good data is kept.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # every day 06:00 UTC
+    - cron: "0 16,18,20 * * 0" # Sunday afternoon/evening (fresh matchday results)
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run scrape
+      - name: Commit if data changed
+        run: |
+          if [ -n "$(git status --porcelain src/data/standings.json src/data/cup.json)" ]; then
+            git config user.name "standings-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add src/data/standings.json src/data/cup.json
+            git commit -m "chore: update standings & cup [skip ci]"
+            git push
+          else
+            echo "No changes."
+          fi

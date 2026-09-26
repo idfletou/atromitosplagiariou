@@ -1,0 +1,69 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const squads = [
+  {
+    name: "Ανδρική Ομάδα",
+    description: "Η πρώτη ομάδα του συλλόγου.",
+    href: "/squads/men",
+    icon: "⚽",
+    ready: true,
+  },
+  {
+    name: "Ακαδημίες",
+    description: "Όλα τα τμήματα υποδομής του συλλόγου.",
+    href: "/squads/academy",
+    icon: "🧒",
+    ready: true,
+  },
+];
+---
+
+<Layout
+  title="Ομάδες"
+  description="Οι ομάδες του Ατρόμητου Πλαγιαρίου — ανδρική ομάδα και τμήματα υποδομής."
+>
+  <section class="bg-brand-800 text-white">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <p class="text-sm font-semibold uppercase tracking-widest text-brand-200">Ο Σύλλογος</p>
+      <h1 class="mt-2 text-3xl font-extrabold uppercase sm:text-4xl">Οι Ομάδες μας</h1>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 py-14">
+    <div class="grid gap-6 sm:grid-cols-2">
+      {
+        squads.map((squad) =>
+          squad.ready ? (
+            <a
+              href={squad.href}
+              class="group flex items-center gap-4 rounded-xl border border-brand-100 bg-white p-6 shadow-sm transition hover:shadow-md"
+            >
+              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-600 text-2xl">
+                {squad.icon}
+              </div>
+              <div class="flex-1">
+                <h2 class="text-lg font-bold text-brand-900 group-hover:text-brand-600">{squad.name}</h2>
+                <p class="text-sm text-brand-800/70">{squad.description}</p>
+              </div>
+              <span class="text-brand-400 transition group-hover:translate-x-1" aria-hidden="true">→</span>
+            </a>
+          ) : (
+            <div class="flex items-center gap-4 rounded-xl border border-dashed border-brand-200 bg-brand-50/60 p-6">
+              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-200 text-2xl grayscale">
+                {squad.icon}
+              </div>
+              <div class="flex-1">
+                <h2 class="text-lg font-bold text-brand-800">{squad.name}</h2>
+                <p class="text-sm text-brand-800/60">{squad.description}</p>
+              </div>
+              <span class="rounded-full bg-brand-200 px-3 py-1 text-xs font-semibold text-brand-800">
+                Σύντομα
+              </span>
+            </div>
+          ),
+        )
+      }
+    </div>
+  </div>
+</Layout>

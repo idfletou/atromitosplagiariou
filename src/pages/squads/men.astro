@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import PlayerCard from "../../components/PlayerCard.astro";
+import TeamPhoto from "../../components/TeamPhoto.astro";
+import Coaches from "../../components/Coaches.astro";
+
+const players = await getCollection("players");
+
+// Team photo banner. Put the image in public/team/ and set the path here,
+// e.g. "/team/men-2026.jpg". Leave undefined to show a placeholder.
+const teamPhoto: string | undefined = undefined;
+
+// Group by position, in a sensible on-pitch order.
+const groups = [
+  { key: "GK", label: "Τερματοφύλακες" },
+  { key: "DEF", label: "Αμυντικοί" },
+  { key: "MID", label: "Μέσοι" },
+  { key: "FWD", label: "Επιθετικοί" },
+] as const;
+
+const byPosition = groups.map((g) => ({
+  ...g,
+  players: players
+    .filter((p) => p.data.position === g.key)
+    .sort((a, b) => (a.data.number ?? 99) - (b.data.number ?? 99)),
+}));
+
+// TODO: replace with the real coaching staff.
+const staff = [
+  { name: "Όνομα Επώνυμο", role: "Προπονητής" },
+  { name: "Όνομα Επώνυμο", role: "Βοηθός Προπονητή" },
+];
+---
+
+<Layout
+  title="Ανδρική Ομάδα"
+  description="Το ρόστερ και το τεχνικό τιμ της ανδρικής ομάδας του Ατρόμητου Πλαγιαρίου."
+>
+  <section class="bg-brand-800 text-white">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <p class="text-sm font-semibold uppercase tracking-widest text-brand-200">Ομάδες</p>
+      <h1 class="mt-2 text-3xl font-extrabold uppercase sm:text-4xl">Ανδρική Ομάδα</h1>
+      <p class="mt-2 text-brand-100/80">Το ρόστερ της σεζόν 2026–2027</p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 py-14">
+    <!-- Team photo banner -->
+    <div class="mb-12">
+      <TeamPhoto src={teamPhoto} alt="Ομαδική φωτογραφία της ανδρικής ομάδας" />
+    </div>
+
+    {
+      byPosition.map((group) =>
+        group.players.length > 0 ? (
+          <section class="mb-12">
+            <h2 class="mb-5 text-xl font-bold uppercase tracking-tight text-brand-900">
+              <span class="border-l-4 border-brand-500 pl-3">{group.label}</span>
+            </h2>
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {group.players.map((p) => (
+                <PlayerCard
+                  name={p.data.name}
+                  number={p.data.number}
+                  position={p.data.position}
+                  photo={p.data.photo}
+                  birthDate={p.data.birthDate}
+                  height={p.data.height}
+                />
+              ))}
+            </div>
+          </section>
+        ) : null,
+      )
+    }
+
+    <!-- Coaching staff -->
+    <div class="mt-4">
+      <Coaches staff={staff} />
+    </div>
+  </div>
+</Layout>

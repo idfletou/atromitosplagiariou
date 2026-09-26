@@ -1,0 +1,76 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getAllNews, getNewsBySlug, formatDate } from "../../lib/news";
+
+export async function getStaticPaths() {
+  const posts = await getAllNews();
+  return posts.map((post) => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+const post = await getNewsBySlug(slug!);
+
+// Should never happen (paths come from the same source), but keep TS happy.
+if (!post) {
+  return Astro.redirect("/news");
+}
+---
+
+<Layout title={post.title} description={post.excerpt} image={post.coverImage}>
+  <article class="mx-auto max-w-3xl px-4 py-10">
+    <a href="/news" class="text-sm font-semibold text-brand-600 hover:underline">
+      ← Πίσω στα νέα
+    </a>
+
+    <header class="mt-5">
+      <div class="flex items-center gap-2 text-sm font-medium text-brand-500">
+        {post.category && (
+          <span class="rounded-full bg-brand-50 px-2.5 py-1 text-brand-700">{post.category}</span>
+        )}
+        <time datetime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+      </div>
+      <h1 class="mt-3 text-3xl font-extrabold leading-tight text-brand-900 sm:text-4xl text-balance">
+        {post.title}
+      </h1>
+    </header>
+
+    {
+      post.coverImage && (
+        <img
+          src={post.coverImage}
+          alt={post.coverAlt ?? post.title}
+          class="mt-6 aspect-[16/9] w-full rounded-xl object-cover"
+        />
+      )
+    }
+
+    <div
+      class="prose-article mt-8 space-y-4 text-lg leading-relaxed text-brand-900/90"
+      set:html={post.body}
+    />
+  </article>
+</Layout>
+
+<style>
+  /* Light typographic styling for CMS-authored HTML without pulling in a
+     full typography plugin. */
+  .prose-article :global(p) {
+    margin-bottom: 1rem;
+  }
+  .prose-article :global(a) {
+    color: var(--color-brand-600);
+    text-decoration: underline;
+  }
+  .prose-article :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-brand-900);
+  }
+  .prose-article :global(ul) {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+</style>

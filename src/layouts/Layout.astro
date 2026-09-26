@@ -1,0 +1,58 @@
+---
+// Self-hosted fonts (Greek subset included). Body = Inter, headings = Roboto
+// Condensed — both loaded from node_modules so there are no external requests.
+import "@fontsource-variable/inter";
+import "@fontsource-variable/roboto-condensed";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path to an OG image relative to site root, e.g. "/og/news-x.jpg" */
+  image?: string;
+}
+
+const {
+  title,
+  description = site.description,
+  image = "/og-default.jpg",
+} = Astro.props;
+
+const pageTitle = title ? `${title} · ${site.shortName}` : site.name;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL(image, site.url).href;
+---
+
+<!doctype html>
+<html lang="el">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/crest.png" />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#193f74" />
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="min-h-screen bg-white text-brand-950 antialiased flex flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  /** Optional call-to-action shown on the right (e.g. "Όλα τα νέα →"). */
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+const { title, subtitle, ctaLabel, ctaHref } = Astro.props;
+---
+
+<div class="mb-8 flex flex-wrap items-end justify-between gap-3">
+  <div>
+    <h2 class="text-2xl font-extrabold uppercase tracking-tight text-brand-900 sm:text-3xl">
+      <span class="border-l-4 border-brand-500 pl-3">{title}</span>
+    </h2>
+    {subtitle && <p class="mt-2 pl-4 text-brand-800/70">{subtitle}</p>}
+  </div>
+  {
+    ctaLabel && ctaHref && (
+      <a
+        href={ctaHref}
+        class="text-sm font-semibold text-brand-600 hover:text-brand-800 hover:underline"
+      >
+        {ctaLabel}
+      </a>
+    )
+  }
+</div>

@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Brand theme — Ατρόμητος Πλαγιαρίου F.C. (blue & white)              */
+/* Tailwind v4 CSS-first config. These become utilities like          */
+/* `bg-brand-600`, `text-brand-50`, etc.                              */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-brand-50: #eef4fb;
+  --color-brand-100: #d6e4f5;
+  --color-brand-200: #aecae9;
+  --color-brand-300: #7ba8da;
+  --color-brand-400: #4a83c6;
+  --color-brand-500: #2a66b0;
+  --color-brand-600: #1e5093;
+  --color-brand-700: #193f74;
+  --color-brand-800: #163457;
+  --color-brand-900: #112640;
+  --color-brand-950: #0b1729;
+
+  /* Self-hosted, Greek-subset fonts (imported in Layout.astro).         */
+  /* Body/UI = Inter; display/headings = Roboto Condensed (sporty).      */
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI",
+    Roboto, "Noto Sans", sans-serif;
+  --font-display: "Roboto Condensed Variable", "Inter Variable", system-ui,
+    sans-serif;
+}
+
+/* Big display titles use the condensed face; smaller headings (e.g. news
+   card titles, h3) stay in the body font for readability. */
+h1,
+h2 {
+  font-family: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Utility for the diagonal blue banner used in section headings */
+@utility text-balance {
+  text-wrap: balance;
+}

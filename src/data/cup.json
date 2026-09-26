@@ -1,0 +1,36 @@
+{
+  "updatedAt": "2026-09-26T08:46:37.266Z",
+  "competition": "Κύπελλο «ΑΝΝΑ-ΜΑΡΙΑ ΠΑΝΤΑΖΩΝΗ»",
+  "source": "https://www.epsm.gr/cup.asp",
+  "matches": [
+    {
+      "phase": "2η φάση",
+      "gameNumber": 9051,
+      "home": "ΙΕΚ ΔΕΛΤΑ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": 1,
+      "awayScore": 3,
+      "played": true,
+      "weAreHome": false,
+      "result": "W",
+      "venue": "ΡΑΙΔΕΣΤΟΥ",
+      "date": "19.09.2026",
+      "time": "16.30"
+    },
+    {
+      "phase": "1η φάση",
+      "gameNumber": 9019,
+      "home": "Α.Ο. ΚΑΡΔΙΑΣ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": 0,
+      "awayScore": 5,
+      "played": true,
+      "weAreHome": false,
+      "result": "W",
+      "venue": "ΚΑΡΔΙΑΣ",
+      "date": "13.09.2026",
+      "time": "17.00"
+    }
+  ],
+  "next": null
+}

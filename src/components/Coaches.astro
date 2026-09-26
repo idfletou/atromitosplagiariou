@@ -1,0 +1,39 @@
+---
+interface Coach {
+  name: string;
+  role: string;
+}
+interface Props {
+  staff: Coach[];
+  title?: string;
+}
+const { staff, title = "Τεχνικό Τιμ" } = Astro.props;
+
+const initials = (name: string) =>
+  name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2);
+---
+
+<section class="rounded-xl bg-brand-50 p-6">
+  <h2 class="mb-4 text-xl font-bold uppercase tracking-tight text-brand-900">
+    <span class="border-l-4 border-brand-500 pl-3">{title}</span>
+  </h2>
+  <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+    {
+      staff.map((s) => (
+        <div class="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm">
+          <div class="flex h-11 w-11 items-center justify-center rounded-full bg-brand-600 font-bold text-white">
+            {initials(s.name)}
+          </div>
+          <div>
+            <p class="font-semibold text-brand-900">{s.name}</p>
+            <p class="text-sm text-brand-800/70">{s.role}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

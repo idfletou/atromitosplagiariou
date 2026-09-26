@@ -1,0 +1,121 @@
+---
+interface TeamRow {
+  position: number;
+  team: string;
+  isOurTeam: boolean;
+  points: number;
+  played: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  gf: number;
+  ga: number;
+  gd: number;
+  markerColor: string | null;
+}
+interface LegendItem {
+  color: string;
+  label: string;
+}
+interface Props {
+  table: TeamRow[];
+  legend?: LegendItem[];
+}
+const { table, legend = [] } = Astro.props;
+const gd = (n: number) => (n > 0 ? `+${n}` : `${n}`);
+
+// Display tweaks over the raw epsm.gr data: show the near-invisible white
+// "promotion" marker as teal, and tidy legend labels (drop parentheticals and
+// stray apostrophes).
+const TEAL = "#0d9488";
+const displayColor = (c: string | null) =>
+  c && c.toLowerCase() === "#ffffff" ? TEAL : c;
+const cleanLabel = (l: string) =>
+  l
+    .replace(/\([^)]*\)/g, "")
+    .replace(/['’]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+---
+
+<div class="overflow-x-auto rounded-xl border border-brand-100 shadow-sm">
+  <table class="w-full border-collapse text-sm">
+    <thead>
+      <tr class="bg-brand-800 text-[11px] uppercase tracking-wide text-white">
+        <th class="py-2.5 pl-3 pr-1 text-left font-semibold">#</th>
+        <th class="py-2.5 pr-2 text-left font-semibold">Ομάδα</th>
+        <th class="px-2 text-center font-semibold" title="Αγώνες">Π</th>
+        <th class="hidden px-1.5 text-center font-semibold sm:table-cell" title="Νίκες">Ν</th>
+        <th class="hidden px-1.5 text-center font-semibold sm:table-cell" title="Ισοπαλίες">Ι</th>
+        <th class="hidden px-1.5 text-center font-semibold sm:table-cell" title="Ήττες">Η</th>
+        <th class="hidden px-2 text-center font-semibold md:table-cell" title="Γκολ (υπέρ-κατά)">Γκολ</th>
+        <th class="px-2 text-center font-semibold" title="Διαφορά τερμάτων">ΔΤ</th>
+        <th class="px-2 text-center font-bold" title="Βαθμοί">Β</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        table.map((r) => (
+          <tr
+            class:list={[
+              "border-t border-brand-100",
+              r.isOurTeam ? "bg-brand-100/70" : "odd:bg-brand-50/40",
+            ]}
+          >
+            <td class="py-2 pl-3 pr-1">
+              <div class="flex items-center gap-2">
+                <span
+                  class="h-2.5 w-2.5 shrink-0 rounded-sm border border-black/25"
+                  style={`background:${displayColor(r.markerColor) ?? "transparent"}`}
+                />
+                <span class="tabular-nums text-brand-800">{r.position}</span>
+              </div>
+            </td>
+            <td class="max-w-[44vw] truncate pr-2 sm:max-w-none">
+              <span
+                class:list={[
+                  "align-middle",
+                  r.isOurTeam ? "font-bold text-brand-800" : "text-brand-900",
+                ]}
+                title={r.team}
+              >
+                {r.team}
+              </span>
+            </td>
+            <td class="px-2 text-center tabular-nums text-brand-800/80">{r.played}</td>
+            <td class="hidden px-1.5 text-center tabular-nums text-brand-800/80 sm:table-cell">
+              {r.won}
+            </td>
+            <td class="hidden px-1.5 text-center tabular-nums text-brand-800/80 sm:table-cell">
+              {r.drawn}
+            </td>
+            <td class="hidden px-1.5 text-center tabular-nums text-brand-800/80 sm:table-cell">
+              {r.lost}
+            </td>
+            <td class="hidden whitespace-nowrap px-2 text-center tabular-nums text-brand-800/80 md:table-cell">
+              {r.gf}-{r.ga}
+            </td>
+            <td class="px-2 text-center tabular-nums text-brand-800/80">{gd(r.gd)}</td>
+            <td class="px-2 text-center font-bold tabular-nums text-brand-900">{r.points}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+{
+  legend.length > 0 && (
+    <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-brand-800/80">
+      {legend.map((l) => (
+        <li class="flex items-center gap-2">
+          <span
+            class="h-2.5 w-2.5 shrink-0 rounded-sm border border-black/25"
+            style={`background:${displayColor(l.color)}`}
+          />
+          <span>{cleanLabel(l.label)}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}

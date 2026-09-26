@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import cup from "../data/cup.json";
+
+const { competition, updatedAt, source, matches, next } = cup;
+
+const updated = new Date(updatedAt).toLocaleDateString("el-GR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+const isUs = (name: string) => name.toUpperCase().includes("ΑΤΡΟΜΗΤΟΣ");
+
+const resultBadge: Record<string, { label: string; cls: string }> = {
+  W: { label: "Νίκη", cls: "bg-emerald-100 text-emerald-800" },
+  L: { label: "Ήττα", cls: "bg-rose-100 text-rose-800" },
+  D: { label: "Ισοπαλία", cls: "bg-amber-100 text-amber-800" },
+};
+---
+
+<Layout
+  title="Κύπελλο"
+  description={`Η πορεία του Ατρόμητου Πλαγιαρίου στο ${competition}.`}
+>
+  <section class="bg-brand-800 text-white">
+    <div class="mx-auto max-w-5xl px-4 py-12">
+      <p class="text-sm font-semibold uppercase tracking-widest text-brand-200">
+        Αποτελέσματα
+      </p>
+      <h1 class="mt-2 text-3xl font-extrabold uppercase sm:text-4xl">Κύπελλο</h1>
+      <p class="mt-2 text-brand-100/80">{competition}</p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-5xl px-4 py-12">
+    <!-- Next cup fixture -->
+    {
+      next && (
+        <div class="mb-8 min-w-0 rounded-xl border border-brand-100 bg-white p-4 shadow-sm sm:max-w-md">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-500">
+            Επόμενος αγώνας {next.phase && `· ${next.phase}`}
+          </p>
+          <div class="flex items-center justify-between gap-2">
+            <span class:list={["min-w-0 flex-1 truncate text-sm", isUs(next.home) ? "font-bold text-brand-800" : "text-brand-900"]}>
+              {next.home}
+            </span>
+            <span class="shrink-0 rounded-md bg-brand-100 px-2.5 py-1 text-xs font-bold text-brand-700">VS</span>
+            <span class:list={["min-w-0 flex-1 truncate text-right text-sm", isUs(next.away) ? "font-bold text-brand-800" : "text-brand-900"]}>
+              {next.away}
+            </span>
+          </div>
+          {(next.date || next.venue) && (
+            <p class="mt-2 text-xs text-brand-800/60">
+              {[next.date, next.time, next.venue].filter(Boolean).join(" · ")}
+            </p>
+          )}
+        </div>
+      )
+    }
+
+    <h2 class="mb-4 text-xl font-bold uppercase tracking-tight text-brand-900">
+      <span class="border-l-4 border-brand-500 pl-3">Η πορεία μας</span>
+    </h2>
+
+    {
+      matches.length > 0 ? (
+        <div class="space-y-4">
+          {matches.map((m) => (
+            <div class="rounded-xl border border-brand-100 bg-white p-4 shadow-sm">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-semibold uppercase tracking-wide text-brand-500">
+                  {m.phase}
+                </span>
+                {m.result && resultBadge[m.result] && (
+                  <span class:list={["rounded-full px-2.5 py-0.5 text-xs font-bold", resultBadge[m.result].cls]}>
+                    {resultBadge[m.result].label}
+                  </span>
+                )}
+              </div>
+              <div class="mt-3 flex items-center justify-between gap-2">
+                <span class:list={["min-w-0 flex-1 truncate text-sm sm:text-base", isUs(m.home) ? "font-bold text-brand-800" : "text-brand-900"]}>
+                  {m.home}
+                </span>
+                {m.played ? (
+                  <span class="shrink-0 rounded-md bg-brand-800 px-3 py-1 text-sm font-extrabold tabular-nums text-white">
+                    {m.homeScore} - {m.awayScore}
+                  </span>
+                ) : (
+                  <span class="shrink-0 rounded-md bg-brand-100 px-2.5 py-1 text-xs font-bold text-brand-700">VS</span>
+                )}
+                <span class:list={["min-w-0 flex-1 truncate text-right text-sm sm:text-base", isUs(m.away) ? "font-bold text-brand-800" : "text-brand-900"]}>
+                  {m.away}
+                </span>
+              </div>
+              {(m.date || m.venue) && (
+                <p class="mt-2 text-xs text-brand-800/60">
+                  {[m.date, m.time, m.venue].filter(Boolean).join(" · ")}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="rounded-lg bg-brand-50 p-6 text-brand-800">
+          Δεν υπάρχουν ακόμη αγώνες κυπέλλου για την ομάδα μας.
+        </p>
+      )
+    }
+
+    <p class="mt-6 text-xs text-brand-800/60">
+      Πηγή: <a href={source} class="underline hover:text-brand-600" rel="nofollow noopener" target="_blank">epsm.gr</a> · Ενημερώθηκε {updated}
+    </p>
+  </div>
+</Layout>

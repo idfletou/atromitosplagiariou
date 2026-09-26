@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import NewsCard from "../components/NewsCard.astro";
+import { getLatestNews } from "../lib/news";
+import { site } from "../data/site";
+
+const latest = await getLatestNews(3);
+
+// Split the description at the em dash so the hero shows it on two lines (the
+// dash is dropped). The meta description keeps the original single-line form.
+const [heroLead, ...heroRestParts] = site.description.split("—");
+const heroRestRaw = heroRestParts.join("—").trim();
+// Capitalise the first letter of the second line for display.
+const heroRest = heroRestRaw.charAt(0).toUpperCase() + heroRestRaw.slice(1);
+---
+
+<Layout>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-brand-800 text-white">
+    <div
+      class="absolute inset-0 opacity-10"
+      style="background-image: radial-gradient(circle at 20% 20%, #ffffff 0, transparent 40%), radial-gradient(circle at 80% 0%, #ffffff 0, transparent 35%);"
+    >
+    </div>
+    <div
+      class="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-16 text-center sm:py-24"
+    >
+      <img src="/crest.png" alt="Έμβλημα" width="112" height="112" class="h-24 w-24 sm:h-28 sm:w-28 drop-shadow-lg" />
+      <h1 class="text-3xl font-extrabold uppercase leading-tight tracking-tight text-balance sm:text-5xl">
+        Ατρόμητος Πλαγιαρίου
+        <span class="block text-brand-200 text-xl font-semibold sm:text-2xl">Football Club</span>
+      </h1>
+      <p class="max-w-xl text-brand-100/90 text-balance">
+        <span class="block">{heroLead.trim()}</span>
+        {heroRest && <span class="block">{heroRest}</span>}
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/news"
+          class="rounded-lg bg-white px-5 py-3 text-sm font-bold text-brand-800 shadow transition hover:bg-brand-50"
+        >
+          Τελευταία Νέα
+        </a>
+        <a
+          href="/squads/men"
+          class="rounded-lg border-2 border-white/70 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10"
+        >
+          Η Ομάδα μας
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest news -->
+  <section class="mx-auto max-w-6xl px-4 py-14">
+    <SectionHeading
+      title="Τελευταία Νέα"
+      subtitle="Ενημερώσεις, αγώνες και ανακοινώσεις του συλλόγου"
+      ctaLabel="Όλα τα νέα →"
+      ctaHref="/news"
+    />
+    {
+      latest.length > 0 ? (
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {latest.map((post) => (
+            <NewsCard post={post} />
+          ))}
+        </div>
+      ) : (
+        <p class="rounded-lg bg-brand-50 p-6 text-brand-800">
+          Δεν υπάρχουν ακόμη δημοσιεύσεις. Μείνετε συντονισμένοι!
+        </p>
+      )
+    }
+  </section>
+
+  <!-- Squads teaser -->
+  <section class="bg-brand-50">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <SectionHeading
+        title="Οι Ομάδες μας"
+        subtitle="Από τις ακαδημίες μέχρι την ανδρική ομάδα"
+      />
+      <div class="grid gap-6 sm:grid-cols-2">
+        <a
+          href="/squads/men"
+          class="group flex items-center gap-4 rounded-xl border border-brand-100 bg-white p-6 shadow-sm transition hover:shadow-md"
+        >
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-600 text-2xl">⚽</div>
+          <div>
+            <h3 class="text-lg font-bold text-brand-900 group-hover:text-brand-600">Ανδρική Ομάδα</h3>
+            <p class="text-sm text-brand-800/70">Το ρόστερ και το τεχνικό τιμ της πρώτης ομάδας</p>
+          </div>
+        </a>
+        <a
+          href="/squads"
+          class="group flex items-center gap-4 rounded-xl border border-brand-100 bg-white p-6 shadow-sm transition hover:shadow-md"
+        >
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-200 text-2xl">🧒</div>
+          <div>
+            <h3 class="text-lg font-bold text-brand-900 group-hover:text-brand-600">Ακαδημίες</h3>
+            <p class="text-sm text-brand-800/70">Οι υποδομές μας — σύντομα κοντά σας</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

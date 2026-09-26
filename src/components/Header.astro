@@ -1,0 +1,157 @@
+---
+import { nav, isNavParent } from "../data/site";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path === href || path.startsWith(href + "/");
+const parentActive = (children: { href: string }[]) =>
+  children.some((c) => isActive(c.href));
+---
+
+<header class="sticky top-0 z-50 bg-brand-800 text-white shadow-md">
+  <nav
+    class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3"
+    aria-label="Κύρια πλοήγηση"
+  >
+    <!-- Brand / crest -->
+    <a href="/" class="flex items-center gap-3 group">
+      <img src="/crest.png" alt="" width="40" height="40" class="h-10 w-10 shrink-0" />
+      <span class="flex flex-col font-display leading-tight">
+        <span class="font-bold uppercase tracking-wide text-sm sm:text-base">Ατρόμητος</span>
+        <span class="text-[11px] uppercase tracking-widest text-brand-200">Πλαγιαρίου F.C.</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-1">
+      {
+        nav.map((item) =>
+          isNavParent(item) ? (
+            <li class="group relative">
+              <button
+                type="button"
+                aria-haspopup="true"
+                class:list={[
+                  "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-700",
+                  parentActive(item.children) && "bg-brand-700 text-white",
+                ]}
+              >
+                {item.label}
+                <svg
+                  class="h-3.5 w-3.5 transition-transform group-hover:rotate-180"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <ul class="invisible absolute left-0 top-full z-50 min-w-48 rounded-md border border-brand-100 bg-white py-1 opacity-0 shadow-lg transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                {item.children.map((c) => (
+                  <li>
+                    <a
+                      href={c.href}
+                      aria-current={isActive(c.href) ? "page" : undefined}
+                      class:list={[
+                        "block px-4 py-2 text-sm hover:bg-brand-50",
+                        isActive(c.href) ? "font-semibold text-brand-700" : "text-brand-900",
+                      ]}
+                    >
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                class:list={[
+                  "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-700",
+                  isActive(item.href) && "bg-brand-700 text-white",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          )
+        )
+      }
+    </ul>
+
+    <!-- Mobile toggle -->
+    <button
+      id="menu-toggle"
+      type="button"
+      class="md:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-brand-700"
+      aria-label="Άνοιγμα μενού"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden border-t border-brand-700">
+    <ul class="space-y-1 px-4 py-3">
+      {
+        nav.map((item) =>
+          isNavParent(item) ? (
+            <li>
+              <p class="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-widest text-brand-300">
+                {item.label}
+              </p>
+              <ul class="space-y-1">
+                {item.children.map((c) => (
+                  <li>
+                    <a
+                      href={c.href}
+                      aria-current={isActive(c.href) ? "page" : undefined}
+                      class:list={[
+                        "block rounded-md py-2.5 pl-5 pr-3 text-base font-medium hover:bg-brand-700",
+                        isActive(c.href) && "bg-brand-700",
+                      ]}
+                    >
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                class:list={[
+                  "block rounded-md px-3 py-2.5 text-base font-medium hover:bg-brand-700",
+                  isActive(item.href) && "bg-brand-700",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          )
+        )
+      }
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Κλείσιμο μενού" : "Άνοιγμα μενού");
+  });
+</script>

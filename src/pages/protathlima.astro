@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StandingsTable from "../components/StandingsTable.astro";
+import standings from "../data/standings.json";
+
+const { competition, updatedAt, source, legend, table, ourLatest, ourNext } =
+  standings;
+
+const compLabel = competition.replace(/\s*-\s*/, " – ");
+const updated = new Date(updatedAt).toLocaleDateString("el-GR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const isUs = (name: string) => name.toUpperCase().includes("ΑΤΡΟΜΗΤΟΣ");
+---
+
+<Layout
+  title="Πρωτάθλημα"
+  description={`Αποτελέσματα και βαθμολογία του Ατρόμητου Πλαγιαρίου — ${compLabel}.`}
+>
+  <section class="bg-brand-800 text-white">
+    <div class="mx-auto max-w-5xl px-4 py-12">
+      <p class="text-sm font-semibold uppercase tracking-widest text-brand-200">
+        Αποτελέσματα
+      </p>
+      <h1 class="mt-2 text-3xl font-extrabold uppercase sm:text-4xl">Πρωτάθλημα</h1>
+      <p class="mt-2 text-brand-100/80">{compLabel}</p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-5xl px-4 py-12">
+    <!-- Last result / next fixture -->
+    {
+      (ourLatest || ourNext) && (
+        <div class="mb-8 grid gap-4 sm:grid-cols-2">
+          {ourLatest && (
+            <div class="min-w-0 rounded-xl border border-brand-100 bg-white p-4 shadow-sm">
+              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-500">
+                Τελευταίο αποτέλεσμα
+                {ourLatest.matchday && ` · ${ourLatest.matchday}η αγων.`}
+              </p>
+              <div class="flex items-center justify-between gap-2">
+                <span class:list={["min-w-0 flex-1 truncate text-sm", isUs(ourLatest.home) ? "font-bold text-brand-800" : "text-brand-900"]}>
+                  {ourLatest.home}
+                </span>
+                <span class="shrink-0 rounded-md bg-brand-800 px-2.5 py-1 text-sm font-extrabold tabular-nums text-white">
+                  {ourLatest.homeScore} - {ourLatest.awayScore}
+                </span>
+                <span class:list={["min-w-0 flex-1 truncate text-right text-sm", isUs(ourLatest.away) ? "font-bold text-brand-800" : "text-brand-900"]}>
+                  {ourLatest.away}
+                </span>
+              </div>
+            </div>
+          )}
+          {ourNext && (
+            <div class="min-w-0 rounded-xl border border-brand-100 bg-white p-4 shadow-sm">
+              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-500">
+                Επόμενος αγώνας
+                {ourNext.matchday && ` · ${ourNext.matchday}η αγων.`}
+              </p>
+              <div class="flex items-center justify-between gap-2">
+                <span class:list={["min-w-0 flex-1 truncate text-sm", isUs(ourNext.home) ? "font-bold text-brand-800" : "text-brand-900"]}>
+                  {ourNext.home}
+                </span>
+                <span class="shrink-0 rounded-md bg-brand-100 px-2.5 py-1 text-xs font-bold text-brand-700">
+                  VS
+                </span>
+                <span class:list={["min-w-0 flex-1 truncate text-right text-sm", isUs(ourNext.away) ? "font-bold text-brand-800" : "text-brand-900"]}>
+                  {ourNext.away}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+      )
+    }
+
+    <h2 class="mb-4 text-xl font-bold uppercase tracking-tight text-brand-900">
+      <span class="border-l-4 border-brand-500 pl-3">Βαθμολογία</span>
+    </h2>
+
+    <StandingsTable table={table} legend={legend} />
+
+    <p class="mt-5 text-xs text-brand-800/60">
+      Πηγή: <a href={source} class="underline hover:text-brand-600" rel="nofollow noopener" target="_blank">epsm.gr</a> · Ενημερώθηκε {updated}
+    </p>
+  </div>
+</Layout>

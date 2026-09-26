@@ -1,0 +1,118 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { site } from "../data/site";
+
+// Ιστορικοί σταθμοί & τίτλοι.
+const timeline = [
+  {
+    year: "1952",
+    text: "Ίδρυση του συλλόγου στις 19 Ιουνίου 1952, αρχικά ως μουσικογυμναστικός και πολιτιστικός σύλλογος.",
+  },
+  {
+    year: "1980–1981",
+    text: "Η μεγαλύτερη ιστορική επιτυχία της ομάδας: άνοδος στο Εθνικό Ερασιτεχνικό Πρωτάθλημα (το αντίστοιχο της σημερινής Γ΄ ή Δ΄ Εθνικής).",
+  },
+  {
+    year: "1996",
+    text: "Κατάκτηση πρωταθλήματος και άνοδος στην Α΄ Κατηγορία της ΕΠΣΜ.",
+  },
+  {
+    year: "2024–2025",
+    text: "Κατάκτηση του πρωταθλήματος — ο τρίτος συνολικά τίτλος στην ιστορία του συλλόγου — και απευθείας επιστροφή στην Α΄ ΕΠΣΜ, έπειτα από 28 χρόνια απουσίας από την κατηγορία.",
+  },
+];
+
+const facts = [
+  { label: "Έτος ίδρυσης", value: String(site.founded) },
+  { label: "Έδρα", value: site.town },
+  { label: "Γήπεδο", value: "«Αθ. Πλώτσικας»" },
+  { label: "Χρώματα", value: "Μπλε & Λευκό" },
+  { label: "Κατηγορία", value: "Α΄ ΕΠΣΜ" },
+  { label: "Τίτλοι", value: "3 πρωταθλήματα" },
+];
+---
+
+<Layout
+  title="Ο Σύλλογος"
+  description="Η ιστορία, οι τίτλοι και οι ακαδημίες του Α.Σ. Ατρόμητου Πλαγιαρίου — μέλος της ΕΠΣ Μακεδονίας από το 1952."
+>
+  <!-- Page header -->
+  <section class="bg-brand-800 text-white">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <p class="text-sm font-semibold uppercase tracking-widest text-brand-200">Ο Σύλλογος</p>
+      <h1 class="mt-2 text-3xl font-extrabold uppercase sm:text-4xl">Η ιστορία μας</h1>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 py-14">
+    <!-- Intro + facts -->
+    <div class="grid gap-10 md:grid-cols-3">
+      <div class="md:col-span-2 space-y-4 text-brand-900/90 leading-relaxed">
+        <p class="text-lg">
+          Ο <strong>Α.Σ. Ατρόμητος Πλαγιαρίου</strong> ιδρύθηκε στις 19 Ιουνίου {site.founded} και
+          αποτελεί σταθερό μέλος της Ένωσης Ποδοσφαιρικών Σωματείων Μακεδονίας (ΕΠΣΜ), εκπροσωπώντας
+          ποδοσφαιρικά την τοπική κοινωνία του Πλαγιαρίου. Η ομάδα αγωνίζεται στο γήπεδο του Πλαγιαρίου
+          «Αθανάσιος Πλώτσικας».
+        </p>
+        <p>
+          Στη διαδρομή του ο σύλλογος έχει κατακτήσει <strong>τρεις τίτλους πρωταθλήματος</strong>{" "}
+          και έχει γράψει σημαντικές σελίδες στο τοπικό ποδόσφαιρο — από την ιστορική άνοδο στο
+          Εθνικό Ερασιτεχνικό Πρωτάθλημα τη δεκαετία του ’80, μέχρι την πρόσφατη επιστροφή του
+          στα «σαλόνια» της Α΄ ΕΠΣΜ.
+        </p>
+      </div>
+
+      <aside class="rounded-xl border border-brand-100 bg-brand-50 p-6">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-brand-600">Ταυτότητα</h2>
+        <dl class="mt-4 space-y-3">
+          {
+            facts.map((f) => (
+              <div class="flex justify-between gap-4 border-b border-brand-100 pb-2 last:border-0">
+                <dt class="text-sm text-brand-800/70">{f.label}</dt>
+                <dd class="text-right text-sm font-semibold text-brand-900">{f.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </aside>
+    </div>
+
+    <!-- Timeline -->
+    <div class="mt-16">
+      <SectionHeading title="Ιστορικοί Σταθμοί & Τίτλοι" subtitle="Σταθμοί στην πορεία του συλλόγου" />
+      <ol class="relative ml-3 border-l-2 border-brand-200">
+        {
+          timeline.map((item) => (
+            <li class="mb-8 ml-6">
+              <span class="absolute -left-[9px] flex h-4 w-4 items-center justify-center rounded-full bg-brand-600 ring-4 ring-white" />
+              <h3 class="text-lg font-bold text-brand-700">{item.year}</h3>
+              <p class="mt-1 text-brand-900/80">{item.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <!-- Present & academies -->
+    <div class="mt-16">
+      <SectionHeading title="Το παρόν & οι Ακαδημίες" />
+      <div class="space-y-4 text-brand-900/90 leading-relaxed">
+        <p>
+          Σήμερα, η ανδρική ομάδα αγωνίζεται σταθερά στην <strong>Α΄ Κατηγορία της ΕΠΣΜ</strong>.
+          Παράλληλα, ο σύλλογος επενδύει συστηματικά στο μέλλον μέσω των Ακαδημιών του.
+        </p>
+        <p>
+          Διατηρεί τμήματα υποδομής για παιδιά ηλικίας <strong>5 έως 16 ετών</strong>, εστιάζοντας
+          στη σωστή εκμάθηση του αθλήματος και στη σταδιακή στελέχωση της πρώτης ομάδας με αθλητές
+          από την τοπική κοινωνία.
+        </p>
+        <p>
+          <a href="/squads" class="font-semibold text-brand-600 hover:text-brand-800 hover:underline">
+            Δείτε τις ομάδες μας →
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

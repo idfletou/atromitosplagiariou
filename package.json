@@ -1,0 +1,28 @@
+{
+  "name": "atromitos-fc",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "scrape": "npm run scrape:standings && npm run scrape:cup",
+    "scrape:standings": "node scripts/scrape-standings.mjs",
+    "scrape:cup": "node scripts/scrape-cup.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/roboto-condensed": "^5.2.8",
+    "@sanity/client": "^7.23.0",
+    "@tailwindcss/vite": "^4.3.2",
+    "astro": "^7.0.6",
+    "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "cheerio": "^1.2.0"
+  }
+}

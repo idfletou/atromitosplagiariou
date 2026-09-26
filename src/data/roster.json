@@ -1,0 +1,15 @@
+[
+  { "id": "1", "name": "Γιώργος Παπαδόπουλος", "number": 1, "position": "GK", "birthDate": "1996-11-12", "height": 189 },
+  { "id": "12", "name": "Νίκος Ιωάννου", "number": 12, "position": "GK", "birthDate": "2004-03-25", "height": 185 },
+  { "id": "2", "name": "Δημήτρης Αντωνίου", "number": 2, "position": "DEF", "birthDate": "1999-06-08", "height": 181 },
+  { "id": "3", "name": "Κώστας Βασιλείου", "number": 3, "position": "DEF", "birthDate": "1994-09-30", "height": 186 },
+  { "id": "4", "name": "Θανάσης Νικολάου", "number": 4, "position": "DEF", "birthDate": "2002-01-17", "height": 184 },
+  { "id": "5", "name": "Μιχάλης Γεωργίου", "number": 5, "position": "DEF", "birthDate": "1997-12-03", "height": 183 },
+  { "id": "6", "name": "Στέλιος Δημητρίου", "number": 6, "position": "MID", "birthDate": "2000-04-21", "height": 178 },
+  { "id": "8", "name": "Ανδρέας Παύλου", "number": 8, "position": "MID", "birthDate": "2003-07-14", "height": 176 },
+  { "id": "10", "name": "Βαγγέλης Κωνσταντίνου", "number": 10, "position": "MID", "birthDate": "1995-02-28", "height": 174 },
+  { "id": "14", "name": "Πέτρος Αλεξίου", "number": 14, "position": "MID", "birthDate": "2005-05-09", "height": 180 },
+  { "id": "7", "name": "Χρήστος Μακρής", "number": 7, "position": "FWD", "birthDate": "2001-08-19", "height": 179 },
+  { "id": "9", "name": "Λευτέρης Σαββίδης", "number": 9, "position": "FWD", "birthDate": "1997-10-05", "height": 188 },
+  { "id": "11", "name": "Άκης Τσιμίκας", "number": 11, "position": "FWD", "birthDate": "2005-12-01", "height": 175 }
+]
