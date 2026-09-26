@@ -21,6 +21,8 @@ export const sanityClient: SanityClient | null = isSanityConfigured
       projectId,
       dataset,
       apiVersion: "2024-01-01",
-      useCdn: true, // build-time reads; CDN is fine and fast
+      // Fresh (non-CDN) reads: builds are webhook-triggered on publish, and the
+      // API CDN can lag ~60s — this guarantees a just-published post is picked up.
+      useCdn: false,
     })
   : null;

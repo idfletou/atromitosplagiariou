@@ -127,22 +127,24 @@ and legend labels are tidied (`displayColor()` / `cleanLabel()`).
 
 ## Deploying to Cloudflare Pages
 
-1. Push this repo to GitHub (it isn't a git repo yet — `git init` first).
-2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**.
-3. Build settings:
-   - **Framework preset:** Astro
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-4. Environment variables (once Sanity is set up): `PUBLIC_SANITY_PROJECT_ID`,
-   `PUBLIC_SANITY_DATASET` (= `production`).
-5. Deploy. Every push to the main branch redeploys.
-6. Create a **Deploy hook** (Settings → Builds & deployments) and point the
-   **Sanity webhook** at it, so publishing a news post triggers a rebuild. (The
-   standings/cup GitHub Action doesn't need the hook — its commits to the repo
-   already trigger Cloudflare's git build.)
+**Status: LIVE.** Deployed 2026-09-26.
+- **Live site:** https://atromitosplagiariou.pages.dev (custom domain pending).
+- **GitHub repo:** https://github.com/idfletou/atromitosplagiariou (branch `main`).
+- **Auto-deploy:** every push to `main` triggers a Cloudflare rebuild (git integration).
 
-After deploy, update `site.url` in `src/data/site.ts` to the real domain (used for
-canonical/OG URLs).
+Build settings already configured in the Pages project: framework preset **Astro**,
+build command **`npm run build`**, output dir **`dist`**, production branch **`main`**.
+
+Still to do:
+- **Env vars** (add in Cloudflare once Sanity is set up): `PUBLIC_SANITY_PROJECT_ID`,
+  `PUBLIC_SANITY_DATASET` (= `production`). Until then the site builds with sample news.
+- **Deploy hook** (Settings → Builds & deployments) pointed at by a **Sanity webhook**,
+  so publishing a news post triggers a rebuild. (The standings/cup GitHub Action doesn't
+  need the hook — its commits to the repo already trigger Cloudflare's git build.)
+- **Custom domain:** when connected (Pages project → Custom domains), update `site.url`
+  in `src/data/site.ts` to it (used for canonical/OG URLs).
+
+Everyday update workflow: `git add -A && git commit -m "…" && git push` → auto-deploys.
 
 ## Notes / gotchas for agents
 
