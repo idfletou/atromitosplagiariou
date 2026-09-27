@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-27T07:38:20.280Z",
+  "updatedAt": "2026-09-27T19:41:37.311Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
   "legend": [
@@ -79,15 +79,15 @@
     },
     {
       "position": 5,
-      "team": "ΣΚΙΟΥΡΟΙ",
+      "team": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
       "isOurTeam": false,
       "points": 1,
       "played": 1,
       "won": 0,
       "drawn": 1,
       "lost": 0,
-      "gf": 0,
-      "ga": 0,
+      "gf": 1,
+      "ga": 1,
       "gd": 0,
       "markerColor": "#90e67f"
     },
@@ -107,12 +107,12 @@
     },
     {
       "position": 7,
-      "team": "Α.Ο. ΚΑΡΔΙΑΣ",
+      "team": "ΣΚΙΟΥΡΟΙ",
       "isOurTeam": false,
-      "points": 0,
-      "played": 0,
+      "points": 1,
+      "played": 1,
       "won": 0,
-      "drawn": 0,
+      "drawn": 1,
       "lost": 0,
       "gf": 0,
       "ga": 0,
@@ -121,6 +121,20 @@
     },
     {
       "position": 8,
+      "team": "Α.Ο. ΚΑΡΔΙΑΣ",
+      "isOurTeam": false,
+      "points": 1,
+      "played": 1,
+      "won": 0,
+      "drawn": 1,
+      "lost": 0,
+      "gf": 1,
+      "ga": 1,
+      "gd": 0,
+      "markerColor": "#e6e6e6"
+    },
+    {
+      "position": 9,
       "team": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
       "isOurTeam": false,
       "points": 0,
@@ -134,23 +148,9 @@
       "markerColor": "#e6e6e6"
     },
     {
-      "position": 9,
+      "position": 10,
       "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
       "isOurTeam": true,
-      "points": 0,
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 0,
-      "ga": 0,
-      "gd": 0,
-      "markerColor": "#e6e6e6"
-    },
-    {
-      "position": 10,
-      "team": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
-      "isOurTeam": false,
       "points": 0,
       "played": 0,
       "won": 0,
