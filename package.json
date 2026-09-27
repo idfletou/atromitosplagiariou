@@ -10,8 +10,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "scrape": "npm run scrape:standings && npm run scrape:cup",
+    "scrape": "npm run scrape:standings && npm run scrape:fixtures && npm run scrape:cup",
     "scrape:standings": "node scripts/scrape-standings.mjs",
+    "scrape:fixtures": "node scripts/scrape-fixtures.mjs",
     "scrape:cup": "node scripts/scrape-cup.mjs"
   },
   "dependencies": {

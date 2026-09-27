@@ -1,0 +1,66 @@
+---
+// The list of our completed league matches (newest first). Shown on the left of
+// the league page's fixtures area. Opponent-centric (every match involves us),
+// so names stay legible on a phone; the score is shown from our perspective.
+interface Fixture {
+  matchday: number | null;
+  homeScore: number | null;
+  awayScore: number | null;
+  weAreHome: boolean;
+  opponent: string;
+  result: "W" | "L" | "D" | null;
+}
+interface Props {
+  results: Fixture[];
+}
+const { results } = Astro.props;
+
+const dotTone = { W: "bg-emerald-500", L: "bg-rose-500", D: "bg-slate-400" } as const;
+const scoreTone = {
+  W: "bg-emerald-600",
+  L: "bg-rose-600",
+  D: "bg-slate-500",
+} as const;
+
+// Score from our point of view (our goals first).
+const ourScore = (f: Fixture) => (f.weAreHome ? f.homeScore : f.awayScore);
+const theirScore = (f: Fixture) => (f.weAreHome ? f.awayScore : f.homeScore);
+---
+
+{
+  results.length === 0 ? (
+    <div class="rounded-xl border border-dashed border-brand-200 bg-brand-50/40 px-4 py-10 text-center">
+      <p class="text-sm text-brand-800/70">Δεν έχουν διεξαχθεί αγώνες ακόμα.</p>
+      <p class="mt-1 text-xs text-brand-800/50">Τα αποτελέσματα θα εμφανίζονται εδώ μόλις ξεκινήσει το πρωτάθλημα.</p>
+    </div>
+  ) : (
+    <div class="overflow-hidden rounded-xl border border-brand-100 shadow-sm">
+      <ul class="divide-y divide-brand-100">
+        {results.map((f) => (
+          <li class="flex items-center gap-3 bg-white px-3 py-2.5">
+            <span
+              class:list={["h-2.5 w-2.5 shrink-0 rounded-full", f.result ? dotTone[f.result] : "bg-slate-300"]}
+              aria-hidden="true"
+            />
+            <div class="min-w-0 flex-1">
+              <p class="truncate text-sm font-semibold text-brand-900" title={f.opponent}>
+                {f.opponent}
+              </p>
+              <p class="text-[11px] text-brand-800/55">
+                {f.matchday}η αγωνιστική · {f.weAreHome ? "εντός έδρας" : "εκτός έδρας"}
+              </p>
+            </div>
+            <span
+              class:list={[
+                "shrink-0 rounded-md px-2.5 py-1 text-sm font-extrabold tabular-nums text-white",
+                f.result ? scoreTone[f.result] : "bg-brand-700",
+              ]}
+            >
+              {ourScore(f)} - {theirScore(f)}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

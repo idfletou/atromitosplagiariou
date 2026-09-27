@@ -7,10 +7,10 @@
 //
 // Run locally with:  npm run scrape:cup
 
-import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import * as cheerio from "cheerio";
+import { writeIfChanged } from "./lib.mjs";
 
 // ── Config ──────────────────────────────────────────────────────────────────
 const URL = "https://www.epsm.gr/cup.asp";
@@ -146,8 +146,8 @@ const data = {
   next,
 };
 
-writeFileSync(OUT, JSON.stringify(data, null, 2) + "\n", "utf8");
+const wrote = writeIfChanged(OUT, data, "cup");
 console.log(
-  `[cup] parsed ${total} ties, kept ${ourMatches.length} of ours ` +
+  `[cup] ${wrote ? "wrote" : "unchanged:"} ${total} ties parsed, kept ${ourMatches.length} of ours ` +
     `(next=${next ? "yes" : "no"}) → src/data/cup.json`
 );

@@ -7,10 +7,10 @@
 //
 // Run locally with:  npm run scrape:standings
 
-import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import * as cheerio from "cheerio";
+import { writeIfChanged } from "./lib.mjs";
 
 // ── Config ──────────────────────────────────────────────────────────────────
 // The league group on epsm.gr. Update this ONE line if the team changes
@@ -155,50 +155,19 @@ $("font").each((_, f) => {
   }
 });
 
-// ── Our latest result & next fixture (from the .match-row blocks) ────────────
-const pageText = norm($("body").text());
-const resultMd = (pageText.match(/ΝΕΟΤΕΡΑ ΑΠΟΤΕΛΕΣΜΑΤΑ\s*\((\d+)/) || [])[1];
-const nextMd = (pageText.match(/ΕΠΟΜΕΝΗ ΑΓΩΝΙΣΤΙΚΗ\s*\((\d+)/) || [])[1];
-
-const matches = [];
-$(".match-row").each((_, el) => {
-  const home = norm($(el).find(".match-home").text());
-  const away = norm($(el).find(".match-away").text());
-  const score = norm($(el).find(".match-score").text());
-  if (!home || !away) return;
-  const m = score.match(/(\d+)\s*-\s*(\d+)/);
-  matches.push({
-    home,
-    away,
-    homeScore: m ? intOr(m[1]) : null,
-    awayScore: m ? intOr(m[2]) : null,
-  });
-});
-
-const ours = matches.filter((x) => isOurs(x.home) || isOurs(x.away));
-const played = ours.filter((x) => x.homeScore !== null);
-const upcoming = ours.filter((x) => x.homeScore === null);
-
-const ourLatest = played.length
-  ? { ...played[played.length - 1], matchday: resultMd ? intOr(resultMd) : null }
-  : null;
-const ourNext = upcoming.length
-  ? { home: upcoming[0].home, away: upcoming[0].away, matchday: nextMd ? intOr(nextMd) : null }
-  : null;
-
 // ── Write ───────────────────────────────────────────────────────────────────
+// Note: our latest result & next fixture (with correct matchday numbers) come
+// from the dedicated fixtures scraper (scrape-fixtures.mjs → fixtures.json),
+// which reads the full-season programme. This file is just the ranking table.
 const data = {
   updatedAt: new Date().toISOString(),
   competition: DIORGANOSI,
   source: URL,
   legend,
   table,
-  ourLatest,
-  ourNext,
 };
 
-writeFileSync(OUT, JSON.stringify(data, null, 2) + "\n", "utf8");
+const wrote = writeIfChanged(OUT, data, "standings");
 console.log(
-  `[standings] wrote ${table.length} teams, legend=${legend.length}, ` +
-    `latest=${ourLatest ? "yes" : "no"}, next=${ourNext ? "yes" : "no"} → src/data/standings.json`
+  `[standings] ${wrote ? "wrote" : "unchanged:"} ${table.length} teams, legend=${legend.length} → src/data/standings.json`
 );

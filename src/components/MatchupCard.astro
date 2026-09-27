@@ -1,0 +1,124 @@
+---
+// A single fixture card — used for the current & next matchup on the league page.
+// Shows the tie, and either the score (if played) or date/venue/kickoff (if not).
+interface Fixture {
+  matchday: number | null;
+  home: string;
+  away: string;
+  homeScore: number | null;
+  awayScore: number | null;
+  played: boolean;
+  weAreHome: boolean;
+  opponent: string;
+  result: "W" | "L" | "D" | null;
+  date: string | null; // dd.mm.yyyy
+  time: string | null; // HH.MM
+  venue: string | null;
+}
+interface Props {
+  fixture: Fixture;
+  label: string;
+  accent?: boolean; // highlight (used for the current matchup)
+}
+const { fixture, label, accent = false } = Astro.props;
+
+const isUs = (name: string) => name.toUpperCase().includes("ΑΤΡΟΜΗΤΟΣ");
+const prettyDate = (d: string | null) => (d ? d.replace(/\./g, "/") : null);
+
+const resultText = { W: "Νίκη", L: "Ήττα", D: "Ισοπαλία" } as const;
+const scoreTone = fixture.played
+  ? fixture.result === "W"
+    ? "bg-emerald-600"
+    : fixture.result === "L"
+      ? "bg-rose-600"
+      : "bg-slate-500"
+  : "bg-brand-700";
+
+const hasDetails = fixture.date || fixture.time || fixture.venue;
+---
+
+<div
+  class:list={[
+    "rounded-xl border bg-white p-4 shadow-sm",
+    accent ? "border-brand-300 ring-1 ring-brand-200" : "border-brand-100",
+  ]}
+>
+  <div class="flex items-center justify-between gap-2">
+    <p class="text-xs font-semibold uppercase tracking-widest text-brand-500">{label}</p>
+    {
+      fixture.matchday && (
+        <span class="shrink-0 rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-semibold text-brand-600">
+          {fixture.matchday}η αγων.
+        </span>
+      )
+    }
+  </div>
+
+  <!-- Teams + score/vs -->
+  <div class="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+    <span
+      class:list={[
+        "text-right text-sm font-display leading-tight [overflow-wrap:anywhere]",
+        isUs(fixture.home) ? "font-bold text-brand-800" : "text-brand-900",
+      ]}>{fixture.home}</span>
+
+    {
+      fixture.played ? (
+        <span class={`shrink-0 rounded-md px-2.5 py-1 text-base font-extrabold tabular-nums text-white ${scoreTone}`}>
+          {fixture.homeScore} - {fixture.awayScore}
+        </span>
+      ) : (
+        <span class="shrink-0 rounded-md bg-brand-100 px-2.5 py-1 text-xs font-bold text-brand-600">VS</span>
+      )
+    }
+
+    <span
+      class:list={[
+        "text-left text-sm font-display leading-tight [overflow-wrap:anywhere]",
+        isUs(fixture.away) ? "font-bold text-brand-800" : "text-brand-900",
+      ]}>{fixture.away}</span>
+  </div>
+
+  <!-- Meta line -->
+  <div class="mt-3 border-t border-brand-100 pt-2.5 text-xs text-brand-800/70">
+    {
+      fixture.played ? (
+        <p class="flex items-center justify-center gap-1.5 font-semibold text-brand-700">
+          {fixture.result && (
+            <span
+              class:list={[
+                "inline-block h-2 w-2 rounded-full",
+                fixture.result === "W" ? "bg-emerald-500" : fixture.result === "L" ? "bg-rose-500" : "bg-slate-400",
+              ]}
+            />
+          )}
+          {fixture.result ? resultText[fixture.result] : "Ολοκληρώθηκε"}
+        </p>
+      ) : hasDetails ? (
+        <div class="space-y-1">
+          {(fixture.date || fixture.time) && (
+            <p class="flex items-center justify-center gap-1.5">
+              <span aria-hidden="true">📅</span>
+              {prettyDate(fixture.date) ?? "—"}
+              {fixture.time && <span class="text-brand-800/50">•</span>}
+              {fixture.time && (
+                <>
+                  <span aria-hidden="true">⏰</span>
+                  {fixture.time}
+                </>
+              )}
+            </p>
+          )}
+          {fixture.venue && (
+            <p class="flex items-center justify-center gap-1.5 text-center">
+              <span aria-hidden="true">📍</span>
+              {fixture.venue}
+            </p>
+          )}
+        </div>
+      ) : (
+        <p class="text-center italic text-brand-800/50">Ημερομηνία σύντομα</p>
+      )
+    }
+  </div>
+</div>
