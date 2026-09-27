@@ -25,8 +25,9 @@ npm install
 npm run dev              # dev server → http://localhost:4321
 npm run build            # production build → dist/
 npm run preview          # serve the production build
-npm run scrape           # refresh standings + cup JSON from epsm.gr
+npm run scrape           # refresh standings + fixtures + cup JSON from epsm.gr
 npm run scrape:standings # just the league table
+npm run scrape:fixtures  # just the fixtures/results (full season)
 npm run scrape:cup       # just the cup
 ```
 
@@ -106,29 +107,48 @@ The post schema is `studio/schemaTypes/postType.ts` (mirrored in `sanity/schemaT
 Field names must match the GROQ queries in `src/lib/news.ts`. After changing it,
 `cd studio && npm run deploy`. Full original setup walkthrough: `sanity/README.md`.
 
-## Standings & Cup (auto-scraped from epsm.gr)
+## Standings, Fixtures & Cup (auto-scraped from epsm.gr)
 
 `/protathlima` and `/kypello` are generated from JSON that scrapers produce from
-the official federation site — **no manual upkeep**.
+the official federation site — **no manual upkeep**. Shared helpers (incl. the
+write-only-on-change guard) live in `scripts/lib.mjs`. Config lives at the top of
+each script: **`DIORGANOSI`** (the league/group — change this one line on
+promotion/relegation) and `OUR_TEAM` (name-match strings).
 
-- `scripts/scrape-standings.mjs` → `src/data/standings.json` (league table + our
-  last result & next fixture). Config at top: **`DIORGANOSI`** (the league/group;
-  change this one line on promotion/relegation) and `OUR_TEAM` (name-match strings).
+- `scripts/scrape-standings.mjs` → `src/data/standings.json` — just the ranking
+  **table** + zone legend (from `table.asp`).
+- `scripts/scrape-fixtures.mjs` → `src/data/fixtures.json` — our **full-season
+  fixtures/results**, from `table_analytika.asp` (every matchday, real matchday
+  numbers, scores) enriched with date/venue/kickoff for the imminent round from
+  `scores.asp`. Derives `results` (played, newest first), `current`, and `next`.
+  - **current/next are gameweek-anchored:** a week runs Mon→Sun and each fixture
+    belongs to the week of *its own date*, so `current` stays on this week's game
+    (with its score once played) until Monday, and postponements follow the game
+    instead of a blind calendar flip. Fallbacks: bye/gap week → `current` = last
+    result; far-future fixtures have no date yet (shown "Ημερομηνία σύντομα").
+  - This is also why matchday numbers are always correct — each fixture carries
+    its own `matchday`, never guessed from a page header.
 - `scripts/scrape-cup.mjs` → `src/data/cup.json` (our cup run). Match ordering is
   keyed off `game_number` (falls back to date) — **never** the phase title, so
   renamed rounds ("Ημιτελικά", "Τελικός") just work.
-- Both use **cheerio** (devDependency) and are **fail-safe**: if a fetch fails or
-  the page looks empty/wrong, the script exits **without writing**, keeping the
-  last-good JSON. The standings scraper also verifies `W+D+L == games played`
-  (catches a column-layout change) and that our club is present.
+- All use **cheerio** (devDependency) and are **fail-safe**: if a fetch fails or a
+  page parses to too little, the script exits **without writing**, keeping the
+  last-good JSON. Standings also verifies `W+D+L == games played` (catches a
+  column-layout change) and that our club is present; fixtures requires a minimum
+  count of our games.
+- **Write-only-on-change:** `writeIfChanged()` skips the write when only the
+  `updatedAt` timestamp would differ, so the scheduled job doesn't commit (or
+  rebuild Cloudflare) when nothing actually changed.
 - **`.github/workflows/standings.yml`** runs `npm run scrape` on a schedule
   (daily + Sunday evenings), commits the JSON if it changed, which triggers a
-  Cloudflare rebuild. This only runs once the repo is on GitHub with Actions
-  enabled — until then, run `npm run scrape` manually and commit.
+  Cloudflare rebuild. Needs "Read and write permissions" under repo Settings →
+  Actions → General.
 
-Render-layer display tweaks live in `StandingsTable.astro` (NOT the scraper/JSON,
-which stay a faithful mirror): the white "promotion" zone marker is shown teal,
-and legend labels are tidied (`displayColor()` / `cleanLabel()`).
+UI: `MatchupCard.astro` (current/next cards), `ResultsTable.astro` (our completed
+results, opponent-centric), `StandingsTable.astro` (the table). Render-layer
+display tweaks live in `StandingsTable.astro` (NOT the scraper/JSON, which stay a
+faithful mirror): the white "promotion" zone marker is shown teal, and legend
+labels are tidied (`displayColor()` / `cleanLabel()`).
 
 ## Deploying to Cloudflare Pages
 

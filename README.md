@@ -65,27 +65,34 @@ instead of silently.
 
 Two pages, **no manual upkeep** — both scraped from the official federation site:
 
-- **Αποτελέσματα → Πρωτάθλημα** (`/protathlima`) — the league table plus the
-  team's last result and next fixture.
+- **Αποτελέσματα → Πρωτάθλημα** (`/protathlima`) — the current & next matchup
+  (with date, venue & kickoff), a full list of the team's completed results, and
+  the league table.
 - **Αποτελέσματα → Κύπελλο** (`/kypello`) — the team's cup run (each round's
   result + next tie).
 
 How it works:
 
-1. `scripts/scrape-standings.mjs` and `scripts/scrape-cup.mjs` fetch the epsm.gr
-   pages, parse only what concerns our club, and write `src/data/standings.json`
-   and `src/data/cup.json`.
-2. The Astro pages read that JSON at build time (league table has our row
-   highlighted + the zone legend mirrored from the source).
-3. A GitHub Action (`.github/workflows/standings.yml`) runs both scrapers on a
+1. Three scrapers fetch the epsm.gr pages, parse only what concerns our club, and
+   write JSON to `src/data/`:
+   - `scrape-standings.mjs` → `standings.json` (the ranking table + legend)
+   - `scrape-fixtures.mjs` → `fixtures.json` (full-season results + current/next
+     matchup with date/venue/kickoff)
+   - `scrape-cup.mjs` → `cup.json` (the cup run)
+2. The Astro pages read that JSON at build time. The current/next matchup is
+   **gameweek-anchored** (each fixture belongs to the week of its own date), so it
+   stays on this week's game until Monday and postponements just follow the game.
+3. A GitHub Action (`.github/workflows/standings.yml`) runs all three on a
    schedule (`npm run scrape`), commits the JSON if it changed, and that commit
    triggers a Cloudflare Pages rebuild — so the site refreshes a couple of
    minutes later.
 
 **Safety:** if a fetch fails or a page looks empty, that scraper exits without
-writing, so the last-good data is kept (pages never blank out).
+writing, so the last-good data is kept (pages never blank out). And a scrape that
+finds no real change doesn't rewrite the files, so there's no needless rebuild.
 
-Refresh locally any time: `npm run scrape` (or `scrape:standings` / `scrape:cup`).
+Refresh locally any time: `npm run scrape` (or `scrape:standings` /
+`scrape:fixtures` / `scrape:cup`).
 
 **If the team changes division/group** (e.g. promotion), edit the one `DIORGANOSI`
 line at the top of `scripts/scrape-standings.mjs` — copy the exact `diorganosi`
