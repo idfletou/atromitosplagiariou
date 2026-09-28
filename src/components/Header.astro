@@ -106,18 +106,47 @@ const parentActive = (children: { href: string }[]) =>
         nav.map((item) =>
           isNavParent(item) ? (
             <li>
-              <p class="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-widest text-brand-300">
-                {item.label}
-              </p>
-              <ul class="space-y-1">
+              <button
+                type="button"
+                data-submenu-toggle
+                aria-expanded={parentActive(item.children) ? "true" : "false"}
+                class:list={[
+                  "flex w-full items-center justify-between rounded-md px-3 py-2.5 text-base font-medium transition-colors hover:bg-brand-700",
+                  parentActive(item.children) && "bg-brand-700",
+                ]}
+              >
+                <span>{item.label}</span>
+                <svg
+                  class:list={[
+                    "h-4 w-4 shrink-0 text-brand-200 transition-transform duration-200",
+                    parentActive(item.children) && "rotate-180",
+                  ]}
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <ul
+                data-submenu
+                class:list={[
+                  "ml-3 mt-1 space-y-1 border-l border-brand-700 pl-3",
+                  !parentActive(item.children) && "hidden",
+                ]}
+              >
                 {item.children.map((c) => (
                   <li>
                     <a
                       href={c.href}
                       aria-current={isActive(c.href) ? "page" : undefined}
                       class:list={[
-                        "block rounded-md py-2.5 pl-5 pr-3 text-base font-medium hover:bg-brand-700",
-                        isActive(c.href) && "bg-brand-700",
+                        "block rounded-md px-3 py-2.5 text-base font-medium transition-colors hover:bg-brand-700",
+                        isActive(c.href) ? "bg-brand-700 text-white" : "text-brand-100",
                       ]}
                     >
                       {c.label}
@@ -153,5 +182,16 @@ const parentActive = (children: { href: string }[]) =>
     const open = menu?.classList.toggle("hidden") === false;
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Κλείσιμο μενού" : "Άνοιγμα μενού");
+  });
+
+  // Mobile submenu accordions (parent items with children).
+  document.querySelectorAll("[data-submenu-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const submenu = btn.nextElementSibling;
+      if (!submenu) return;
+      const open = submenu.classList.toggle("hidden") === false;
+      btn.setAttribute("aria-expanded", String(open));
+      btn.querySelector("svg")?.classList.toggle("rotate-180", open);
+    });
   });
 </script>
