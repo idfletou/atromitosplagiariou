@@ -26,11 +26,11 @@ jobs:
       - run: npm run scrape
       - name: Commit if data changed
         run: |
-          if [ -n "$(git status --porcelain src/data/standings.json src/data/cup.json)" ]; then
+          if [ -n "$(git status --porcelain src/data/standings.json src/data/fixtures.json src/data/cup.json)" ]; then
             git config user.name "standings-bot"
             git config user.email "actions@users.noreply.github.com"
-            git add src/data/standings.json src/data/cup.json
-            git commit -m "chore: update standings & cup [skip ci]"
+            git add src/data/standings.json src/data/fixtures.json src/data/cup.json
+            git commit -m "chore: update standings, fixtures & cup"
             git push
           else
             echo "No changes."
