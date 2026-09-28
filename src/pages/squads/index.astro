@@ -4,16 +4,16 @@ import Layout from "../../layouts/Layout.astro";
 const squads = [
   {
     name: "Ανδρική Ομάδα",
-    description: "Η πρώτη ομάδα του συλλόγου.",
+    description: "Το ρόστερ και το τεχνικό τιμ της πρώτης ομάδας",
     href: "/squads/men",
-    icon: "⚽",
+    tone: "primary", // navy
     ready: true,
   },
   {
     name: "Ακαδημίες",
-    description: "Όλα τα τμήματα υποδομής του συλλόγου.",
+    description: "Οι ομάδες υποδομής και οι προπονητές τους",
     href: "/squads/academy",
-    icon: "🧒",
+    tone: "secondary", // lighter blue
     ready: true,
   },
 ];
@@ -37,27 +37,37 @@ const squads = [
           squad.ready ? (
             <a
               href={squad.href}
-              class="group flex items-center gap-4 rounded-xl border border-brand-100 bg-white p-6 shadow-sm transition hover:shadow-md"
+              class:list={[
+                "group flex items-center justify-between gap-4 overflow-hidden rounded-xl p-6 text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg sm:p-7",
+                squad.tone === "primary" ? "bg-brand-800" : "bg-brand-600",
+              ]}
             >
-              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-600 text-2xl">
-                {squad.icon}
+              <div>
+                <h2 class="font-display text-xl font-extrabold uppercase tracking-tight sm:text-2xl">
+                  {squad.name}
+                </h2>
+                <p
+                  class:list={[
+                    "mt-1 text-sm",
+                    squad.tone === "primary" ? "text-brand-100/80" : "text-white/80",
+                  ]}
+                >
+                  {squad.description}
+                </p>
               </div>
-              <div class="flex-1">
-                <h2 class="text-lg font-bold text-brand-900 group-hover:text-brand-600">{squad.name}</h2>
-                <p class="text-sm text-brand-800/70">{squad.description}</p>
-              </div>
-              <span class="text-brand-400 transition group-hover:translate-x-1" aria-hidden="true">→</span>
+              <span class="shrink-0 text-2xl transition-transform group-hover:translate-x-1" aria-hidden="true">
+                →
+              </span>
             </a>
           ) : (
-            <div class="flex items-center gap-4 rounded-xl border border-dashed border-brand-200 bg-brand-50/60 p-6">
-              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-200 text-2xl grayscale">
-                {squad.icon}
+            <div class="flex items-center justify-between gap-4 rounded-xl border border-dashed border-brand-200 bg-brand-50 p-6 sm:p-7">
+              <div>
+                <h2 class="font-display text-xl font-extrabold uppercase tracking-tight text-brand-800">
+                  {squad.name}
+                </h2>
+                <p class="mt-1 text-sm text-brand-800/60">{squad.description}</p>
               </div>
-              <div class="flex-1">
-                <h2 class="text-lg font-bold text-brand-800">{squad.name}</h2>
-                <p class="text-sm text-brand-800/60">{squad.description}</p>
-              </div>
-              <span class="rounded-full bg-brand-200 px-3 py-1 text-xs font-semibold text-brand-800">
+              <span class="shrink-0 rounded-full bg-brand-200 px-3 py-1 text-xs font-semibold text-brand-800">
                 Σύντομα
               </span>
             </div>
