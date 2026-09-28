@@ -184,8 +184,14 @@ Everyday update workflow: `git add -A && git commit -m "…" && git push` → au
   the negative offset.
 - The footer map loads third-party Google content (the only external request;
   fonts are self-hosted).
-- Standings/cup JSON is machine-generated — don't hand-edit; change the scraper or
-  the display components instead.
+- Standings/fixtures/cup JSON is machine-generated — don't hand-edit; change the
+  scraper or the display components instead.
+- **Never put `[skip ci]` (or `[ci skip]`, `[skip-ci]`, `[CF-Pages-Skip]`, …) in a
+  commit message.** Cloudflare Pages honors it and **skips the deployment**, so the
+  live site silently stops updating. (The scraper Action used to do this and the
+  site got stuck on stale data — the Action runs on a schedule, not on push, so it
+  never needed it.) If the scheduled scrape ever adds a data source, also add its
+  JSON to the `git add` + change-check in `standings.yml`.
 - Dev server: `npm run dev`. In the Claude Code preview pane, the Google Maps
   iframe can cause occasional blank screenshots — retry, or verify via DOM/JS.
 
