@@ -7,8 +7,12 @@ name: Update standings & cup
 
 on:
   schedule:
-    - cron: "0 6,11 * * *" # every day 06:00 & 11:00 UTC
-    - cron: "0 16,18,20 * * 0,6" # Sat & Sun afternoon/evening (fresh matchday results)
+    # Minutes are deliberately off :00 — GitHub delays/drops scheduled runs most
+    # at the top of the hour. These still map to ~06:23/11:23 and ~16:43/18:43/
+    # 20:43 UTC. GitHub scheduling is best-effort, so the multiple weekend slots
+    # give redundancy: if one is dropped, the next still catches the result.
+    - cron: "23 6,11 * * *" # every day ~06:23 & ~11:23 UTC
+    - cron: "43 16,18,20 * * 0,6" # Sat & Sun afternoon/evening (fresh matchday results)
   workflow_dispatch: {} # allow manual runs from the Actions tab
 
 permissions:
