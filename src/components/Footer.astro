@@ -18,7 +18,7 @@ const footerLinks = nav.flatMap((item) =>
   <!-- Main footer -->
   <div class="bg-brand-900 text-brand-100">
     <div class="mx-auto max-w-6xl px-4 py-10">
-    <div class="grid gap-x-8 gap-y-10 md:grid-cols-3">
+    <div class="grid gap-x-8 gap-y-10 text-center md:grid-cols-3 md:text-left">
       <!-- Crest + contact -->
       <div>
         <img
@@ -26,7 +26,7 @@ const footerLinks = nav.flatMap((item) =>
           alt="Ατρόμητος Πλαγιαρίου F.C."
           width="112"
           height="112"
-          class="h-24 w-24 sm:h-28 sm:w-28"
+          class="mx-auto h-24 w-24 sm:h-28 sm:w-28 md:mx-0"
         />
         <div class="mt-6">
           <p class="text-xs font-semibold uppercase tracking-widest text-brand-300">
@@ -56,7 +56,7 @@ const footerLinks = nav.flatMap((item) =>
             }
             {
               socials.length > 0 && (
-                <li class="flex gap-4 pt-1">
+                <li class="flex justify-center gap-4 pt-1 md:justify-start">
                   {socials.map(([name, url]) => (
                     <a href={url} class="capitalize hover:text-white hover:underline">
                       {name}
@@ -69,8 +69,8 @@ const footerLinks = nav.flatMap((item) =>
         </div>
       </div>
 
-      <!-- Nav -->
-      <nav aria-label="Υποσέλιδο">
+      <!-- Nav (hidden on mobile — the sticky hamburger menu covers it) -->
+      <nav aria-label="Υποσέλιδο" class="hidden md:block">
         <p class="text-xs font-semibold uppercase tracking-widest text-brand-300">
           Πλοήγηση
         </p>
@@ -99,7 +99,7 @@ const footerLinks = nav.flatMap((item) =>
     </div>
 
     <div
-      class="mt-10 border-t border-brand-800 pt-6 text-xs text-brand-300 flex flex-col gap-1 sm:flex-row sm:justify-between"
+      class="mt-10 border-t border-brand-800 pt-6 text-xs text-brand-300 flex flex-col gap-1 text-center sm:flex-row sm:justify-between sm:text-left"
     >
       <p>© {year} {site.name}</p>
       <p>Με επιφύλαξη κάθε δικαιώματος.</p>
