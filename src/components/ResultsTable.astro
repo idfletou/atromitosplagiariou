@@ -9,6 +9,7 @@ interface Fixture {
   weAreHome: boolean;
   opponent: string;
   result: "W" | "L" | "D" | null;
+  played: boolean;
 }
 interface Props {
   results: Fixture[];
@@ -39,7 +40,10 @@ const theirScore = (f: Fixture) => (f.weAreHome ? f.awayScore : f.homeScore);
         {results.map((f) => (
           <li class="flex items-center gap-3 bg-white px-3 py-2.5">
             <span
-              class:list={["h-2.5 w-2.5 shrink-0 rounded-full", f.result ? dotTone[f.result] : "bg-slate-300"]}
+              class:list={[
+                "h-2.5 w-2.5 shrink-0 rounded-full",
+                !f.played ? "bg-amber-400" : f.result ? dotTone[f.result] : "bg-slate-300",
+              ]}
               aria-hidden="true"
             />
             <div class="min-w-0 flex-1">
@@ -50,14 +54,23 @@ const theirScore = (f: Fixture) => (f.weAreHome ? f.awayScore : f.homeScore);
                 {f.matchday}η αγωνιστική · {f.weAreHome ? "εντός έδρας" : "εκτός έδρας"}
               </p>
             </div>
-            <span
-              class:list={[
-                "shrink-0 rounded-md px-2.5 py-1 text-sm font-extrabold tabular-nums text-white",
-                f.result ? scoreTone[f.result] : "bg-brand-700",
-              ]}
-            >
-              {ourScore(f)} - {theirScore(f)}
-            </span>
+            {f.played ? (
+              <span
+                class:list={[
+                  "shrink-0 rounded-md px-2.5 py-1 text-sm font-extrabold tabular-nums text-white",
+                  f.result ? scoreTone[f.result] : "bg-brand-700",
+                ]}
+              >
+                {ourScore(f)} - {theirScore(f)}
+              </span>
+            ) : (
+              <span
+                class="shrink-0 rounded-md bg-amber-100 px-2.5 py-1 text-[11px] font-semibold text-amber-700"
+                title="Αναβλήθηκε — νέα ημερομηνία θα ανακοινωθεί"
+              >
+                Αναβλ.
+              </span>
+            )}
           </li>
         ))}
       </ul>

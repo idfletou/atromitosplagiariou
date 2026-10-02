@@ -9,6 +9,10 @@ import fixtures from "../data/fixtures.json";
 const { competition, source, legend, table } = standings;
 const { results, current, next, postponed = [] } = fixtures;
 
+// Completed results + any postponed games, newest matchday first. Postponed games
+// (unplayed) show a status instead of a score in the table.
+const resultsList = [...results, ...postponed].sort((a, b) => b.matchday - a.matchday);
+
 const compLabel = competition.replace(/\s*-\s*/, " – ");
 const updatedIso =
   new Date(fixtures.updatedAt) > new Date(standings.updatedAt)
@@ -53,24 +57,6 @@ const updated = new Date(updatedIso).toLocaleDateString("el-GR", {
             </p>
           )
         }
-        {
-          postponed.length > 0 && (
-            <div class="rounded-xl border border-amber-200 bg-amber-50 p-4">
-              <p class="text-xs font-semibold uppercase tracking-wide text-amber-700">
-                {postponed.length > 1 ? "Αναβλημένοι αγώνες" : "Αναβλημένος αγώνας"}
-              </p>
-              <ul class="mt-2 space-y-1">
-                {postponed.map((p) => (
-                  <li class="text-sm text-amber-900">
-                    <span class="font-semibold">{p.matchday}η αγ.</span> · {p.weAreHome ? "εντός" : "εκτός"} με{" "}
-                    {p.opponent}
-                  </li>
-                ))}
-              </ul>
-              <p class="mt-1.5 text-xs text-amber-700/80">Νέα ημερομηνία θα ανακοινωθεί.</p>
-            </div>
-          )
-        }
       </div>
 
       <!-- Completed results -->
@@ -78,7 +64,7 @@ const updated = new Date(updatedIso).toLocaleDateString("el-GR", {
         <h2 class="mb-4 text-xl font-bold uppercase tracking-tight text-brand-900">
           <span class="border-l-4 border-brand-500 pl-3">Αποτελέσματα</span>
         </h2>
-        <ResultsTable results={results} />
+        <ResultsTable results={resultsList} />
       </div>
     </div>
 
