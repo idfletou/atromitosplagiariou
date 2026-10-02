@@ -126,6 +126,14 @@ promotion/relegation) and `OUR_TEAM` (name-match strings).
     (with its score once played) until Monday, and postponements follow the game
     instead of a blind calendar flip. Fallbacks: bye/gap week → `current` = last
     result; far-future fixtures have no date yet (shown "Ημερομηνία σύντομα").
+  - **Postponed games:** an unplayed fixture from a round the league has *already
+    played* (tracked via `leaguePlayedThrough` = highest matchday any team has
+    played in the full programme), not re-dated to this week, is classed as
+    **postponed** — put in a separate `postponed` list and NEVER shown as
+    current/next (otherwise the page gets stuck on an old round). `/protathlima`
+    renders it as an "Αναβλημένος αγώνας" note. Byes (our group has an odd number
+    of teams, so one team sits out each round) just leave a gap in our matchday
+    numbers and don't affect any of this.
   - This is also why matchday numbers are always correct — each fixture carries
     its own `matchday`, never guessed from a page header.
 - `scripts/scrape-cup.mjs` → `src/data/cup.json` (our cup run). Match ordering is
