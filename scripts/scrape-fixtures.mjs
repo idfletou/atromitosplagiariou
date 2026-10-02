@@ -203,12 +203,19 @@ const leaguePlayedThrough = all.reduce(
 const ourPlayed = shaped.filter((f) => f.played); // matchday-sorted (shaped is)
 const ourUnplayed = shaped.filter((f) => !f.played);
 
-// Postponed = unplayed, from a round the league has already played, and not
-// (re)scheduled for this week or later. Surfaced separately; never current/next.
+// Postponed = unplayed, from a round the league has already played, AND epsm has
+// clearly dropped it: either its date is cleared (removed from the schedule), or
+// 48h have passed since its date with still no result. The 48h grace is the key
+// guard against false positives — epsm is often slow to enter weekend scores, so
+// a game played Sat/Sun is NOT flagged on Monday; only from ~48h after its date.
+// A fixture re-dated to the future has negative elapsed time, so it's never
+// flagged (it just rejoins the upcoming flow).
+const POSTPONE_GRACE_MS = 48 * 60 * 60 * 1000;
 const isPostponed = (f) => {
   if (f.played || f.matchday > leaguePlayedThrough) return false;
   const d = toDate(f.date);
-  return !(d && d >= weekStart); // stays postponed unless re-dated to this week+
+  if (!d) return true; // date cleared → removed from the schedule → postponed
+  return now.getTime() - d.getTime() > POSTPONE_GRACE_MS;
 };
 const postponed = ourUnplayed.filter(isPostponed);
 const upcoming = ourUnplayed.filter((f) => !isPostponed(f));

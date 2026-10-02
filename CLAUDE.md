@@ -128,12 +128,17 @@ promotion/relegation) and `OUR_TEAM` (name-match strings).
     result; far-future fixtures have no date yet (shown "Ημερομηνία σύντομα").
   - **Postponed games:** an unplayed fixture from a round the league has *already
     played* (tracked via `leaguePlayedThrough` = highest matchday any team has
-    played in the full programme), not re-dated to this week, is classed as
-    **postponed** — put in a separate `postponed` list and NEVER shown as
-    current/next (otherwise the page gets stuck on an old round). `/protathlima`
-    renders it as an "Αναβλημένος αγώνας" note. Byes (our group has an odd number
-    of teams, so one team sits out each round) just leave a gap in our matchday
-    numbers and don't affect any of this.
+    played in the full programme) is classed as **postponed** when epsm has
+    clearly dropped it — **its date is cleared to null** (removed from the
+    schedule), OR **>48h have passed since its date** with still no result. The
+    48h grace is deliberate: epsm is often slow to enter weekend scores, so a game
+    played Sat/Sun is NOT mislabelled on Monday — it only flags from ~48h after
+    its date (a re-dated/future fixture is never flagged). Postponed games go in a
+    separate `postponed` list, are NEVER shown as current/next (otherwise the page
+    gets stuck on an old round), and appear as a row in the results table
+    (`ResultsTable`) with an **"Αναβλ."** badge instead of a score. Byes (our group
+    has an odd number of teams, so one team sits out each round) just leave a gap
+    in our matchday numbers and don't affect any of this.
   - This is also why matchday numbers are always correct — each fixture carries
     its own `matchday`, never guessed from a page header.
 - `scripts/scrape-cup.mjs` → `src/data/cup.json` (our cup run). Match ordering is
