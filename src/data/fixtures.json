@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-27T07:45:02.029Z",
+  "updatedAt": "2026-10-02T19:05:53.206Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "sources": [
     "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
@@ -16,9 +16,9 @@
       "weAreHome": false,
       "opponent": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
       "result": null,
-      "date": "27.09.2026",
-      "time": "17.00",
-      "venue": "ΠΥΛΑΙΑΣ ΔΗΜΟΤΙΚΟ - Πλαστικό"
+      "date": null,
+      "time": null,
+      "venue": null
     },
     {
       "matchday": 2,
@@ -30,9 +30,9 @@
       "weAreHome": true,
       "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "04.10.2026",
+      "time": "16.30",
+      "venue": "ΠΛΑΓΙΑΡΙΟΥ"
     },
     {
       "matchday": 3,
@@ -400,21 +400,23 @@
     }
   ],
   "results": [],
+  "postponed": [
+    {
+      "matchday": 1,
+      "home": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": null,
+      "awayScore": null,
+      "played": false,
+      "weAreHome": false,
+      "opponent": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
+      "result": null,
+      "date": null,
+      "time": null,
+      "venue": null
+    }
+  ],
   "current": {
-    "matchday": 1,
-    "home": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
-    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "homeScore": null,
-    "awayScore": null,
-    "played": false,
-    "weAreHome": false,
-    "opponent": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
-    "result": null,
-    "date": "27.09.2026",
-    "time": "17.00",
-    "venue": "ΠΥΛΑΙΑΣ ΔΗΜΟΤΙΚΟ - Πλαστικό"
-  },
-  "next": {
     "matchday": 2,
     "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
     "away": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
@@ -423,6 +425,20 @@
     "played": false,
     "weAreHome": true,
     "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
+    "result": null,
+    "date": "04.10.2026",
+    "time": "16.30",
+    "venue": "ΠΛΑΓΙΑΡΙΟΥ"
+  },
+  "next": {
+    "matchday": 3,
+    "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
+    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "homeScore": null,
+    "awayScore": null,
+    "played": false,
+    "weAreHome": false,
+    "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
     "result": null,
     "date": null,
     "time": null,

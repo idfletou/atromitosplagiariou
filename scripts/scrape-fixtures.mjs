@@ -189,22 +189,41 @@ const inThisWeek = shaped
   })
   .sort((a, b) => a.matchday - b.matchday);
 
-const playedAsc = shaped.filter((f) => f.played);
-const upcoming = shaped.filter((f) => !f.played);
+// League progress: the highest matchday the league itself has played (any team,
+// from the full programme). A round at or below this that WE haven't played is a
+// postponed / behind-schedule game — it must never be shown as our "current"
+// fixture just because it's the lowest matchday number. (Our group has an odd
+// number of teams, so each round one team sits out — byes simply leave a gap in
+// our matchday numbers and don't affect this.)
+const leaguePlayedThrough = all.reduce(
+  (m, f) => (f.homeScore !== null && f.matchday > m ? f.matchday : m),
+  0
+);
+
+const ourPlayed = shaped.filter((f) => f.played); // matchday-sorted (shaped is)
+const ourUnplayed = shaped.filter((f) => !f.played);
+
+// Postponed = unplayed, from a round the league has already played, and not
+// (re)scheduled for this week or later. Surfaced separately; never current/next.
+const isPostponed = (f) => {
+  if (f.played || f.matchday > leaguePlayedThrough) return false;
+  const d = toDate(f.date);
+  return !(d && d >= weekStart); // stays postponed unless re-dated to this week+
+};
+const postponed = ourUnplayed.filter(isPostponed);
+const upcoming = ourUnplayed.filter((f) => !isPostponed(f));
 
 let current = null;
 if (inThisWeek.length) {
   current = inThisWeek[0]; // this week's game — preview, or with its score once played
-} else if (playedAsc.length) {
-  current = playedAsc[playedAsc.length - 1]; // between weeks / bye → show last result
+} else if (ourPlayed.length) {
+  current = ourPlayed[ourPlayed.length - 1]; // between weeks / bye → show last result
 } else {
-  current = upcoming[0] ?? null; // season not started → first fixture
+  current = upcoming[0] ?? postponed[0] ?? null; // pre-season → first real fixture
 }
 
-// Next = our soonest game in a later matchday than `current`.
-const next = current
-  ? upcoming.find((f) => f.matchday > current.matchday) ?? null
-  : upcoming[0] ?? null;
+// Next = our soonest genuinely-upcoming game after `current`.
+const next = upcoming.find((f) => !current || f.matchday > current.matchday) ?? null;
 
 // ── Write ─────────────────────────────────────────────────────────────────
 const data = {
@@ -213,6 +232,7 @@ const data = {
   sources: [ANALYTIKA_URL, SCORES_URL],
   fixtures: shaped,
   results,
+  postponed,
   current,
   next,
 };
@@ -220,6 +240,7 @@ const data = {
 const wrote = writeIfChanged(OUT, data, "fixtures");
 console.log(
   `[fixtures] ${wrote ? "wrote" : "unchanged:"} ${shaped.length} fixtures, ` +
-    `${results.length} played, current=${current ? "MD" + current.matchday : "no"}, ` +
+    `${results.length} played, ${postponed.length} postponed, ` +
+    `current=${current ? "MD" + current.matchday : "no"}, ` +
     `next=${next ? "MD" + next.matchday : "no"} → src/data/fixtures.json`
 );

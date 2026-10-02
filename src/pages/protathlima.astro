@@ -7,7 +7,7 @@ import standings from "../data/standings.json";
 import fixtures from "../data/fixtures.json";
 
 const { competition, source, legend, table } = standings;
-const { results, current, next } = fixtures;
+const { results, current, next, postponed = [] } = fixtures;
 
 const compLabel = competition.replace(/\s*-\s*/, " – ");
 const updatedIso =
@@ -51,6 +51,24 @@ const updated = new Date(updatedIso).toLocaleDateString("el-GR", {
             <p class="rounded-xl border border-dashed border-brand-200 bg-brand-50/40 px-4 py-6 text-center text-sm text-brand-800/60">
               Δεν υπάρχει προγραμματισμένος αγώνας.
             </p>
+          )
+        }
+        {
+          postponed.length > 0 && (
+            <div class="rounded-xl border border-amber-200 bg-amber-50 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-amber-700">
+                {postponed.length > 1 ? "Αναβλημένοι αγώνες" : "Αναβλημένος αγώνας"}
+              </p>
+              <ul class="mt-2 space-y-1">
+                {postponed.map((p) => (
+                  <li class="text-sm text-amber-900">
+                    <span class="font-semibold">{p.matchday}η αγ.</span> · {p.weAreHome ? "εντός" : "εκτός"} με{" "}
+                    {p.opponent}
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-1.5 text-xs text-amber-700/80">Νέα ημερομηνία θα ανακοινωθεί.</p>
+            </div>
           )
         }
       </div>
