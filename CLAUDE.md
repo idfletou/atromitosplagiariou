@@ -98,7 +98,14 @@ public site rebuilds itself and the post is live in ~1–2 min. No developer nee
 
 ### How editors add a news post
 1. Open **https://atromitos-plagiariou.sanity.studio**, log in.
-2. **Άρθρο → +**: title, slug (auto), excerpt, category, date, cover image, body.
+2. **Άρθρο → +**: **title** + **body** are all that's needed. Category, date
+   (defaults to now), cover image and an optional excerpt are extra. The **slug
+   is auto-derived from the title** (the field is hidden — no "Generate" click),
+   and if the **excerpt** is left blank the site uses the start of the body for
+   card/social previews. Slug derivation + excerpt fallback live in
+   `src/lib/news.ts` (`slugify()` transliterates Greek → ASCII); the schema makes
+   both fields optional/hidden, so **redeploy the Studio after schema edits**
+   (`cd studio && npm run deploy`).
 3. **Publish.** A Sanity webhook hits a Cloudflare deploy hook → the site rebuilds
    and the post appears in ~1–2 min. Deleting/editing a post works the same way.
 
