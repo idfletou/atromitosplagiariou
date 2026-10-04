@@ -43,7 +43,7 @@ const { post } = Astro.props;
         {post.title}
       </a>
     </h3>
-    <p class="mt-2 flex-1 text-sm text-brand-800/80">{post.excerpt}</p>
+    {post.excerpt && <p class="mt-2 flex-1 text-sm text-brand-800/80">{post.excerpt}</p>}
     <a
       href={`/news/${post.slug}`}
       class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:gap-2 transition-all"

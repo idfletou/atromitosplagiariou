@@ -21,13 +21,19 @@ export interface NewsPost {
   coverAlt?: string;
 }
 
-// GROQ projections. `body` is converted from Portable Text to plain HTML
-// paragraphs with pt::text (good enough for simple articles; can be upgraded
-// to full rich-text rendering later).
+// `excerpt` is optional in the CMS. When an editor leaves it blank we fall back
+// to the start of the article body, so cards and social/OG previews still have
+// text. `bodyText` is the plain-text body used for that fallback.
+type RawPost = NewsPost & { bodyText?: string };
+
+// GROQ projections. `body`/`bodyText` are converted from Portable Text to plain
+// text with pt::text (good enough for simple articles; can be upgraded to full
+// rich-text rendering later).
 const listProjection = `{
   "slug": slug.current,
   title,
   excerpt,
+  "bodyText": pt::text(body),
   publishedAt,
   category,
   "coverImage": coverImage.asset->url,
@@ -45,6 +51,15 @@ const fullProjection = `{
   "coverAlt": coverImage.alt
 }`;
 
+// Use the editor's excerpt if given, otherwise the first ~160 chars of the body.
+function deriveExcerpt(excerpt?: string, body?: string): string {
+  const e = (excerpt ?? "").trim();
+  if (e) return e;
+  const text = (body ?? "").replace(/\s+/g, " ").trim();
+  if (!text) return "";
+  return text.length > 160 ? text.slice(0, 160).trimEnd() + "…" : text;
+}
+
 function sortByDateDesc(a: NewsPost, b: NewsPost) {
   return +new Date(b.publishedAt) - +new Date(a.publishedAt);
 }
@@ -52,8 +67,8 @@ function sortByDateDesc(a: NewsPost, b: NewsPost) {
 export async function getAllNews(): Promise<NewsPost[]> {
   if (isSanityConfigured && sanityClient) {
     const query = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) ${listProjection}`;
-    const posts = await sanityClient.fetch<NewsPost[]>(query);
-    return posts;
+    const posts = await sanityClient.fetch<RawPost[]>(query);
+    return posts.map(({ bodyText, ...p }) => ({ ...p, excerpt: deriveExcerpt(p.excerpt, bodyText) }));
   }
   return [...sampleNews].sort(sortByDateDesc);
 }
@@ -61,7 +76,8 @@ export async function getAllNews(): Promise<NewsPost[]> {
 export async function getNewsBySlug(slug: string): Promise<NewsPost | null> {
   if (isSanityConfigured && sanityClient) {
     const query = `*[_type == "post" && slug.current == $slug][0] ${fullProjection}`;
-    return sanityClient.fetch<NewsPost | null>(query, { slug });
+    const post = await sanityClient.fetch<NewsPost | null>(query, { slug });
+    return post ? { ...post, excerpt: deriveExcerpt(post.excerpt, post.body) } : null;
   }
   return sampleNews.find((p) => p.slug === slug) ?? null;
 }

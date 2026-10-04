@@ -22,11 +22,12 @@ export const postType = defineType({
     }),
     defineField({
       name: "excerpt",
-      title: "Περίληψη",
+      title: "Περίληψη (προαιρετικό)",
       type: "text",
       rows: 3,
-      description: "Σύντομη περιγραφή που εμφανίζεται στις κάρτες και στα social.",
-      validation: (rule) => rule.required().max(200),
+      description:
+        "Προαιρετική σύντομη περιγραφή για τις κάρτες και τα social. Αν μείνει κενή, χρησιμοποιείται αυτόματα η αρχή του κειμένου.",
+      validation: (rule) => rule.max(200),
     }),
     defineField({
       name: "category",
