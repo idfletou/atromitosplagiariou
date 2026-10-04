@@ -16,6 +16,7 @@
     "scrape:cup": "node scripts/scrape-cup.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/roboto-condensed": "^5.2.8",
     "@sanity/client": "^7.23.0",

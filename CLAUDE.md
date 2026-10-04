@@ -195,6 +195,20 @@ Still to do:
 
 Everyday update workflow: `git add -A && git commit -m "…" && git push` → auto-deploys.
 
+## SEO
+
+- `site` is set in `astro.config.mjs` (the apex) — required for the sitemap and
+  absolute URLs. **`@astrojs/sitemap`** auto-generates `/sitemap-index.xml` at
+  build (listing all pages incl. news articles); `public/robots.txt` points to it.
+- Per-page `<title>`, meta description, canonical, Open Graph + Twitter tags live
+  in `Layout.astro`. Social preview image: **`public/og-default.jpg`** (1200×630,
+  crest on navy) — regenerate with sharp if the crest changes (see git history for
+  the one-liner). News articles use their cover image, falling back to og-default.
+- **Structured data (JSON-LD):** `Layout.astro` emits a site-wide
+  `SportsOrganization` (name, logo, foundingDate, stadium location); pages can pass
+  a `jsonLd` prop for page-specific schema — `news/[slug].astro` passes a
+  `NewsArticle`.
+
 ## Notes / gotchas for agents
 
 - **Everything is Greek.** Keep copy in Greek; don't introduce English UI text.

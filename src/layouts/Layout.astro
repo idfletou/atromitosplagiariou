@@ -6,24 +6,50 @@ import "@fontsource-variable/roboto-condensed";
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { site } from "../data/site";
+import { site, stadium } from "../data/site";
 
 interface Props {
   title?: string;
   description?: string;
   /** Path to an OG image relative to site root, e.g. "/og/news-x.jpg" */
   image?: string;
+  /** Optional page-specific JSON-LD (e.g. a NewsArticle), rendered in <head>. */
+  jsonLd?: Record<string, unknown>;
 }
 
 const {
   title,
   description = site.description,
   image = "/og-default.jpg",
+  jsonLd,
 } = Astro.props;
 
 const pageTitle = title ? `${title} · ${site.shortName}` : site.name;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL(image, site.url).href;
+
+// Site-wide organisation structured data (helps entity + local search).
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  name: site.name,
+  alternateName: site.shortName,
+  sport: "Football",
+  foundingDate: String(site.founded),
+  url: site.url,
+  logo: new URL("/crest.png", site.url).href,
+  location: {
+    "@type": "Place",
+    name: stadium.name,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Πλαγιάρι",
+      addressRegion: "Θεσσαλονίκη",
+      addressCountry: "GR",
+    },
+  },
+  sameAs: Object.values(site.social).filter(Boolean),
+};
 ---
 
 <!doctype html>
@@ -47,6 +73,10 @@ const ogImage = new URL(image, site.url).href;
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body class="min-h-screen bg-white text-brand-950 antialiased flex flex-col">
     <Header />

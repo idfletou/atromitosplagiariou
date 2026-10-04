@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getAllNews, getNewsBySlug, formatDate } from "../../lib/news";
+import { site } from "../../data/site";
 
 export async function getStaticPaths() {
   const posts = await getAllNews();
@@ -14,9 +15,30 @@ const post = await getNewsBySlug(slug!);
 if (!post) {
   return Astro.redirect("/news");
 }
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  headline: post.title,
+  datePublished: post.publishedAt,
+  dateModified: post.publishedAt,
+  image: new URL(post.coverImage ?? "/og-default.jpg", site.url).href,
+  mainEntityOfPage: new URL(`/news/${post.slug}`, site.url).href,
+  ...(post.excerpt ? { description: post.excerpt } : {}),
+  publisher: {
+    "@type": "Organization",
+    name: site.name,
+    logo: { "@type": "ImageObject", url: new URL("/crest.png", site.url).href },
+  },
+};
 ---
 
-<Layout title={post.title} description={post.excerpt || undefined} image={post.coverImage}>
+<Layout
+  title={post.title}
+  description={post.excerpt || undefined}
+  image={post.coverImage}
+  jsonLd={articleLd}
+>
   <article class="mx-auto max-w-3xl px-4 py-10">
     <a href="/news" class="text-sm font-semibold text-brand-600 hover:underline">
       ← Πίσω στα νέα
