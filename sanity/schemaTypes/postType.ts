@@ -18,7 +18,9 @@ export const postType = defineType({
       title: "Σύνδεσμος (slug)",
       type: "slug",
       options: { source: "title", maxLength: 96 },
-      validation: (rule) => rule.required(),
+      // Auto-derived from the title on the website — hidden so editors never
+      // need to set it or click "Generate".
+      hidden: true,
     }),
     defineField({
       name: "excerpt",
