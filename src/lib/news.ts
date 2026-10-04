@@ -16,7 +16,6 @@ export interface NewsPost {
   body: string;
   /** ISO date string. */
   publishedAt: string;
-  category?: string;
   coverImage?: string;
   coverAlt?: string;
 }
@@ -66,7 +65,6 @@ const allProjection = `{
   "storedSlug": slug.current,
   "body": pt::text(body),
   publishedAt,
-  category,
   "coverImage": coverImage.asset->url,
   "coverAlt": coverImage.alt
 }`;

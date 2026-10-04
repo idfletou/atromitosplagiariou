@@ -32,20 +32,6 @@ export const postType = defineType({
       validation: (rule) => rule.max(200),
     }),
     defineField({
-      name: "category",
-      title: "Κατηγορία",
-      type: "string",
-      options: {
-        list: [
-          { title: "Αγώνες", value: "Αγώνες" },
-          { title: "Ομάδα", value: "Ομάδα" },
-          { title: "Ακαδημίες", value: "Ακαδημίες" },
-          { title: "Ανακοινώσεις", value: "Ανακοινώσεις" },
-        ],
-        layout: "radio",
-      },
-    }),
-    defineField({
       name: "publishedAt",
       title: "Ημερομηνία δημοσίευσης",
       type: "datetime",
@@ -80,6 +66,13 @@ export const postType = defineType({
     },
   ],
   preview: {
-    select: { title: "title", subtitle: "category", media: "coverImage" },
+    select: { title: "title", date: "publishedAt", media: "coverImage" },
+    prepare({ title, date, media }) {
+      return {
+        title,
+        media,
+        subtitle: date ? new Date(date).toLocaleDateString("el-GR") : "",
+      };
+    },
   },
 });
