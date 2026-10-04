@@ -11,10 +11,10 @@ export const site = {
   url: "https://atromitosplagiariou.gr",
   description:
     "Επίσημη ιστοσελίδα του Ατρόμητου Πλαγιαρίου F.C. — νέα, αγώνες, ρόστερ και η ιστορία του συλλόγου.",
-  email: "info@atromitos-plagiariou.gr", // TODO
-  phone: "+30 2310 000000", // TODO: real number (placeholder)
+  email: "atromitosplagiarioufc@gmail.com",
+  phone: "2392 303985",
   social: {
-    facebook: "", // e.g. "https://facebook.com/..."
+    facebook: "https://www.facebook.com/AtromitosP",
     instagram: "",
     youtube: "",
   },
