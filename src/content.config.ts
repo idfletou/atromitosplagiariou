@@ -18,7 +18,8 @@ const players = defineCollection({
       .string()
       .regex(/^\d{4}-\d{2}-\d{2}$/, "Χρησιμοποιήστε μορφή YYYY-MM-DD")
       .optional(),
-    height: z.number().int().positive().optional(), // in cm
+    // Previous club, shown on the card back as "Πρ. Ομάδα".
+    previousTeam: z.string().optional(),
   }),
 });
 

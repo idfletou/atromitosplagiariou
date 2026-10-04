@@ -68,7 +68,8 @@ Current order: Αρχική · Ο Σύλλογος · Νέα · Ομάδες · 
 ### Adding a men's player
 Add an object to `src/data/roster.json`: unique `id`, `name`, `number`,
 `position` (`GK`/`DEF`/`MID`/`FWD`), optional `birthDate` (`YYYY-MM-DD`, shown
-`DD/MM/YYYY`), `height` (cm), `photo` (`/players/…`). The build validates it.
+`DD/MM/YYYY`), `previousTeam` (shown as "Πρ. Ομάδα" on the card back), `photo`
+(`/players/…`). The build validates it.
 
 ### Adding a youth team
 Edit the `academyGroups` array in `src/data/academy.ts` — each entry is

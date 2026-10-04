@@ -5,19 +5,14 @@ interface Props {
   position: "GK" | "DEF" | "MID" | "FWD";
   photo?: string;
   birthDate?: string; // ISO YYYY-MM-DD
-  height?: number;
+  previousTeam?: string;
 }
-const { name, number, position, photo, birthDate, height } = Astro.props;
+const { name, number, position, photo, birthDate, previousTeam } = Astro.props;
 
 // "1996-11-12" -> "12/11/1996"
 function formatDob(iso: string): string {
   const [y, m, d] = iso.split("-");
   return `${d}/${m}/${y}`;
-}
-
-// 189 (cm) -> "1,89 μ."
-function formatHeight(cm: number): string {
-  return `${(cm / 100).toFixed(2).replace(".", ",")} μ.`;
 }
 
 const posFull: Record<Props["position"], string> = {
@@ -36,11 +31,11 @@ const facts = [
   { label: "Θέση", value: posFull[position] },
   number != null ? { label: "Αριθμός", value: `#${number}` } : null,
   birthDate ? { label: "Γεννήθηκε", value: formatDob(birthDate) } : null,
-  height ? { label: "Ύψος", value: formatHeight(height) } : null,
+  previousTeam ? { label: "Πρ. Ομάδα", value: previousTeam } : null,
 ].filter((f): f is { label: string; value: string } => f !== null);
 
 // Flip is worthwhile only when there's extra info beyond position/number.
-const hasBack = Boolean(birthDate || height);
+const hasBack = Boolean(birthDate || previousTeam);
 ---
 
 <div
