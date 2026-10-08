@@ -1,8 +1,22 @@
 {
-  "updatedAt": "2026-09-27T07:00:00.193Z",
+  "updatedAt": "2026-10-08T13:41:31.053Z",
   "competition": "Κύπελλο «ΑΝΝΑ-ΜΑΡΙΑ ΠΑΝΤΑΖΩΝΗ»",
   "source": "https://www.epsm.gr/cup.asp",
   "matches": [
+    {
+      "phase": "3η φάση",
+      "gameNumber": 9075,
+      "home": "ΑΤΡΟΜΗΤΟΣ ΤΡΙΑΔΙΟΥ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": null,
+      "awayScore": null,
+      "played": false,
+      "weAreHome": false,
+      "result": null,
+      "venue": "",
+      "date": "",
+      "time": ""
+    },
     {
       "phase": "2η φάση",
       "gameNumber": 9051,
@@ -32,5 +46,18 @@
       "time": "17.00"
     }
   ],
-  "next": null
+  "next": {
+    "phase": "3η φάση",
+    "gameNumber": 9075,
+    "home": "ΑΤΡΟΜΗΤΟΣ ΤΡΙΑΔΙΟΥ",
+    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "homeScore": null,
+    "awayScore": null,
+    "played": false,
+    "weAreHome": false,
+    "result": null,
+    "venue": "",
+    "date": "",
+    "time": ""
+  }
 }
