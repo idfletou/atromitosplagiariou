@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-10T12:42:52.992Z",
+  "updatedAt": "2026-10-10T20:18:29.842Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "sources": [
     "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
@@ -38,12 +38,12 @@
       "matchday": 3,
       "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
+      "homeScore": 0,
+      "awayScore": 1,
+      "played": true,
       "weAreHome": false,
       "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
-      "result": null,
+      "result": "W",
       "date": "10.10.2026",
       "time": "16.30",
       "venue": "ΤΡΙΑΝΔΡΙΑΣ"
@@ -401,6 +401,20 @@
   ],
   "results": [
     {
+      "matchday": 3,
+      "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": 0,
+      "awayScore": 1,
+      "played": true,
+      "weAreHome": false,
+      "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
+      "result": "W",
+      "date": "10.10.2026",
+      "time": "16.30",
+      "venue": "ΤΡΙΑΝΔΡΙΑΣ"
+    },
+    {
       "matchday": 2,
       "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
       "away": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
@@ -435,12 +449,12 @@
     "matchday": 3,
     "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
     "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "homeScore": null,
-    "awayScore": null,
-    "played": false,
+    "homeScore": 0,
+    "awayScore": 1,
+    "played": true,
     "weAreHome": false,
     "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
-    "result": null,
+    "result": "W",
     "date": "10.10.2026",
     "time": "16.30",
     "venue": "ΤΡΙΑΝΔΡΙΑΣ"
