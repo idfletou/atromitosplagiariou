@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-10T20:18:29.842Z",
+  "updatedAt": "2026-10-14T12:05:11.233Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "sources": [
     "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
@@ -45,8 +45,8 @@
       "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "result": "W",
       "date": "10.10.2026",
-      "time": "16.30",
-      "venue": "ΤΡΙΑΝΔΡΙΑΣ"
+      "time": null,
+      "venue": null
     },
     {
       "matchday": 4,
@@ -58,9 +58,9 @@
       "weAreHome": false,
       "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "14.10.2026",
+      "time": "16.30",
+      "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ (ΠΛΑΣΤΙΚΟ)"
     },
     {
       "matchday": 6,
@@ -411,8 +411,8 @@
       "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "result": "W",
       "date": "10.10.2026",
-      "time": "16.30",
-      "venue": "ΤΡΙΑΝΔΡΙΑΣ"
+      "time": null,
+      "venue": null
     },
     {
       "matchday": 2,
@@ -446,20 +446,6 @@
     }
   ],
   "current": {
-    "matchday": 3,
-    "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
-    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "homeScore": 0,
-    "awayScore": 1,
-    "played": true,
-    "weAreHome": false,
-    "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
-    "result": "W",
-    "date": "10.10.2026",
-    "time": "16.30",
-    "venue": "ΤΡΙΑΝΔΡΙΑΣ"
-  },
-  "next": {
     "matchday": 4,
     "home": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
     "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
@@ -468,6 +454,20 @@
     "played": false,
     "weAreHome": false,
     "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
+    "result": null,
+    "date": "14.10.2026",
+    "time": "16.30",
+    "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ (ΠΛΑΣΤΙΚΟ)"
+  },
+  "next": {
+    "matchday": 6,
+    "home": "ΙΕΚ ΔΕΛΤΑ",
+    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "homeScore": null,
+    "awayScore": null,
+    "played": false,
+    "weAreHome": false,
+    "opponent": "ΙΕΚ ΔΕΛΤΑ",
     "result": null,
     "date": null,
     "time": null,
