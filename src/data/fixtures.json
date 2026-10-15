@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-14T12:05:11.233Z",
+  "updatedAt": "2026-10-15T11:41:58.596Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "sources": [
     "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
@@ -52,12 +52,12 @@
       "matchday": 4,
       "home": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
+      "homeScore": 0,
+      "awayScore": 1,
+      "played": true,
       "weAreHome": false,
       "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
-      "result": null,
+      "result": "W",
       "date": "14.10.2026",
       "time": "16.30",
       "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ (ΠΛΑΣΤΙΚΟ)"
@@ -401,6 +401,20 @@
   ],
   "results": [
     {
+      "matchday": 4,
+      "home": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": 0,
+      "awayScore": 1,
+      "played": true,
+      "weAreHome": false,
+      "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
+      "result": "W",
+      "date": "14.10.2026",
+      "time": "16.30",
+      "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ (ΠΛΑΣΤΙΚΟ)"
+    },
+    {
       "matchday": 3,
       "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
@@ -449,12 +463,12 @@
     "matchday": 4,
     "home": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
     "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "homeScore": null,
-    "awayScore": null,
-    "played": false,
+    "homeScore": 0,
+    "awayScore": 1,
+    "played": true,
     "weAreHome": false,
     "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
-    "result": null,
+    "result": "W",
     "date": "14.10.2026",
     "time": "16.30",
     "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ (ΠΛΑΣΤΙΚΟ)"
