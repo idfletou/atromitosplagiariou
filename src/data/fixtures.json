@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-17T10:55:06.773Z",
+  "updatedAt": "2026-10-23T11:49:26.916Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "sources": [
     "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
@@ -72,9 +72,9 @@
       "weAreHome": false,
       "opponent": "ΙΕΚ ΔΕΛΤΑ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "24.10.2026",
+      "time": "16.00",
+      "venue": "ΡΑΙΔΕΣΤΟΥ"
     },
     {
       "matchday": 7,
@@ -460,20 +460,6 @@
     }
   ],
   "current": {
-    "matchday": 4,
-    "home": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
-    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "homeScore": 0,
-    "awayScore": 1,
-    "played": true,
-    "weAreHome": false,
-    "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
-    "result": "W",
-    "date": "14.10.2026",
-    "time": null,
-    "venue": null
-  },
-  "next": {
     "matchday": 6,
     "home": "ΙΕΚ ΔΕΛΤΑ",
     "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
@@ -482,6 +468,20 @@
     "played": false,
     "weAreHome": false,
     "opponent": "ΙΕΚ ΔΕΛΤΑ",
+    "result": null,
+    "date": "24.10.2026",
+    "time": "16.00",
+    "venue": "ΡΑΙΔΕΣΤΟΥ"
+  },
+  "next": {
+    "matchday": 7,
+    "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "away": "Α.Ο. ΚΑΡΔΙΑΣ",
+    "homeScore": null,
+    "awayScore": null,
+    "played": false,
+    "weAreHome": true,
+    "opponent": "Α.Ο. ΚΑΡΔΙΑΣ",
     "result": null,
     "date": null,
     "time": null,
