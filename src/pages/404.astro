@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Η σελίδα δεν βρέθηκε"
+  description="Η σελίδα που ζητήσατε δεν υπάρχει ή έχει μετακινηθεί."
+>
+  <section class="bg-brand-800 text-white">
+    <div class="mx-auto max-w-5xl px-4 py-16 text-center sm:py-20">
+      <p class="text-6xl font-extrabold tracking-tight text-brand-200 sm:text-7xl">
+        404
+      </p>
+      <h1 class="mt-4 text-2xl font-extrabold uppercase sm:text-3xl">
+        Η σελίδα δεν βρέθηκε
+      </h1>
+      <p class="mx-auto mt-3 max-w-md text-brand-100/80">
+        Η σελίδα που ζητήσατε δεν υπάρχει ή έχει μετακινηθεί.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-5xl px-4 py-12">
+    <h2 class="mb-4 text-xl font-bold uppercase tracking-tight text-brand-900">
+      <span class="border-l-4 border-brand-500 pl-3">Πού να πάτε</span>
+    </h2>
+    <ul class="grid gap-3 sm:grid-cols-2">
+      <li>
+        <a
+          href="/"
+          class="block rounded-xl border border-brand-100 bg-white p-4 shadow-sm transition hover:border-brand-300 hover:shadow"
+        >
+          <span class="font-semibold text-brand-800">Αρχική</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/news"
+          class="block rounded-xl border border-brand-100 bg-white p-4 shadow-sm transition hover:border-brand-300 hover:shadow"
+        >
+          <span class="font-semibold text-brand-800">Νέα</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/squads"
+          class="block rounded-xl border border-brand-100 bg-white p-4 shadow-sm transition hover:border-brand-300 hover:shadow"
+        >
+          <span class="font-semibold text-brand-800">Ομάδες</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/protathlima"
+          class="block rounded-xl border border-brand-100 bg-white p-4 shadow-sm transition hover:border-brand-300 hover:shadow"
+        >
+          <span class="font-semibold text-brand-800">Αποτελέσματα</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</Layout>
