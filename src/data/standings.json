@@ -1,29 +1,12 @@
 {
-  "updatedAt": "2026-10-18T18:53:30.057Z",
+  "updatedAt": "2026-10-24T11:15:01.612Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
-  "legend": [
-    {
-      "color": "#ffffff",
-      "label": "ΑΝΟΔΟΣ ΣΤΗΝ Α1 ΚΑΤΗΓΟΡΙΑ"
-    },
-    {
-      "color": "#90e67f",
-      "label": "PLAYOFF"
-    },
-    {
-      "color": "#f18b67",
-      "label": "PLAYOUT (ΥΠΟΒΙΒΑΖΕΤΑΙ ΑΚΟΜΑ 1)"
-    },
-    {
-      "color": "#aa0000",
-      "label": "ΑΠ'ΕΥΘΕΙΑΣ ΥΠΟΒΙΒΑΣΜΟΣ"
-    }
-  ],
+  "legend": [],
   "table": [
     {
       "position": 1,
-      "team": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
+      "team": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ ΙΣΟΒ. 0",
       "isOurTeam": false,
       "points": 12,
       "played": 5,
@@ -33,11 +16,11 @@
       "gf": 12,
       "ga": 7,
       "gd": 5,
-      "markerColor": "#ffffff"
+      "markerColor": null
     },
     {
       "position": 2,
-      "team": "ΙΕΚ ΔΕΛΤΑ",
+      "team": "ΙΕΚ ΔΕΛΤΑ ΙΣΟΒ. 0",
       "isOurTeam": false,
       "points": 12,
       "played": 4,
@@ -47,7 +30,7 @@
       "gf": 5,
       "ga": 0,
       "gd": 5,
-      "markerColor": "#90e67f"
+      "markerColor": null
     },
     {
       "position": 3,
@@ -61,11 +44,11 @@
       "gf": 8,
       "ga": 3,
       "gd": 5,
-      "markerColor": "#90e67f"
+      "markerColor": null
     },
     {
       "position": 4,
-      "team": "ΑΕ ΚΡΗΝΗΣ",
+      "team": "ΑΕ ΚΡΗΝΗΣ ΙΣΟΒ. 3",
       "isOurTeam": false,
       "points": 9,
       "played": 4,
@@ -75,11 +58,11 @@
       "gf": 10,
       "ga": 3,
       "gd": 7,
-      "markerColor": "#90e67f"
+      "markerColor": null
     },
     {
       "position": 5,
-      "team": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
+      "team": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ ΙΣΟΒ. 0",
       "isOurTeam": false,
       "points": 9,
       "played": 5,
@@ -89,25 +72,11 @@
       "gf": 11,
       "ga": 11,
       "gd": 0,
-      "markerColor": "#90e67f"
+      "markerColor": null
     },
     {
       "position": 6,
-      "team": "ΣΚΙΟΥΡΟΙ",
-      "isOurTeam": false,
-      "points": 7,
-      "played": 5,
-      "won": 2,
-      "drawn": 1,
-      "lost": 2,
-      "gf": 11,
-      "ga": 6,
-      "gd": 5,
-      "markerColor": "#e6e6e6"
-    },
-    {
-      "position": 7,
-      "team": "ΑΠΟΛΛΩΝ Κ.ΣΧΟΛΑΡΙΟΥ",
+      "team": "ΑΠΟΛΛΩΝ Κ.ΣΧΟΛΑΡΙΟΥ ΙΣΟΒ. 3",
       "isOurTeam": false,
       "points": 7,
       "played": 5,
@@ -117,11 +86,25 @@
       "gf": 8,
       "ga": 8,
       "gd": 0,
-      "markerColor": "#e6e6e6"
+      "markerColor": null
+    },
+    {
+      "position": 7,
+      "team": "ΣΚΙΟΥΡΟΙ ΙΣΟΒ. 0",
+      "isOurTeam": false,
+      "points": 7,
+      "played": 5,
+      "won": 2,
+      "drawn": 1,
+      "lost": 2,
+      "gf": 11,
+      "ga": 6,
+      "gd": 5,
+      "markerColor": null
     },
     {
       "position": 8,
-      "team": "ΑΕ ΠΥΛΑΙΑΣ",
+      "team": "ΑΕ ΠΥΛΑΙΑΣ ΙΣΟΒ. 3",
       "isOurTeam": false,
       "points": 6,
       "played": 5,
@@ -131,11 +114,11 @@
       "gf": 8,
       "ga": 6,
       "gd": 2,
-      "markerColor": "#e6e6e6"
+      "markerColor": null
     },
     {
       "position": 9,
-      "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ ΙΣΟΒ. 0",
       "isOurTeam": true,
       "points": 6,
       "played": 3,
@@ -145,11 +128,11 @@
       "gf": 4,
       "ga": 3,
       "gd": 1,
-      "markerColor": "#e6e6e6"
+      "markerColor": null
     },
     {
       "position": 10,
-      "team": "ΑΧΙΛΛΕΑΣ ΠΕΡΑΙΑΣ",
+      "team": "ΑΧΙΛΛΕΑΣ ΠΕΡΑΙΑΣ ΙΣΟΒ. 0",
       "isOurTeam": false,
       "points": 6,
       "played": 5,
@@ -159,39 +142,11 @@
       "gf": 2,
       "ga": 6,
       "gd": -4,
-      "markerColor": "#e6e6e6"
+      "markerColor": null
     },
     {
       "position": 11,
-      "team": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
-      "isOurTeam": false,
-      "points": 4,
-      "played": 5,
-      "won": 1,
-      "drawn": 1,
-      "lost": 3,
-      "gf": 3,
-      "ga": 6,
-      "gd": -3,
-      "markerColor": "#ff6766"
-    },
-    {
-      "position": 12,
-      "team": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
-      "isOurTeam": false,
-      "points": 4,
-      "played": 4,
-      "won": 1,
-      "drawn": 1,
-      "lost": 2,
-      "gf": 3,
-      "ga": 6,
-      "gd": -3,
-      "markerColor": "#ff6766"
-    },
-    {
-      "position": 13,
-      "team": "ΠΑΝΟΡΑΜΑ",
+      "team": "ΠΑΝΟΡΑΜΑ ΙΣΟΒ. 4",
       "isOurTeam": false,
       "points": 4,
       "played": 5,
@@ -201,7 +156,35 @@
       "gf": 5,
       "ga": 11,
       "gd": -6,
-      "markerColor": "#ff6766"
+      "markerColor": null
+    },
+    {
+      "position": 12,
+      "team": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ ΙΣΟΒ. 1",
+      "isOurTeam": false,
+      "points": 4,
+      "played": 4,
+      "won": 1,
+      "drawn": 1,
+      "lost": 2,
+      "gf": 3,
+      "ga": 6,
+      "gd": -3,
+      "markerColor": null
+    },
+    {
+      "position": 13,
+      "team": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ ΙΣΟΒ. 0",
+      "isOurTeam": false,
+      "points": 4,
+      "played": 5,
+      "won": 1,
+      "drawn": 1,
+      "lost": 3,
+      "gf": 3,
+      "ga": 6,
+      "gd": -3,
+      "markerColor": null
     },
     {
       "position": 14,
@@ -215,7 +198,7 @@
       "gf": 3,
       "ga": 8,
       "gd": -5,
-      "markerColor": "#ff6766"
+      "markerColor": null
     },
     {
       "position": 15,
@@ -229,7 +212,7 @@
       "gf": 1,
       "ga": 10,
       "gd": -9,
-      "markerColor": "#aa0000"
+      "markerColor": null
     }
   ]
 }
