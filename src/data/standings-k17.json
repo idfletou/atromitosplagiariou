@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T14:39:09.384Z",
+  "updatedAt": "2026-10-24T22:42:45.070Z",
   "competition": "Κ17 LEAGUE 1",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%9A17%20LEAGUE%201",
   "legend": [],
@@ -160,20 +160,6 @@
     },
     {
       "position": 12,
-      "team": "ΑΙΑΣ ΕΥΟΣΜΟΥ",
-      "isOurTeam": false,
-      "points": 3,
-      "played": 1,
-      "won": 1,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 2,
-      "ga": 0,
-      "gd": 2,
-      "markerColor": null
-    },
-    {
-      "position": 13,
       "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
       "isOurTeam": true,
       "points": 3,
@@ -187,8 +173,22 @@
       "markerColor": null
     },
     {
-      "position": 14,
+      "position": 13,
       "team": "ΚΑΜΠΑΝΙΑΚΟΣ",
+      "isOurTeam": false,
+      "points": 3,
+      "played": 1,
+      "won": 1,
+      "drawn": 0,
+      "lost": 0,
+      "gf": 2,
+      "ga": 0,
+      "gd": 2,
+      "markerColor": null
+    },
+    {
+      "position": 14,
+      "team": "ΑΙΑΣ ΕΥΟΣΜΟΥ",
       "isOurTeam": false,
       "points": 3,
       "played": 1,

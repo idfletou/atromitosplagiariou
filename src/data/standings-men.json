@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T18:58:27.837Z",
+  "updatedAt": "2026-10-24T22:42:44.300Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
   "legend": [],
@@ -20,20 +20,6 @@
     },
     {
       "position": 2,
-      "team": "ΑΕ ΚΡΗΝΗΣ",
-      "isOurTeam": false,
-      "points": 12,
-      "played": 5,
-      "won": 4,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 12,
-      "ga": 4,
-      "gd": 8,
-      "markerColor": null
-    },
-    {
-      "position": 3,
       "team": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
       "isOurTeam": false,
       "points": 12,
@@ -44,6 +30,20 @@
       "gf": 12,
       "ga": 7,
       "gd": 5,
+      "markerColor": null
+    },
+    {
+      "position": 3,
+      "team": "ΑΕ ΚΡΗΝΗΣ",
+      "isOurTeam": false,
+      "points": 12,
+      "played": 5,
+      "won": 4,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 12,
+      "ga": 4,
+      "gd": 8,
       "markerColor": null
     },
     {
