@@ -88,19 +88,24 @@ const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
           {
             nav.map((item) =>
               isNavParent(item) ? (
-                item.children.map((c) =>
-                  isNavHeading(c) ? (
-                    <li class="pt-2 text-[11px] font-semibold uppercase tracking-wider text-brand-400">
-                      {c.heading}
-                    </li>
-                  ) : (
-                    <li>
-                      <a href={c.href} class="block pl-3 hover:text-white hover:underline">
-                        {c.label}
-                      </a>
-                    </li>
-                  )
-                )
+                <Fragment>
+                  <li class="pt-2 text-[11px] font-semibold uppercase tracking-wider text-brand-300">
+                    {item.label}
+                  </li>
+                  {item.children.map((c) =>
+                    isNavHeading(c) ? (
+                      <li class="pl-3 pt-1 text-[11px] font-semibold uppercase tracking-wide text-brand-400">
+                        {c.heading}
+                      </li>
+                    ) : (
+                      <li>
+                        <a href={c.href} class="block pl-6 hover:text-white hover:underline">
+                          {c.label}
+                        </a>
+                      </li>
+                    )
+                  )}
+                </Fragment>
               ) : (
                 <li>
                   <a href={item.href} class="hover:text-white hover:underline">
