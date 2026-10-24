@@ -45,6 +45,7 @@ async function scrapeFixtures(league) {
   const enc = encodeURIComponent(league.diorganosi);
   const ANALYTIKA_URL = `https://www.epsm.gr/table_analytika.asp?diorganosi=${enc}`;
   const SCORES_URL = `https://www.epsm.gr/scores.asp?diorganosi=${enc}`;
+  const TABLE_URL = `https://www.epsm.gr/table.asp?diorganosi=${enc}`;
   const out = resolve(DATA_DIR, `fixtures-${league.key}.json`);
   const skip = (msg) => {
     console.error(`[${tag}] ${msg} — keeping last-good`);
@@ -129,6 +130,54 @@ async function scrapeFixtures(league) {
     return d ? { ...f, date: f.date || d.date, time: f.time || d.time, venue: f.venue || d.venue } : f;
   });
 
+  // ── 2b) Enrich the NEXT game from table.asp's "ΕΠΟΜΕΝΗ ΑΓΩΝΙΣΤΙΚΗ" ──────────
+  // analytika/scores.asp only carry a game's date once epsm folds it into the
+  // current round, so the upcoming fixture often has no date for days. The
+  // standings page lists the next matchday earlier: each row's info icon links
+  // to game.asp?game_number=N, whose detail page holds ΗΜΕΡΟΜΗΝΙΑ/ΩΡΑ/ΓΗΠΕΔΟ.
+  // We find our row there, follow its game page, and backfill the date/time/
+  // venue. Non-fatal: any failure just leaves the date to appear later.
+  try {
+    const tableHtml = await fetchHtml(TABLE_URL, "the standings page");
+    const nextIdx = tableHtml.indexOf("ΕΠΟΜΕΝΗ ΑΓΩΝΙΣΤΙΚΗ");
+    if (nextIdx >= 0) {
+      const endIdx = tableHtml.indexOf("ΒΑΘΜΟΛΟΓΙΑ", nextIdx);
+      const $n = cheerio.load(tableHtml.slice(nextIdx, endIdx > nextIdx ? endIdx : nextIdx + 4000));
+      let gameNo = null, nHome = null, nAway = null;
+      $n(".match-row").each((_, el) => {
+        if (gameNo) return;
+        const $el = $n(el);
+        const home = cleanTeam($el.find(".match-home").text());
+        const away = cleanTeam($el.find(".match-away").text());
+        if (!home || !away || (!isOurs(home) && !isOurs(away))) return;
+        gameNo = (($el.find(".match-info").attr("onclick") || "").match(/game_number=(\d+)/) || [])[1] || null;
+        nHome = home;
+        nAway = away;
+      });
+      if (gameNo) {
+        const gameHtml = await fetchHtml(
+          `https://www.epsm.gr/game.asp?game_number=${gameNo}`,
+          "the game detail page"
+        );
+        const gt = norm(cheerio.load(gameHtml).text());
+        const gDate = (gt.match(/ΗΜΕΡΟΜΗΝΙΑ\s*(\d{1,2}\.\d{1,2}\.\d{4})/) || [])[1] || null;
+        const gTime = (gt.match(/ΩΡΑ\s*(\d{1,2}[:.]\d{2})/) || [])[1]?.replace(":", ".") || null;
+        const gVenue = (gt.match(/ΓΗΠΕΔΟ\s*(.+?)\s*ΗΜΕΡΟΜΗΝΙΑ/) || [])[1]?.trim() || null;
+        if (gDate) {
+          const key = (h, a) => `${deaccent(h)}|${deaccent(a)}`;
+          const want = key(nHome, nAway);
+          fixtures = fixtures.map((f) =>
+            key(f.home, f.away) === want
+              ? { ...f, date: f.date || gDate, time: f.time || gTime, venue: f.venue || gVenue }
+              : f
+          );
+        }
+      }
+    }
+  } catch (e) {
+    console.error(`[${tag}] next-round date enrich skipped: ${e.message}`);
+  }
+
   // ── 3) Shape each fixture from our club's point of view ────────────────────
   const shaped = fixtures.map((f) => {
     const weAreHome = isOurs(f.home);
@@ -197,7 +246,7 @@ async function scrapeFixtures(league) {
   const data = {
     updatedAt: new Date().toISOString(),
     competition: league.diorganosi,
-    sources: [ANALYTIKA_URL, SCORES_URL],
+    sources: [ANALYTIKA_URL, SCORES_URL, TABLE_URL],
     fixtures: shaped,
     results,
     postponed,

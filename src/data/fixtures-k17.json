@@ -1,9 +1,10 @@
 {
-  "updatedAt": "2026-10-24T14:39:11.035Z",
+  "updatedAt": "2026-10-24T20:38:21.848Z",
   "competition": "Κ17 LEAGUE 1",
   "sources": [
     "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%9A17%20LEAGUE%201",
-    "https://www.epsm.gr/scores.asp?diorganosi=%CE%9A17%20LEAGUE%201"
+    "https://www.epsm.gr/scores.asp?diorganosi=%CE%9A17%20LEAGUE%201",
+    "https://www.epsm.gr/table.asp?diorganosi=%CE%9A17%20LEAGUE%201"
   ],
   "fixtures": [
     {
@@ -30,9 +31,9 @@
       "weAreHome": true,
       "opponent": "ΠΙΕΡΙΚΟΣ 1961",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "31.10.2026",
+      "time": "12.30",
+      "venue": "ΠΛΑΓΙΑΡΙΟΥ"
     },
     {
       "matchday": 3,
@@ -314,8 +315,8 @@
     "weAreHome": true,
     "opponent": "ΠΙΕΡΙΚΟΣ 1961",
     "result": null,
-    "date": null,
-    "time": null,
-    "venue": null
+    "date": "31.10.2026",
+    "time": "12.30",
+    "venue": "ΠΛΑΓΙΑΡΙΟΥ"
   }
 }
