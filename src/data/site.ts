@@ -23,7 +23,9 @@ export const site = {
 // Main navigation. A item can be a plain link, or a parent with `children`
 // (rendered as a dropdown on desktop / a group on mobile).
 export type NavLeaf = { label: string; href: string };
-export type NavParent = { label: string; children: NavLeaf[] };
+export type NavHeading = { heading: string }; // non-clickable group label in a dropdown
+export type NavChild = NavLeaf | NavHeading;
+export type NavParent = { label: string; children: NavChild[] };
 export type NavItem = NavLeaf | NavParent;
 
 export const nav: NavItem[] = [
@@ -34,14 +36,17 @@ export const nav: NavItem[] = [
   {
     label: "Αποτελέσματα",
     children: [
+      { heading: "Ανδρική Ομάδα" },
       { label: "Πρωτάθλημα", href: "/protathlima" },
       { label: "Κύπελλο", href: "/kypello" },
+      { heading: "Κ17" },
+      { label: "Πρωτάθλημα", href: "/protathlima-k17" },
     ],
   },
 ];
 
-export const isNavParent = (item: NavItem): item is NavParent =>
-  "children" in item;
+export const isNavParent = (item: NavItem): item is NavParent => "children" in item;
+export const isNavHeading = (child: NavChild): child is NavHeading => "heading" in child;
 
 // Team sponsors shown in the footer strip. For each: a `name`, a `logo` image in
 // /public/sponsors/ (a transparent PNG or SVG reads best), and the sponsor's

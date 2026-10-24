@@ -1,11 +1,12 @@
 ---
-import { nav, isNavParent } from "../data/site";
+import { nav, isNavParent, isNavHeading } from "../data/site";
+import type { NavChild } from "../data/site";
 
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === "/" ? path === "/" : path === href || path.startsWith(href + "/");
-const parentActive = (children: { href: string }[]) =>
-  children.some((c) => isActive(c.href));
+const parentActive = (children: NavChild[]) =>
+  children.some((c) => "href" in c && isActive(c.href));
 ---
 
 <header class="sticky top-0 z-50 bg-brand-800 text-white shadow-md">
@@ -49,21 +50,27 @@ const parentActive = (children: { href: string }[]) =>
                   />
                 </svg>
               </button>
-              <ul class="invisible absolute left-0 top-full z-50 min-w-48 rounded-md border border-brand-100 bg-white py-1 opacity-0 shadow-lg transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                {item.children.map((c) => (
-                  <li>
-                    <a
-                      href={c.href}
-                      aria-current={isActive(c.href) ? "page" : undefined}
-                      class:list={[
-                        "block px-4 py-2 text-sm hover:bg-brand-50",
-                        isActive(c.href) ? "font-semibold text-brand-700" : "text-brand-900",
-                      ]}
-                    >
-                      {c.label}
-                    </a>
-                  </li>
-                ))}
+              <ul class="invisible absolute left-0 top-full z-50 min-w-52 rounded-md border border-brand-100 bg-white py-1 opacity-0 shadow-lg transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                {item.children.map((c) =>
+                  isNavHeading(c) ? (
+                    <li class="mt-1 border-t border-brand-100 px-4 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-wider text-brand-400 first:mt-0 first:border-t-0 first:pt-1">
+                      {c.heading}
+                    </li>
+                  ) : (
+                    <li>
+                      <a
+                        href={c.href}
+                        aria-current={isActive(c.href) ? "page" : undefined}
+                        class:list={[
+                          "block py-2 pl-6 pr-4 text-sm hover:bg-brand-50",
+                          isActive(c.href) ? "font-semibold text-brand-700" : "text-brand-900",
+                        ]}
+                      >
+                        {c.label}
+                      </a>
+                    </li>
+                  )
+                )}
               </ul>
             </li>
           ) : (
@@ -110,22 +117,28 @@ const parentActive = (children: { href: string }[]) =>
                 {item.label}
               </p>
               <ul class="ml-3 space-y-1 border-l border-white/10 pl-2">
-                {item.children.map((c) => (
-                  <li>
-                    <a
-                      href={c.href}
-                      aria-current={isActive(c.href) ? "page" : undefined}
-                      class:list={[
-                        "block rounded-md px-3 py-2.5 text-base font-medium transition-colors",
-                        isActive(c.href)
-                          ? "bg-white/15 font-semibold text-white"
-                          : "text-white/90 hover:bg-white/10",
-                      ]}
-                    >
-                      {c.label}
-                    </a>
-                  </li>
-                ))}
+                {item.children.map((c) =>
+                  isNavHeading(c) ? (
+                    <li class="px-3 pb-0.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-brand-300">
+                      {c.heading}
+                    </li>
+                  ) : (
+                    <li>
+                      <a
+                        href={c.href}
+                        aria-current={isActive(c.href) ? "page" : undefined}
+                        class:list={[
+                          "block rounded-md px-3 py-2.5 text-base font-medium transition-colors",
+                          isActive(c.href)
+                            ? "bg-white/15 font-semibold text-white"
+                            : "text-white/90 hover:bg-white/10",
+                        ]}
+                      >
+                        {c.label}
+                      </a>
+                    </li>
+                  )
+                )}
               </ul>
             </li>
           ) : (

@@ -1,0 +1,92 @@
+---
+// Shared league page body: hero + current/next matchup cards + completed
+// results (incl. postponed) + standings table. Used by the men's and K17 pages.
+import StandingsTable from "./StandingsTable.astro";
+import ResultsTable from "./ResultsTable.astro";
+import MatchupCard from "./MatchupCard.astro";
+
+interface Standings {
+  competition: string;
+  source: string;
+  updatedAt: string;
+  legend: { color: string; label: string }[];
+  table: any[];
+}
+interface Fixtures {
+  updatedAt: string;
+  results: any[];
+  current: any;
+  next: any;
+  postponed?: any[];
+}
+interface Props {
+  eyebrow: string;
+  title: string;
+  standings: Standings;
+  fixtures: Fixtures;
+}
+const { eyebrow, title, standings, fixtures } = Astro.props;
+
+const { competition, source, legend, table } = standings;
+const { results, current, next, postponed = [] } = fixtures;
+
+// Completed results + any postponed games, newest matchday first.
+const resultsList = [...results, ...postponed].sort((a, b) => b.matchday - a.matchday);
+
+const compLabel = competition.replace(/\s*-\s*/, " – ");
+const updatedIso =
+  new Date(fixtures.updatedAt) > new Date(standings.updatedAt) ? fixtures.updatedAt : standings.updatedAt;
+const updated = new Date(updatedIso).toLocaleDateString("el-GR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<section class="bg-brand-800 text-white">
+  <div class="mx-auto max-w-5xl px-4 py-12">
+    <p class="text-sm font-semibold uppercase tracking-widest text-brand-200">{eyebrow}</p>
+    <h1 class="mt-2 text-3xl font-extrabold uppercase sm:text-4xl">{title}</h1>
+    <p class="mt-2 text-brand-100/80">{compLabel}</p>
+  </div>
+</section>
+
+<div class="mx-auto max-w-5xl px-4 py-12">
+  <!-- Fixtures: results (left on desktop) + current/next matchups (right on
+       desktop, first on mobile) -->
+  <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
+    <!-- Matchup cards -->
+    <div class="space-y-4 lg:order-2 lg:w-80 lg:shrink-0">
+      <h2 class="text-xl font-bold uppercase tracking-tight text-brand-900">
+        <span class="border-l-4 border-brand-500 pl-3">Αγώνες</span>
+      </h2>
+      {current && <MatchupCard fixture={current} label="Τρέχων αγώνας" accent />}
+      {next && <MatchupCard fixture={next} label="Επόμενος αγώνας" />}
+      {
+        !current && !next && (
+          <p class="rounded-xl border border-dashed border-brand-200 bg-brand-50/40 px-4 py-6 text-center text-sm text-brand-800/60">
+            Δεν υπάρχει προγραμματισμένος αγώνας.
+          </p>
+        )
+      }
+    </div>
+
+    <!-- Completed results -->
+    <div class="min-w-0 flex-1 lg:order-1">
+      <h2 class="mb-4 text-xl font-bold uppercase tracking-tight text-brand-900">
+        <span class="border-l-4 border-brand-500 pl-3">Αποτελέσματα</span>
+      </h2>
+      <ResultsTable results={resultsList} />
+    </div>
+  </div>
+
+  <!-- Standings -->
+  <h2 class="mb-4 mt-12 text-xl font-bold uppercase tracking-tight text-brand-900">
+    <span class="border-l-4 border-brand-500 pl-3">Βαθμολογία</span>
+  </h2>
+  <StandingsTable table={table} legend={legend} />
+
+  <p class="mt-5 text-xs text-brand-800/60">
+    Πηγή: <a href={source} class="underline hover:text-brand-600" rel="nofollow noopener" target="_blank">epsm.gr</a> · Ενημερώθηκε {updated}
+  </p>
+</div>

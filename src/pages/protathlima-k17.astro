@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LeagueResults from "../components/LeagueResults.astro";
+import standings from "../data/standings-k17.json";
+import fixtures from "../data/fixtures-k17.json";
+---
+
+<Layout
+  title="Πρωτάθλημα Κ17"
+  description="Αποτελέσματα και βαθμολογία της ομάδας Κ17 του Ατρόμητου Πλαγιαρίου."
+>
+  <LeagueResults eyebrow="Αποτελέσματα · Κ17" title="Πρωτάθλημα Κ17" standings={standings} fixtures={fixtures} />
+</Layout>

@@ -1,81 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import StandingsTable from "../components/StandingsTable.astro";
-import ResultsTable from "../components/ResultsTable.astro";
-import MatchupCard from "../components/MatchupCard.astro";
+import LeagueResults from "../components/LeagueResults.astro";
 import standings from "../data/standings-men.json";
 import fixtures from "../data/fixtures-men.json";
 
-const { competition, source, legend, table } = standings;
-const { results, current, next, postponed = [] } = fixtures;
-
-// Completed results + any postponed games, newest matchday first. Postponed games
-// (unplayed) show a status instead of a score in the table.
-const resultsList = [...results, ...postponed].sort((a, b) => b.matchday - a.matchday);
-
-const compLabel = competition.replace(/\s*-\s*/, " – ");
-const updatedIso =
-  new Date(fixtures.updatedAt) > new Date(standings.updatedAt)
-    ? fixtures.updatedAt
-    : standings.updatedAt;
-const updated = new Date(updatedIso).toLocaleDateString("el-GR", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-});
+const compLabel = standings.competition.replace(/\s*-\s*/, " – ");
 ---
 
 <Layout
   title="Πρωτάθλημα"
   description={`Αποτελέσματα και βαθμολογία του Ατρόμητου Πλαγιαρίου — ${compLabel}.`}
 >
-  <section class="bg-brand-800 text-white">
-    <div class="mx-auto max-w-5xl px-4 py-12">
-      <p class="text-sm font-semibold uppercase tracking-widest text-brand-200">
-        Αποτελέσματα
-      </p>
-      <h1 class="mt-2 text-3xl font-extrabold uppercase sm:text-4xl">Πρωτάθλημα</h1>
-      <p class="mt-2 text-brand-100/80">{compLabel}</p>
-    </div>
-  </section>
-
-  <div class="mx-auto max-w-5xl px-4 py-12">
-    <!-- Fixtures: results (left on desktop) + current/next matchups (right on
-         desktop, first on mobile) -->
-    <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
-      <!-- Matchup cards -->
-      <div class="space-y-4 lg:order-2 lg:w-80 lg:shrink-0">
-        <h2 class="text-xl font-bold uppercase tracking-tight text-brand-900">
-          <span class="border-l-4 border-brand-500 pl-3">Αγώνες</span>
-        </h2>
-        {current && <MatchupCard fixture={current} label="Τρέχων αγώνας" accent />}
-        {next && <MatchupCard fixture={next} label="Επόμενος αγώνας" />}
-        {
-          !current && !next && (
-            <p class="rounded-xl border border-dashed border-brand-200 bg-brand-50/40 px-4 py-6 text-center text-sm text-brand-800/60">
-              Δεν υπάρχει προγραμματισμένος αγώνας.
-            </p>
-          )
-        }
-      </div>
-
-      <!-- Completed results -->
-      <div class="min-w-0 flex-1 lg:order-1">
-        <h2 class="mb-4 text-xl font-bold uppercase tracking-tight text-brand-900">
-          <span class="border-l-4 border-brand-500 pl-3">Αποτελέσματα</span>
-        </h2>
-        <ResultsTable results={resultsList} />
-      </div>
-    </div>
-
-    <!-- Standings -->
-    <h2 class="mb-4 mt-12 text-xl font-bold uppercase tracking-tight text-brand-900">
-      <span class="border-l-4 border-brand-500 pl-3">Βαθμολογία</span>
-    </h2>
-    <StandingsTable table={table} legend={legend} />
-
-    <p class="mt-5 text-xs text-brand-800/60">
-      Πηγή: <a href={source} class="underline hover:text-brand-600" rel="nofollow noopener" target="_blank">epsm.gr</a> · Ενημερώθηκε {updated}
-    </p>
-  </div>
+  <LeagueResults eyebrow="Αποτελέσματα" title="Πρωτάθλημα" standings={standings} fixtures={fixtures} />
 </Layout>
