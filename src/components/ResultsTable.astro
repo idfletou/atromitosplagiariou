@@ -1,7 +1,8 @@
 ---
 // The list of our completed league matches (newest first). Shown on the left of
 // the league page's fixtures area. Opponent-centric (every match involves us),
-// so names stay legible on a phone; the score is shown from our perspective.
+// so names stay legible on a phone. The score is shown in real home–away order
+// (home team's goals first); the W/L/D colour still reflects our result.
 interface Fixture {
   matchday: number | null;
   homeScore: number | null;
@@ -23,9 +24,6 @@ const scoreTone = {
   D: "bg-slate-500",
 } as const;
 
-// Score from our point of view (our goals first).
-const ourScore = (f: Fixture) => (f.weAreHome ? f.homeScore : f.awayScore);
-const theirScore = (f: Fixture) => (f.weAreHome ? f.awayScore : f.homeScore);
 ---
 
 {
@@ -61,7 +59,7 @@ const theirScore = (f: Fixture) => (f.weAreHome ? f.awayScore : f.homeScore);
                   f.result ? scoreTone[f.result] : "bg-brand-700",
                 ]}
               >
-                {ourScore(f)} - {theirScore(f)}
+                {f.homeScore} - {f.awayScore}
               </span>
             ) : (
               <span
