@@ -119,13 +119,23 @@ Field names must match the GROQ queries in `src/lib/news.ts`. After changing it,
 
 `/protathlima` and `/kypello` are generated from JSON that scrapers produce from
 the official federation site — **no manual upkeep**. Shared helpers (incl. the
-write-only-on-change guard) live in `scripts/lib.mjs`. Config lives at the top of
-each script: **`DIORGANOSI`** (the league/group — change this one line on
-promotion/relegation) and `OUR_TEAM` (name-match strings).
+write-only-on-change guard) live in `scripts/lib.mjs`.
 
-- `scripts/scrape-standings.mjs` → `src/data/standings.json` — just the ranking
-  **table** + zone legend (from `table.asp`).
-- `scripts/scrape-fixtures.mjs` → `src/data/fixtures.json` — our **full-season
+**Multi-league:** the scrapers are config-driven. **`scripts/leagues.mjs`** lists
+the leagues we scrape — each has a `key`, `diorganosi` (the exact epsm value) and
+`ourTeam` match strings. The scrapers loop over it and write **one file per
+league**: `standings-<key>.json` and `fixtures-<key>.json`. Currently `men`
+(Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ) and `k17` (Κ17 LEAGUE 1). Add a team by appending to
+`leagues.mjs`. A league whose page fails to parse is **skipped** (last-good kept)
+while the others still update. Youth tables append a tiebreak marker to team names
+(`… ΙΣΟΒ. 0`) which the scrapers strip. `/protathlima` reads the `men` files;
+`k17` files exist but aren't displayed yet.
+
+- `scripts/scrape-standings.mjs` → `src/data/standings-<key>.json` — just the
+  ranking **table** + zone legend (from `table.asp`). NOTE: epsm removed the
+  `<font>■</font>` zone-colour markup (~Oct 2026) so `legend`/`markerColor` are now
+  empty; the table still renders.
+- `scripts/scrape-fixtures.mjs` → `src/data/fixtures-<key>.json` — our **full-season
   fixtures/results**, from `table_analytika.asp` (every matchday, real matchday
   numbers, scores) enriched with date/venue/kickoff for the imminent round from
   `scores.asp`. Derives `results` (played, newest first), `current`, and `next`.

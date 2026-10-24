@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import StandingsTable from "../components/StandingsTable.astro";
 import ResultsTable from "../components/ResultsTable.astro";
 import MatchupCard from "../components/MatchupCard.astro";
-import standings from "../data/standings.json";
-import fixtures from "../data/fixtures.json";
+import standings from "../data/standings-men.json";
+import fixtures from "../data/fixtures-men.json";
 
 const { competition, source, legend, table } = standings;
 const { results, current, next, postponed = [] } = fixtures;
