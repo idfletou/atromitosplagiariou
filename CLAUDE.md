@@ -137,8 +137,13 @@ while the others still update. Youth tables append a tiebreak marker to team nam
   empty; the table still renders.
 - `scripts/scrape-fixtures.mjs` → `src/data/fixtures-<key>.json` — our **full-season
   fixtures/results**, from `table_analytika.asp` (every matchday, real matchday
-  numbers, scores) enriched with date/venue/kickoff for the imminent round from
-  `scores.asp`. Derives `results` (played, newest first), `current`, and `next`.
+  numbers, scores) enriched with date/venue/kickoff from two more pages:
+  `scores.asp` (the current round) and `table.asp`'s **ΕΠΟΜΕΝΗ ΑΓΩΝΙΣΤΙΚΗ** block.
+  The latter matters because epsm sets the **next** game's date on its `game.asp`
+  detail page (linked by the next-MD info icon) days before it appears in
+  `scores.asp`/the full schedule — so we read our next-MD row, follow its
+  `game_number` to `game.asp`, and backfill ΗΜΕΡΟΜΗΝΙΑ/ΩΡΑ/ΓΗΠΕΔΟ. Derives
+  `results` (played, newest first), `current`, and `next`.
   - **current/next are gameweek-anchored:** a week runs Mon→Sun and each fixture
     belongs to the week of *its own date*, so `current` stays on this week's game
     (with its score once played) until Monday, and postponements follow the game
