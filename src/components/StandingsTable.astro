@@ -17,12 +17,35 @@ interface LegendItem {
   color: string;
   label: string;
 }
+// A position-based zone (promotion/playoff/playout/relegation). `test` gets the
+// row position and the table size. Used when epsm no longer ships zone markers.
+interface Zone {
+  label: string;
+  color: string;
+  test: (position: number, total: number) => boolean;
+}
 interface Props {
   table: TeamRow[];
   legend?: LegendItem[];
+  zones?: Zone[];
 }
-const { table, legend = [] } = Astro.props;
+const { table, legend = [], zones = [] } = Astro.props;
 const gd = (n: number) => (n > 0 ? `+${n}` : `${n}`);
+
+// Zone markers/legend are derived from league position when `zones` is passed
+// (epsm dropped its own zone-colour markup). First matching zone wins. Falls
+// back to whatever the scraper captured (`markerColor`/`legend`) otherwise.
+const total = table.length;
+const usingZones = zones.length > 0;
+const markerFor = (r: TeamRow): string | null =>
+  usingZones
+    ? zones.find((z) => z.test(r.position, total))?.color ?? null
+    : displayColor(r.markerColor);
+const shownLegend: LegendItem[] = usingZones
+  ? zones
+      .filter((z) => table.some((r) => z.test(r.position, total)))
+      .map((z) => ({ color: z.color, label: z.label }))
+  : legend;
 
 // Display tweaks over the raw epsm.gr data: show the near-invisible white
 // "promotion" marker as teal, and tidy legend labels (drop parentheticals and
@@ -65,8 +88,11 @@ const cleanLabel = (l: string) =>
             <td class="py-2 pl-3 pr-1">
               <div class="flex items-center gap-2">
                 <span
-                  class="h-2.5 w-2.5 shrink-0 rounded-sm border border-black/25"
-                  style={`background:${displayColor(r.markerColor) ?? "transparent"}`}
+                  class:list={[
+                    "h-2.5 w-2.5 shrink-0 rounded-sm",
+                    markerFor(r) && "border border-black/25",
+                  ]}
+                  style={markerFor(r) ? `background:${markerFor(r)}` : undefined}
                 />
                 <span class="tabular-nums text-brand-800">{r.position}</span>
               </div>
@@ -105,9 +131,9 @@ const cleanLabel = (l: string) =>
 </div>
 
 {
-  legend.length > 0 && (
+  shownLegend.length > 0 && (
     <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-brand-800/80">
-      {legend.map((l) => (
+      {shownLegend.map((l) => (
         <li class="flex items-center gap-2">
           <span
             class="h-2.5 w-2.5 shrink-0 rounded-sm border border-black/25"

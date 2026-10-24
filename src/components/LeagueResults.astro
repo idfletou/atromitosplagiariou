@@ -19,13 +19,20 @@ interface Fixtures {
   next: any;
   postponed?: any[];
 }
+interface Zone {
+  label: string;
+  color: string;
+  test: (position: number, total: number) => boolean;
+}
 interface Props {
   eyebrow: string;
   title: string;
   standings: Standings;
   fixtures: Fixtures;
+  /** Position-based standings zones (promotion/playoff/…). Men's league only. */
+  zones?: Zone[];
 }
-const { eyebrow, title, standings, fixtures } = Astro.props;
+const { eyebrow, title, standings, fixtures, zones = [] } = Astro.props;
 
 const { competition, source, legend, table } = standings;
 const { results, current, next, postponed = [] } = fixtures;
@@ -84,7 +91,7 @@ const updated = new Date(updatedIso).toLocaleDateString("el-GR", {
   <h2 class="mb-4 mt-12 text-xl font-bold uppercase tracking-tight text-brand-900">
     <span class="border-l-4 border-brand-500 pl-3">Βαθμολογία</span>
   </h2>
-  <StandingsTable table={table} legend={legend} />
+  <StandingsTable table={table} legend={legend} zones={zones} />
 
   <p class="mt-5 text-xs text-brand-800/60">
     Πηγή: <a href={source} class="underline hover:text-brand-600" rel="nofollow noopener" target="_blank">epsm.gr</a> · Ενημερώθηκε {updated}

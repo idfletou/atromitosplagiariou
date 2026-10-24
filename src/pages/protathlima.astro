@@ -5,11 +5,27 @@ import standings from "../data/standings-men.json";
 import fixtures from "../data/fixtures-men.json";
 
 const compLabel = standings.competition.replace(/\s*-\s*/, " – ");
+
+// Men's league promotion/relegation zones. epsm stopped shipping its own zone
+// colours, and these are fixed by competition rules, so we mark them by final
+// position: 1st up, 2–5 play-off, 11–14 play-out, last down (15 teams).
+const standingsZones = [
+  { label: "Άνοδος", color: "#16a34a", test: (p: number) => p === 1 },
+  { label: "Πλέι-οφ", color: "#0d9488", test: (p: number) => p >= 2 && p <= 5 },
+  { label: "Πλέι-άουτ", color: "#f59e0b", test: (p: number) => p >= 11 && p <= 14 },
+  { label: "Υποβιβασμός", color: "#dc2626", test: (p: number, n: number) => p === n },
+];
 ---
 
 <Layout
   title="Πρωτάθλημα"
   description={`Αποτελέσματα και βαθμολογία του Ατρόμητου Πλαγιαρίου — ${compLabel}.`}
 >
-  <LeagueResults eyebrow="Αποτελέσματα" title="Πρωτάθλημα" standings={standings} fixtures={fixtures} />
+  <LeagueResults
+    eyebrow="Αποτελέσματα"
+    title="Πρωτάθλημα"
+    standings={standings}
+    fixtures={fixtures}
+    zones={standingsZones}
+  />
 </Layout>
