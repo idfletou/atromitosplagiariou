@@ -13,27 +13,6 @@ const SOCIAL_ICONS: Record<string, string> = {
 };
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-// Flatten the nav to leaf links (expand dropdown parents, skip group headings).
-// Where two leaves share a label (e.g. both "Πρωτάθλημα"), disambiguate with the
-// group heading, e.g. "Πρωτάθλημα (Κ17)".
-const footerLeaves: { label: string; href: string; heading: string | null }[] = [];
-for (const item of nav) {
-  if (isNavParent(item)) {
-    let heading: string | null = null;
-    for (const c of item.children) {
-      if (isNavHeading(c)) heading = c.heading;
-      else footerLeaves.push({ label: c.label, href: c.href, heading });
-    }
-  } else {
-    footerLeaves.push({ label: item.label, href: item.href, heading: null });
-  }
-}
-const labelCount: Record<string, number> = {};
-for (const l of footerLeaves) labelCount[l.label] = (labelCount[l.label] || 0) + 1;
-const footerLinks = footerLeaves.map((l) => ({
-  href: l.href,
-  label: labelCount[l.label] > 1 && l.heading ? `${l.label} (${l.heading})` : l.label,
-}));
 ---
 
 <footer>
@@ -105,15 +84,31 @@ const footerLinks = footerLeaves.map((l) => ({
         <p class="text-xs font-semibold uppercase tracking-widest text-brand-300">
           Πλοήγηση
         </p>
-        <ul class="mt-3 space-y-2 text-sm">
+        <ul class="mt-3 space-y-1.5 text-sm">
           {
-            footerLinks.map((item) => (
-              <li>
-                <a href={item.href} class="hover:text-white hover:underline">
-                  {item.label}
-                </a>
-              </li>
-            ))
+            nav.map((item) =>
+              isNavParent(item) ? (
+                item.children.map((c) =>
+                  isNavHeading(c) ? (
+                    <li class="pt-2 text-[11px] font-semibold uppercase tracking-wider text-brand-400">
+                      {c.heading}
+                    </li>
+                  ) : (
+                    <li>
+                      <a href={c.href} class="block pl-3 hover:text-white hover:underline">
+                        {c.label}
+                      </a>
+                    </li>
+                  )
+                )
+              ) : (
+                <li>
+                  <a href={item.href} class="hover:text-white hover:underline">
+                    {item.label}
+                  </a>
+                </li>
+              )
+            )
           }
         </ul>
       </nav>
