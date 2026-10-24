@@ -134,7 +134,12 @@ while the others still update. Youth tables append a tiebreak marker to team nam
 - `scripts/scrape-standings.mjs` → `src/data/standings-<key>.json` — just the
   ranking **table** + zone legend (from `table.asp`). NOTE: epsm removed the
   `<font>■</font>` zone-colour markup (~Oct 2026) so `legend`/`markerColor` are now
-  empty; the table still renders.
+  empty. The men's page therefore reinstates the promotion/play-off/play-out/
+  relegation badges **by league position** instead: a `zones` prop defined in
+  `src/pages/protathlima.astro` (1st Άνοδος, 2–5 Πλέι-οφ, 11–14 Πλέι-άουτ, last
+  Υποβιβασμός — 15 teams) is threaded through `LeagueResults` to `StandingsTable`,
+  which falls back to the scraped `markerColor`/`legend` when no `zones` are given
+  (so K17 stays unmarked). Update the ranges there if the format changes.
 - `scripts/scrape-fixtures.mjs` → `src/data/fixtures-<key>.json` — our **full-season
   fixtures/results**, from `table_analytika.asp` (every matchday, real matchday
   numbers, scores) enriched with date/venue/kickoff from two more pages:
