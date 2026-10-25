@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T22:42:44.300Z",
+  "updatedAt": "2026-10-25T11:44:37.942Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
   "legend": [],
@@ -48,6 +48,20 @@
     },
     {
       "position": 4,
+      "team": "ΣΚΙΟΥΡΟΙ",
+      "isOurTeam": false,
+      "points": 10,
+      "played": 6,
+      "won": 3,
+      "drawn": 1,
+      "lost": 2,
+      "gf": 13,
+      "ga": 7,
+      "gd": 6,
+      "markerColor": null
+    },
+    {
+      "position": 5,
       "team": "ΟΡΦΕΥΣ ΣΟΥΡΩΤΗΣ",
       "isOurTeam": false,
       "points": 10,
@@ -61,7 +75,7 @@
       "markerColor": null
     },
     {
-      "position": 5,
+      "position": 6,
       "team": "ΑΕ ΠΥΛΑΙΑΣ",
       "isOurTeam": false,
       "points": 9,
@@ -75,7 +89,7 @@
       "markerColor": null
     },
     {
-      "position": 6,
+      "position": 7,
       "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
       "isOurTeam": true,
       "points": 9,
@@ -89,7 +103,7 @@
       "markerColor": null
     },
     {
-      "position": 7,
+      "position": 8,
       "team": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "isOurTeam": false,
       "points": 9,
@@ -103,7 +117,7 @@
       "markerColor": null
     },
     {
-      "position": 8,
+      "position": 9,
       "team": "ΑΠΟΛΛΩΝ Κ.ΣΧΟΛΑΡΙΟΥ",
       "isOurTeam": false,
       "points": 8,
@@ -114,20 +128,6 @@
       "gf": 9,
       "ga": 9,
       "gd": 0,
-      "markerColor": null
-    },
-    {
-      "position": 9,
-      "team": "ΣΚΙΟΥΡΟΙ",
-      "isOurTeam": false,
-      "points": 7,
-      "played": 5,
-      "won": 2,
-      "drawn": 1,
-      "lost": 2,
-      "gf": 11,
-      "ga": 6,
-      "gd": 5,
       "markerColor": null
     },
     {
@@ -177,13 +177,13 @@
       "team": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
       "isOurTeam": false,
       "points": 4,
-      "played": 5,
+      "played": 6,
       "won": 1,
       "drawn": 1,
-      "lost": 3,
-      "gf": 3,
-      "ga": 6,
-      "gd": -3,
+      "lost": 4,
+      "gf": 4,
+      "ga": 8,
+      "gd": -4,
       "markerColor": null
     },
     {
