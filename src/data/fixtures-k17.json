@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T20:38:21.848Z",
+  "updatedAt": "2026-10-26T13:17:36.391Z",
   "competition": "Κ17 LEAGUE 1",
   "sources": [
     "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%9A17%20LEAGUE%201",
@@ -292,20 +292,6 @@
   ],
   "postponed": [],
   "current": {
-    "matchday": 1,
-    "home": "ΜΑΡΑΘΩΝ ΚΑΛΑΜΑΡΙΑΣ",
-    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "homeScore": 0,
-    "awayScore": 2,
-    "played": true,
-    "weAreHome": false,
-    "opponent": "ΜΑΡΑΘΩΝ ΚΑΛΑΜΑΡΙΑΣ",
-    "result": "W",
-    "date": "17.10.2026",
-    "time": null,
-    "venue": null
-  },
-  "next": {
     "matchday": 2,
     "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
     "away": "ΠΙΕΡΙΚΟΣ 1961",
@@ -318,5 +304,19 @@
     "date": "31.10.2026",
     "time": "12.30",
     "venue": "ΠΛΑΓΙΑΡΙΟΥ"
+  },
+  "next": {
+    "matchday": 3,
+    "home": "ΠΟΤ ΗΡΑΚΛΗΣ",
+    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "homeScore": null,
+    "awayScore": null,
+    "played": false,
+    "weAreHome": false,
+    "opponent": "ΠΟΤ ΗΡΑΚΛΗΣ",
+    "result": null,
+    "date": null,
+    "time": null,
+    "venue": null
   }
 }
