@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T13:41:31.053Z",
+  "updatedAt": "2026-10-30T13:10:27.806Z",
   "competition": "Κύπελλο «ΑΝΝΑ-ΜΑΡΙΑ ΠΑΝΤΑΖΩΝΗ»",
   "source": "https://www.epsm.gr/cup.asp",
   "matches": [
@@ -13,9 +13,9 @@
       "played": false,
       "weAreHome": false,
       "result": null,
-      "venue": "",
-      "date": "",
-      "time": ""
+      "venue": "ΤΡΙΑΔΙΟΥ",
+      "date": "11.11.2026",
+      "time": "14.45"
     },
     {
       "phase": "2η φάση",
@@ -56,8 +56,8 @@
     "played": false,
     "weAreHome": false,
     "result": null,
-    "venue": "",
-    "date": "",
-    "time": ""
+    "venue": "ΤΡΙΑΔΙΟΥ",
+    "date": "11.11.2026",
+    "time": "14.45"
   }
 }
