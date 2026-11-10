@@ -132,38 +132,37 @@ while the others still update. Youth tables append a tiebreak marker to team nam
 `k17` files exist but aren't displayed yet.
 
 - `scripts/scrape-standings.mjs` → `src/data/standings-<key>.json` — just the
-  ranking **table** + zone legend (from `table.asp`). NOTE: epsm removed the
-  `<font>■</font>` zone-colour markup (~Oct 2026) so `legend`/`markerColor` are now
-  empty. The men's page therefore reinstates the promotion/play-off/play-out/
-  relegation badges **by league position** instead: a `zones` prop defined in
-  `src/pages/protathlima.astro` (1st Άνοδος, 2–5 Πλέι-οφ, 11–14 Πλέι-άουτ, last
-  Υποβιβασμός — 15 teams) is threaded through `LeagueResults` to `StandingsTable`,
-  which falls back to the scraped `markerColor`/`legend` when no `zones` are given
-  (so K17 stays unmarked). Update the ranges there if the format changes.
+  ranking **table** (from `table.asp`). The stats columns (points/games/goals/
+  W-D-L) are read by position; the team **name** comes from the row's
+  `a.mn-team-link` because epsm's redesigned table (Nov 2026) stuffs a tiebreak
+  "ΑΝΑΛΥΣΗ ΙΣΟΒΑΘΜΙΑΣ" tooltip into the raw cell text (`cleanTeam` also cuts that
+  marker as a fallback). `legend`/`markerColor` are left empty; the men's page
+  reinstates the promotion/play-off/play-out/relegation badges **by league
+  position** instead: a `zones` prop defined in `src/pages/protathlima.astro`
+  (1st Άνοδος, 2–5 Πλέι-οφ, 11–14 Πλέι-άουτ, last Υποβιβασμός — 15 teams) is
+  threaded through `LeagueResults` to `StandingsTable`, which falls back to the
+  scraped `markerColor`/`legend` when no `zones` are given (so K17 stays
+  unmarked). Update the ranges there if the format changes.
 - `scripts/scrape-fixtures.mjs` → `src/data/fixtures-<key>.json` — our **full-season
-  fixtures/results**, from `table_analytika.asp` (every matchday, real matchday
-  numbers, scores) enriched with date/venue/kickoff from two more pages:
-  `scores.asp` (the current round) and `table.asp`'s **ΕΠΟΜΕΝΗ ΑΓΩΝΙΣΤΙΚΗ** block.
-  The latter matters because epsm sets the **next** game's date on its `game.asp`
-  detail page (linked by the next-MD info icon) days before it appears in
-  `scores.asp`/the full schedule — so we read our next-MD row, follow its
-  `game_number` to `game.asp`, and backfill ΗΜΕΡΟΜΗΝΙΑ/ΩΡΑ/ΓΗΠΕΔΟ. Derives
+  fixtures/results**, from **`table_team.asp?diorganosi=<league>&team=<club>`**
+  (epsm's per-team page; `team` is each league's exact club name in `leagues.mjs`).
+  That one page lists every one of our fixtures with matchday, date, kickoff,
+  home/away, score (once played) and venue — so no more multi-page stitching.
+  (Before epsm's Nov 2026 redesign this came from `table_analytika.asp` + `scores.asp`
+  + a `table.asp`/`game.asp` next-game lookup; that path is gone.) Derives
   `results` (played, newest first), `current`, and `next`.
   - **current/next are gameweek-anchored:** a week runs Mon→Sun and each fixture
     belongs to the week of *its own date*, so `current` stays on this week's game
     (with its score once played) until Monday, and postponements follow the game
     instead of a blind calendar flip. Fallbacks: bye/gap week → `current` = last
     result; far-future fixtures have no date yet (shown "Ημερομηνία σύντομα").
-  - **Postponed games:** an unplayed fixture from a round the league has *already
-    played* (tracked via `leaguePlayedThrough` = highest matchday any team has
-    played in the full programme) is classed as **postponed** when epsm has
-    clearly dropped it — **its date is cleared to null** (removed from the
-    schedule), OR **>48h have passed since its date** with still no result. The
-    48h grace is deliberate: epsm is often slow to enter weekend scores, so a game
-    played Sat/Sun is NOT mislabelled on Monday — it only flags from ~48h after
-    its date (a re-dated/future fixture is never flagged). Postponed games go in a
-    separate `postponed` list, are NEVER shown as current/next (otherwise the page
-    gets stuck on an old round), and appear as a row in the results table
+  - **Postponed games:** an unplayed fixture whose date is **>48h in the past**
+    with still no score is classed as **postponed**. The 48h grace is deliberate:
+    epsm is often slow to enter weekend scores, so a game played Sat/Sun is NOT
+    mislabelled on Monday — it only flags from ~48h after its date. A fixture with
+    no date yet (not scheduled) or a future date is never flagged. Postponed games
+    go in a separate `postponed` list, are NEVER shown as current/next (otherwise
+    the page gets stuck on an old round), and appear as a row in the results table
     (`ResultsTable`) with an **"Αναβλ."** badge instead of a score. Byes (our group
     has an odd number of teams, so one team sits out each round) just leave a gap
     in our matchday numbers and don't affect any of this.

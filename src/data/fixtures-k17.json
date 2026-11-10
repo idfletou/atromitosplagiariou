@@ -1,10 +1,8 @@
 {
-  "updatedAt": "2026-10-26T13:17:36.391Z",
+  "updatedAt": "2026-11-10T19:35:08.940Z",
   "competition": "Κ17 LEAGUE 1",
   "sources": [
-    "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%9A17%20LEAGUE%201",
-    "https://www.epsm.gr/scores.asp?diorganosi=%CE%9A17%20LEAGUE%201",
-    "https://www.epsm.gr/table.asp?diorganosi=%CE%9A17%20LEAGUE%201"
+    "https://www.epsm.gr/table_team.asp?diorganosi=%CE%9A17%20LEAGUE%201&team=%CE%91%CE%A4%CE%A1%CE%9F%CE%9C%CE%97%CE%A4%CE%9F%CE%A3%20%CE%A0%CE%9B%CE%91%CE%93%CE%99%CE%91%CE%A1%CE%99%CE%9F%CE%A5"
   ],
   "fixtures": [
     {
@@ -18,8 +16,8 @@
       "opponent": "ΜΑΡΑΘΩΝ ΚΑΛΑΜΑΡΙΑΣ",
       "result": "W",
       "date": "17.10.2026",
-      "time": null,
-      "venue": null
+      "time": "10.45",
+      "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ"
     },
     {
       "matchday": 2,
@@ -39,15 +37,15 @@
       "matchday": 3,
       "home": "ΠΟΤ ΗΡΑΚΛΗΣ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
+      "homeScore": 8,
+      "awayScore": 1,
+      "played": true,
       "weAreHome": false,
       "opponent": "ΠΟΤ ΗΡΑΚΛΗΣ",
-      "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "result": "L",
+      "date": "07.11.2026",
+      "time": "09.00",
+      "venue": "ΤΣΑΚ ΜΠΑΜ ΑΡΕΝΑ"
     },
     {
       "matchday": 4,
@@ -59,9 +57,9 @@
       "weAreHome": true,
       "opponent": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "15.11.2026",
+      "time": "12.30",
+      "venue": "ΚΑΡΔΙΑΣ"
     },
     {
       "matchday": 5,
@@ -73,9 +71,9 @@
       "weAreHome": false,
       "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "21.11.2026",
+      "time": "12.30",
+      "venue": "ΤΡΙΑΝΔΡΙΑΣ"
     },
     {
       "matchday": 6,
@@ -276,6 +274,20 @@
   ],
   "results": [
     {
+      "matchday": 3,
+      "home": "ΠΟΤ ΗΡΑΚΛΗΣ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": 8,
+      "awayScore": 1,
+      "played": true,
+      "weAreHome": false,
+      "opponent": "ΠΟΤ ΗΡΑΚΛΗΣ",
+      "result": "L",
+      "date": "07.11.2026",
+      "time": "09.00",
+      "venue": "ΤΣΑΚ ΜΠΑΜ ΑΡΕΝΑ"
+    },
+    {
       "matchday": 1,
       "home": "ΜΑΡΑΘΩΝ ΚΑΛΑΜΑΡΙΑΣ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
@@ -286,37 +298,52 @@
       "opponent": "ΜΑΡΑΘΩΝ ΚΑΛΑΜΑΡΙΑΣ",
       "result": "W",
       "date": "17.10.2026",
-      "time": null,
-      "venue": null
+      "time": "10.45",
+      "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ"
     }
   ],
-  "postponed": [],
+  "postponed": [
+    {
+      "matchday": 2,
+      "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "away": "ΠΙΕΡΙΚΟΣ 1961",
+      "homeScore": null,
+      "awayScore": null,
+      "played": false,
+      "weAreHome": true,
+      "opponent": "ΠΙΕΡΙΚΟΣ 1961",
+      "result": null,
+      "date": "31.10.2026",
+      "time": "12.30",
+      "venue": "ΠΛΑΓΙΑΡΙΟΥ"
+    }
+  ],
   "current": {
-    "matchday": 2,
+    "matchday": 4,
     "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "away": "ΠΙΕΡΙΚΟΣ 1961",
+    "away": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
     "homeScore": null,
     "awayScore": null,
     "played": false,
     "weAreHome": true,
-    "opponent": "ΠΙΕΡΙΚΟΣ 1961",
+    "opponent": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
     "result": null,
-    "date": "31.10.2026",
+    "date": "15.11.2026",
     "time": "12.30",
-    "venue": "ΠΛΑΓΙΑΡΙΟΥ"
+    "venue": "ΚΑΡΔΙΑΣ"
   },
   "next": {
-    "matchday": 3,
-    "home": "ΠΟΤ ΗΡΑΚΛΗΣ",
+    "matchday": 5,
+    "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
     "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
     "homeScore": null,
     "awayScore": null,
     "played": false,
     "weAreHome": false,
-    "opponent": "ΠΟΤ ΗΡΑΚΛΗΣ",
+    "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
     "result": null,
-    "date": null,
-    "time": null,
-    "venue": null
+    "date": "21.11.2026",
+    "time": "12.30",
+    "venue": "ΤΡΙΑΝΔΡΙΑΣ"
   }
 }

@@ -19,8 +19,15 @@ const intOr = (v, fb = 0) => {
   const n = parseInt(v, 10);
   return Number.isNaN(n) ? fb : n;
 };
-// Youth tables append a tiebreak marker to the team name, e.g. "… ΙΣΟΒ. 0" — drop it.
-const cleanTeam = (name) => norm(name).replace(/\s*ΙΣΟΒ\.?\s*-?\d+\s*$/u, "").trim();
+// epsm appends a tiebreak marker + an "ΑΝΑΛΥΣΗ ΙΣΟΒΑΘΜΙΑΣ" tooltip to the team
+// cell, e.g. "… ΙΣΟΒ. 0ΑΝΑΛΥΣΗ ΙΣΟΒΑΘΜΙΑΣ…". Cut everything from that marker on,
+// and drop any leading "NN. " position prefix from the team link.
+const cleanTeam = (name) =>
+  norm(name)
+    .replace(/^\d{1,2}\.\s*/u, "")
+    .replace(/\s*ΙΣΟΒ\.?\s*-?\d+.*$/u, "")
+    .replace(/\s*ΑΝΑΛΥΣΗ\s+ΙΣΟΒΑΘΜΙΑΣ.*$/u, "")
+    .trim();
 
 async function scrapeStandings(league) {
   const tag = `standings:${league.key}`;
@@ -67,6 +74,10 @@ async function scrapeStandings(league) {
     const [gf, ga] = (cells[idx + 3] || "").split("-").map((n) => intOr(n));
     const [won, drawn, lost] = (cells[idx + 4] || "").split("-").map((n) => intOr(n));
 
+    // Prefer the clean team name from the row's team link (the raw cell text now
+    // also contains the tiebreak-analysis tooltip); fall back to the cell text.
+    const linkName = norm($(tr).find("a.mn-team-link").first().text());
+
     let markerColor = null;
     $(tr).find("font").each((__, f) => {
       if ($(f).text().includes("■")) {
@@ -75,7 +86,7 @@ async function scrapeStandings(league) {
       }
     });
 
-    const team = cleanTeam(rawTeam);
+    const team = cleanTeam(linkName || rawTeam);
     seen.add(position);
     table.push({
       position,

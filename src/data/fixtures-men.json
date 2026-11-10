@@ -1,25 +1,23 @@
 {
-  "updatedAt": "2026-10-26T13:17:34.426Z",
+  "updatedAt": "2026-11-10T19:35:08.752Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "sources": [
-    "https://www.epsm.gr/table_analytika.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
-    "https://www.epsm.gr/scores.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
-    "https://www.epsm.gr/table.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3"
+    "https://www.epsm.gr/table_team.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3&team=%CE%91%CE%A4%CE%A1%CE%9F%CE%9C%CE%97%CE%A4%CE%9F%CE%A3%20%CE%A0%CE%9B%CE%91%CE%93%CE%99%CE%91%CE%A1%CE%99%CE%9F%CE%A5"
   ],
   "fixtures": [
     {
       "matchday": 1,
       "home": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
+      "homeScore": 1,
+      "awayScore": 2,
+      "played": true,
       "weAreHome": false,
       "opponent": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
-      "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "result": "W",
+      "date": "04.11.2026",
+      "time": "17.45",
+      "venue": "ΠΥΛΑΙΑΣ ΔΗΜΟΤΙΚΟ"
     },
     {
       "matchday": 2,
@@ -32,8 +30,8 @@
       "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
       "result": "L",
       "date": "04.10.2026",
-      "time": null,
-      "venue": null
+      "time": "16.30",
+      "venue": "ΠΛΑΓΙΑΡΙΟΥ"
     },
     {
       "matchday": 3,
@@ -46,8 +44,8 @@
       "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "result": "W",
       "date": "10.10.2026",
-      "time": null,
-      "venue": null
+      "time": "16.30",
+      "venue": "ΤΡΙΑΝΔΡΙΑΣ"
     },
     {
       "matchday": 4,
@@ -60,8 +58,8 @@
       "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
       "result": "W",
       "date": "14.10.2026",
-      "time": null,
-      "venue": null
+      "time": "16.30",
+      "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ"
     },
     {
       "matchday": 6,
@@ -81,12 +79,12 @@
       "matchday": 7,
       "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
       "away": "Α.Ο. ΚΑΡΔΙΑΣ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
+      "homeScore": 7,
+      "awayScore": 0,
+      "played": true,
       "weAreHome": true,
       "opponent": "Α.Ο. ΚΑΡΔΙΑΣ",
-      "result": null,
+      "result": "W",
       "date": "01.11.2026",
       "time": "15.15",
       "venue": "ΚΑΡΔΙΑΣ"
@@ -95,15 +93,15 @@
       "matchday": 8,
       "home": "ΑΕ ΚΡΗΝΗΣ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
+      "homeScore": 1,
+      "awayScore": 5,
+      "played": true,
       "weAreHome": false,
       "opponent": "ΑΕ ΚΡΗΝΗΣ",
-      "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "result": "W",
+      "date": "07.11.2026",
+      "time": "15.15",
+      "venue": "ΑΕ ΚΡΗΝΗΣ"
     },
     {
       "matchday": 9,
@@ -115,9 +113,9 @@
       "weAreHome": true,
       "opponent": "Μ.ΑΛΕΞΑΝΔΡΟΣ ΘΕΣΣΑΛΟΝΙΚΗΣ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "15.11.2026",
+      "time": "15.15",
+      "venue": "ΚΑΡΔΙΑΣ"
     },
     {
       "matchday": 10,
@@ -129,9 +127,9 @@
       "weAreHome": true,
       "opponent": "ΟΡΦΕΥΣ ΣΟΥΡΩΤΗΣ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "22.11.2026",
+      "time": "11.30",
+      "venue": "ΚΑΡΔΙΑΣ"
     },
     {
       "matchday": 11,
@@ -402,6 +400,34 @@
   ],
   "results": [
     {
+      "matchday": 8,
+      "home": "ΑΕ ΚΡΗΝΗΣ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": 1,
+      "awayScore": 5,
+      "played": true,
+      "weAreHome": false,
+      "opponent": "ΑΕ ΚΡΗΝΗΣ",
+      "result": "W",
+      "date": "07.11.2026",
+      "time": "15.15",
+      "venue": "ΑΕ ΚΡΗΝΗΣ"
+    },
+    {
+      "matchday": 7,
+      "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "away": "Α.Ο. ΚΑΡΔΙΑΣ",
+      "homeScore": 7,
+      "awayScore": 0,
+      "played": true,
+      "weAreHome": true,
+      "opponent": "Α.Ο. ΚΑΡΔΙΑΣ",
+      "result": "W",
+      "date": "01.11.2026",
+      "time": "15.15",
+      "venue": "ΚΑΡΔΙΑΣ"
+    },
+    {
       "matchday": 6,
       "home": "ΙΕΚ ΔΕΛΤΑ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
@@ -426,8 +452,8 @@
       "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
       "result": "W",
       "date": "14.10.2026",
-      "time": null,
-      "venue": null
+      "time": "16.30",
+      "venue": "ΚΑΛΑΜΑΡΙΑΣ ΔΗΜΟΤΙΚΟ"
     },
     {
       "matchday": 3,
@@ -440,8 +466,8 @@
       "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "result": "W",
       "date": "10.10.2026",
-      "time": null,
-      "venue": null
+      "time": "16.30",
+      "venue": "ΤΡΙΑΝΔΡΙΑΣ"
     },
     {
       "matchday": 2,
@@ -454,52 +480,51 @@
       "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
       "result": "L",
       "date": "04.10.2026",
-      "time": null,
-      "venue": null
-    }
-  ],
-  "postponed": [
+      "time": "16.30",
+      "venue": "ΠΛΑΓΙΑΡΙΟΥ"
+    },
     {
       "matchday": 1,
       "home": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
+      "homeScore": 1,
+      "awayScore": 2,
+      "played": true,
       "weAreHome": false,
       "opponent": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
-      "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "result": "W",
+      "date": "04.11.2026",
+      "time": "17.45",
+      "venue": "ΠΥΛΑΙΑΣ ΔΗΜΟΤΙΚΟ"
     }
   ],
+  "postponed": [],
   "current": {
-    "matchday": 7,
+    "matchday": 9,
     "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "away": "Α.Ο. ΚΑΡΔΙΑΣ",
+    "away": "Μ.ΑΛΕΞΑΝΔΡΟΣ ΘΕΣΣΑΛΟΝΙΚΗΣ",
     "homeScore": null,
     "awayScore": null,
     "played": false,
     "weAreHome": true,
-    "opponent": "Α.Ο. ΚΑΡΔΙΑΣ",
+    "opponent": "Μ.ΑΛΕΞΑΝΔΡΟΣ ΘΕΣΣΑΛΟΝΙΚΗΣ",
     "result": null,
-    "date": "01.11.2026",
+    "date": "15.11.2026",
     "time": "15.15",
     "venue": "ΚΑΡΔΙΑΣ"
   },
   "next": {
-    "matchday": 8,
-    "home": "ΑΕ ΚΡΗΝΗΣ",
-    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "matchday": 10,
+    "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "away": "ΟΡΦΕΥΣ ΣΟΥΡΩΤΗΣ",
     "homeScore": null,
     "awayScore": null,
     "played": false,
-    "weAreHome": false,
-    "opponent": "ΑΕ ΚΡΗΝΗΣ",
+    "weAreHome": true,
+    "opponent": "ΟΡΦΕΥΣ ΣΟΥΡΩΤΗΣ",
     "result": null,
-    "date": null,
-    "time": null,
-    "venue": null
+    "date": "22.11.2026",
+    "time": "11.30",
+    "venue": "ΚΑΡΔΙΑΣ"
   }
 }
