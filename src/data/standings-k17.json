@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T13:39:38.579Z",
+  "updatedAt": "2026-11-14T20:54:29.343Z",
   "competition": "Κ17 LEAGUE 1",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%9A17%20LEAGUE%201",
   "legend": [],
@@ -342,6 +342,20 @@
     },
     {
       "position": 25,
+      "team": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
+      "isOurTeam": false,
+      "points": 3,
+      "played": 4,
+      "won": 1,
+      "drawn": 0,
+      "lost": 3,
+      "gf": 11,
+      "ga": 13,
+      "gd": -2,
+      "markerColor": null
+    },
+    {
+      "position": 26,
       "team": "ΖΗΤΑ ΕΠΤΑ",
       "isOurTeam": false,
       "points": 3,
@@ -355,7 +369,7 @@
       "markerColor": null
     },
     {
-      "position": 26,
+      "position": 27,
       "team": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
       "isOurTeam": false,
       "points": 3,
@@ -369,7 +383,7 @@
       "markerColor": null
     },
     {
-      "position": 27,
+      "position": 28,
       "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
       "isOurTeam": true,
       "points": 3,
@@ -383,7 +397,7 @@
       "markerColor": null
     },
     {
-      "position": 28,
+      "position": 29,
       "team": "ΜΑΡΑΘΩΝ ΚΑΛΑΜΑΡΙΑΣ",
       "isOurTeam": false,
       "points": 3,
@@ -397,7 +411,7 @@
       "markerColor": null
     },
     {
-      "position": 29,
+      "position": 30,
       "team": "ΑΙΑΣ ΕΥΟΣΜΟΥ",
       "isOurTeam": false,
       "points": 3,
@@ -411,7 +425,7 @@
       "markerColor": null
     },
     {
-      "position": 30,
+      "position": 31,
       "team": "ΑΟ ΛΑΓΚΑΔΑ",
       "isOurTeam": false,
       "points": 1,
@@ -422,20 +436,6 @@
       "gf": 4,
       "ga": 15,
       "gd": -11,
-      "markerColor": null
-    },
-    {
-      "position": 31,
-      "team": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
-      "isOurTeam": false,
-      "points": 0,
-      "played": 3,
-      "won": 0,
-      "drawn": 0,
-      "lost": 3,
-      "gf": 4,
-      "ga": 9,
-      "gd": -5,
       "markerColor": null
     },
     {
@@ -569,13 +569,13 @@
       "team": "ΜΠΑΜ ΑΝΑΤΟΛΙΚΑ",
       "isOurTeam": false,
       "points": -3,
-      "played": 3,
+      "played": 4,
       "won": 1,
       "drawn": 0,
-      "lost": 2,
-      "gf": 6,
-      "ga": 15,
-      "gd": -9,
+      "lost": 3,
+      "gf": 10,
+      "ga": 22,
+      "gd": -12,
       "markerColor": null
     }
   ]
