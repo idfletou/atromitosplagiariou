@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T14:05:24.371Z",
+  "updatedAt": "2026-11-16T16:03:32.016Z",
   "competition": "Κ17 LEAGUE 1",
   "sources": [
     "https://www.epsm.gr/table_team.asp?diorganosi=%CE%9A17%20LEAGUE%201&team=%CE%91%CE%A4%CE%A1%CE%9F%CE%9C%CE%97%CE%A4%CE%9F%CE%A3%20%CE%A0%CE%9B%CE%91%CE%93%CE%99%CE%91%CE%A1%CE%99%CE%9F%CE%A5"
@@ -333,20 +333,6 @@
     }
   ],
   "current": {
-    "matchday": 4,
-    "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "away": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
-    "homeScore": 1,
-    "awayScore": 4,
-    "played": true,
-    "weAreHome": true,
-    "opponent": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
-    "result": "L",
-    "date": "15.11.2026",
-    "time": "12.30",
-    "venue": "ΚΑΡΔΙΑΣ"
-  },
-  "next": {
     "matchday": 5,
     "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
     "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
@@ -359,5 +345,19 @@
     "date": "21.11.2026",
     "time": "12.30",
     "venue": "ΤΡΙΑΝΔΡΙΑΣ"
+  },
+  "next": {
+    "matchday": 6,
+    "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "away": "ΣΚΙΟΥΡΟΙ",
+    "homeScore": null,
+    "awayScore": null,
+    "played": false,
+    "weAreHome": true,
+    "opponent": "ΣΚΙΟΥΡΟΙ",
+    "result": null,
+    "date": null,
+    "time": null,
+    "venue": null
   }
 }

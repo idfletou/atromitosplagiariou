@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T21:13:46.449Z",
+  "updatedAt": "2026-11-16T16:03:31.405Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "sources": [
     "https://www.epsm.gr/table_team.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3&team=%CE%91%CE%A4%CE%A1%CE%9F%CE%9C%CE%97%CE%A4%CE%9F%CE%A3%20%CE%A0%CE%9B%CE%91%CE%93%CE%99%CE%91%CE%A1%CE%99%CE%9F%CE%A5"
@@ -514,20 +514,6 @@
   ],
   "postponed": [],
   "current": {
-    "matchday": 9,
-    "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "away": "Μ.ΑΛΕΞΑΝΔΡΟΣ ΘΕΣΣΑΛΟΝΙΚΗΣ",
-    "homeScore": 3,
-    "awayScore": 0,
-    "played": true,
-    "weAreHome": true,
-    "opponent": "Μ.ΑΛΕΞΑΝΔΡΟΣ ΘΕΣΣΑΛΟΝΙΚΗΣ",
-    "result": "W",
-    "date": "15.11.2026",
-    "time": "15.15",
-    "venue": "ΚΑΡΔΙΑΣ"
-  },
-  "next": {
     "matchday": 10,
     "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
     "away": "ΟΡΦΕΥΣ ΣΟΥΡΩΤΗΣ",
@@ -540,5 +526,19 @@
     "date": "22.11.2026",
     "time": "11.30",
     "venue": "ΚΑΡΔΙΑΣ"
+  },
+  "next": {
+    "matchday": 11,
+    "home": "ΠΑΝΟΡΑΜΑ",
+    "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+    "homeScore": null,
+    "awayScore": null,
+    "played": false,
+    "weAreHome": false,
+    "opponent": "ΠΑΝΟΡΑΜΑ",
+    "result": null,
+    "date": null,
+    "time": null,
+    "venue": null
   }
 }
