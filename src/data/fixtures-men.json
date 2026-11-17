@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T16:03:31.405Z",
+  "updatedAt": "2026-11-17T16:13:24.746Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "sources": [
     "https://www.epsm.gr/table_team.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3&team=%CE%91%CE%A4%CE%A1%CE%9F%CE%9C%CE%97%CE%A4%CE%9F%CE%A3%20%CE%A0%CE%9B%CE%91%CE%93%CE%99%CE%91%CE%A1%CE%99%CE%9F%CE%A5"
@@ -141,9 +141,9 @@
       "weAreHome": false,
       "opponent": "ΠΑΝΟΡΑΜΑ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "28.11.2026",
+      "time": "15.00",
+      "venue": "ΠΑΝΟΡΑΜΑΤΟΣ"
     },
     {
       "matchday": 12,
@@ -537,8 +537,8 @@
     "weAreHome": false,
     "opponent": "ΠΑΝΟΡΑΜΑ",
     "result": null,
-    "date": null,
-    "time": null,
-    "venue": null
+    "date": "28.11.2026",
+    "time": "15.00",
+    "venue": "ΠΑΝΟΡΑΜΑΤΟΣ"
   }
 }

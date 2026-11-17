@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T14:05:23.004Z",
+  "updatedAt": "2026-11-17T16:13:24.123Z",
   "competition": "Κ17 LEAGUE 1",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%9A17%20LEAGUE%201",
   "legend": [],
@@ -202,6 +202,20 @@
     },
     {
       "position": 15,
+      "team": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
+      "isOurTeam": false,
+      "points": 9,
+      "played": 4,
+      "won": 3,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 11,
+      "ga": 7,
+      "gd": 4,
+      "markerColor": null
+    },
+    {
+      "position": 16,
       "team": "ΠΟ ΞΗΡΟΚΡΗΝΗΣ",
       "isOurTeam": false,
       "points": 9,
@@ -215,7 +229,7 @@
       "markerColor": null
     },
     {
-      "position": 16,
+      "position": 17,
       "team": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
       "isOurTeam": false,
       "points": 7,
@@ -229,7 +243,7 @@
       "markerColor": null
     },
     {
-      "position": 17,
+      "position": 18,
       "team": "ΑΣ ΣΕ.ΛΕ.ΣΤΕ.",
       "isOurTeam": false,
       "points": 7,
@@ -243,7 +257,7 @@
       "markerColor": null
     },
     {
-      "position": 18,
+      "position": 19,
       "team": "ΠΑΝΟΡΑΜΑ",
       "isOurTeam": false,
       "points": 6,
@@ -257,7 +271,7 @@
       "markerColor": null
     },
     {
-      "position": 19,
+      "position": 20,
       "team": "ΟΜΟΝΟΙΑ ΣΙΝΔΟΥ",
       "isOurTeam": false,
       "points": 6,
@@ -271,7 +285,7 @@
       "markerColor": null
     },
     {
-      "position": 20,
+      "position": 21,
       "team": "ΖΗΤΑ ΕΠΤΑ",
       "isOurTeam": false,
       "points": 6,
@@ -285,7 +299,7 @@
       "markerColor": null
     },
     {
-      "position": 21,
+      "position": 22,
       "team": "ΑΜΣ ΝΙΚΟΠΟΛΗ",
       "isOurTeam": false,
       "points": 6,
@@ -296,20 +310,6 @@
       "gf": 7,
       "ga": 7,
       "gd": 0,
-      "markerColor": null
-    },
-    {
-      "position": 22,
-      "team": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
-      "isOurTeam": false,
-      "points": 6,
-      "played": 4,
-      "won": 2,
-      "drawn": 0,
-      "lost": 2,
-      "gf": 9,
-      "ga": 10,
-      "gd": -1,
       "markerColor": null
     },
     {
@@ -568,14 +568,14 @@
       "position": 41,
       "team": "ΜΠΑΜ ΑΝΑΤΟΛΙΚΑ",
       "isOurTeam": false,
-      "points": -3,
+      "points": -6,
       "played": 4,
-      "won": 1,
+      "won": 0,
       "drawn": 0,
-      "lost": 3,
-      "gf": 10,
-      "ga": 22,
-      "gd": -12,
+      "lost": 4,
+      "gf": 7,
+      "ga": 24,
+      "gd": -17,
       "markerColor": null
     }
   ]
