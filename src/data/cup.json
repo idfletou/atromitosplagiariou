@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T16:13:28.536Z",
+  "updatedAt": "2026-11-18T15:48:27.718Z",
   "competition": "Κύπελλο «ΑΝΝΑ-ΜΑΡΙΑ ΠΑΝΤΑΖΩΝΗ»",
   "source": "https://www.epsm.gr/cup.asp",
   "matches": [
@@ -27,9 +27,9 @@
       "played": false,
       "weAreHome": false,
       "result": null,
-      "venue": "",
-      "date": "",
-      "time": ""
+      "venue": "ΝΕΩΝ ΕΠΙΒΑΤΩ Ν",
+      "date": "02.12.2026",
+      "time": "14.30"
     },
     {
       "phase": "2η φάση",
@@ -70,8 +70,8 @@
     "played": false,
     "weAreHome": false,
     "result": null,
-    "venue": "",
-    "date": "",
-    "time": ""
+    "venue": "ΝΕΩΝ ΕΠΙΒΑΤΩ Ν",
+    "date": "02.12.2026",
+    "time": "14.30"
   }
 }
