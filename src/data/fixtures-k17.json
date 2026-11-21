@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T15:36:28.406Z",
+  "updatedAt": "2026-11-21T21:51:59.472Z",
   "competition": "Κ17 LEAGUE 1",
   "sources": [
     "https://www.epsm.gr/table_team.asp?diorganosi=%CE%9A17%20LEAGUE%201&team=%CE%91%CE%A4%CE%A1%CE%9F%CE%9C%CE%97%CE%A4%CE%9F%CE%A3%20%CE%A0%CE%9B%CE%91%CE%93%CE%99%CE%91%CE%A1%CE%99%CE%9F%CE%A5"
@@ -65,12 +65,12 @@
       "matchday": 5,
       "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
       "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
+      "homeScore": 4,
+      "awayScore": 4,
+      "played": true,
       "weAreHome": false,
       "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
-      "result": null,
+      "result": "D",
       "date": "21.11.2026",
       "time": "12.30",
       "venue": "ΤΡΙΑΝΔΡΙΑΣ"
@@ -274,6 +274,20 @@
   ],
   "results": [
     {
+      "matchday": 5,
+      "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": 4,
+      "awayScore": 4,
+      "played": true,
+      "weAreHome": false,
+      "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
+      "result": "D",
+      "date": "21.11.2026",
+      "time": "12.30",
+      "venue": "ΤΡΙΑΝΔΡΙΑΣ"
+    },
+    {
       "matchday": 4,
       "home": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
       "away": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
@@ -336,12 +350,12 @@
     "matchday": 5,
     "home": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
     "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-    "homeScore": null,
-    "awayScore": null,
-    "played": false,
+    "homeScore": 4,
+    "awayScore": 4,
+    "played": true,
     "weAreHome": false,
     "opponent": "ΑΧΙΛΛΕΥΣ ΤΡΙΑΝΔΡΙΑΣ",
-    "result": null,
+    "result": "D",
     "date": "21.11.2026",
     "time": "12.30",
     "venue": "ΤΡΙΑΝΔΡΙΑΣ"
