@@ -1,11 +1,25 @@
 {
-  "updatedAt": "2026-11-21T21:51:56.670Z",
+  "updatedAt": "2026-11-22T14:42:47.903Z",
   "competition": "Α ΕΡΑΣΙΤΕΧΝΙΚΗ - 3ος ΟΜΙΛΟΣ",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%91%20%CE%95%CE%A1%CE%91%CE%A3%CE%99%CE%A4%CE%95%CE%A7%CE%9D%CE%99%CE%9A%CE%97%20-%203%CE%BF%CF%82%20%CE%9F%CE%9C%CE%99%CE%9B%CE%9F%CE%A3",
   "legend": [],
   "table": [
     {
       "position": 1,
+      "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "isOurTeam": true,
+      "points": 24,
+      "played": 9,
+      "won": 8,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 28,
+      "ga": 5,
+      "gd": 23,
+      "markerColor": null
+    },
+    {
+      "position": 2,
       "team": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
       "isOurTeam": false,
       "points": 21,
@@ -16,20 +30,6 @@
       "gf": 18,
       "ga": 12,
       "gd": 6,
-      "markerColor": null
-    },
-    {
-      "position": 2,
-      "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "isOurTeam": true,
-      "points": 21,
-      "played": 8,
-      "won": 7,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 25,
-      "ga": 5,
-      "gd": 20,
       "markerColor": null
     },
     {
@@ -93,13 +93,13 @@
       "team": "ΟΡΦΕΥΣ ΣΟΥΡΩΤΗΣ",
       "isOurTeam": false,
       "points": 16,
-      "played": 9,
+      "played": 10,
       "won": 5,
       "drawn": 1,
-      "lost": 3,
+      "lost": 4,
       "gf": 17,
-      "ga": 8,
-      "gd": 9,
+      "ga": 11,
+      "gd": 6,
       "markerColor": null
     },
     {
