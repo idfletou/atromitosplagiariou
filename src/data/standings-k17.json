@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T14:42:49.102Z",
+  "updatedAt": "2026-11-25T17:23:44.493Z",
   "competition": "Κ17 LEAGUE 1",
   "source": "https://www.epsm.gr/table.asp?diorganosi=%CE%9A17%20LEAGUE%201",
   "legend": [],
@@ -48,6 +48,20 @@
     },
     {
       "position": 4,
+      "team": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
+      "isOurTeam": false,
+      "points": 15,
+      "played": 6,
+      "won": 5,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 18,
+      "ga": 9,
+      "gd": 9,
+      "markerColor": null
+    },
+    {
+      "position": 5,
       "team": "ΝΙΚΗ ΕΥΚΑΡΠΙΑΣ",
       "isOurTeam": false,
       "points": 13,
@@ -61,7 +75,7 @@
       "markerColor": null
     },
     {
-      "position": 5,
+      "position": 6,
       "team": "ΑΟ ΝΕΑΣ ΕΥΚΑΡΠΙΑΣ",
       "isOurTeam": false,
       "points": 13,
@@ -75,7 +89,7 @@
       "markerColor": null
     },
     {
-      "position": 6,
+      "position": 7,
       "team": "ΟΛΥΜΠΙΑΚΟΣ ΘΕΣΣΑΛΟΝΙΚΗΣ",
       "isOurTeam": false,
       "points": 12,
@@ -89,7 +103,7 @@
       "markerColor": null
     },
     {
-      "position": 7,
+      "position": 8,
       "team": "ΑΚΑΔ.ΠΟΔ.ΘΕΣΣΑΛΟΝΙΚΗΣ 2020",
       "isOurTeam": false,
       "points": 12,
@@ -103,7 +117,7 @@
       "markerColor": null
     },
     {
-      "position": 8,
+      "position": 9,
       "team": "ΠΑΕ ΑΡΗΣ Κ16",
       "isOurTeam": false,
       "points": 12,
@@ -117,7 +131,7 @@
       "markerColor": null
     },
     {
-      "position": 9,
+      "position": 10,
       "team": "ΠΑΟΚ ΚΡΗΣΤΩΝΗΣ",
       "isOurTeam": false,
       "points": 12,
@@ -131,7 +145,7 @@
       "markerColor": null
     },
     {
-      "position": 10,
+      "position": 11,
       "team": "ΠΙΕΡΙΚΟΣ 1961",
       "isOurTeam": false,
       "points": 12,
@@ -145,21 +159,21 @@
       "markerColor": null
     },
     {
-      "position": 11,
-      "team": "ΑΚΡΙΤΕΣ ΣΥΚΕΩΝ",
+      "position": 12,
+      "team": "ΠΟ ΞΗΡΟΚΡΗΝΗΣ",
       "isOurTeam": false,
       "points": 12,
-      "played": 5,
+      "played": 6,
       "won": 4,
       "drawn": 0,
-      "lost": 1,
-      "gf": 15,
-      "ga": 9,
-      "gd": 6,
+      "lost": 2,
+      "gf": 11,
+      "ga": 8,
+      "gd": 3,
       "markerColor": null
     },
     {
-      "position": 12,
+      "position": 13,
       "team": "ΒΕΡΟΙΑ 1960",
       "isOurTeam": false,
       "points": 10,
@@ -173,7 +187,7 @@
       "markerColor": null
     },
     {
-      "position": 13,
+      "position": 14,
       "team": "ΚΑΜΠΑΝΙΑΚΟΣ",
       "isOurTeam": false,
       "points": 10,
@@ -187,7 +201,7 @@
       "markerColor": null
     },
     {
-      "position": 14,
+      "position": 15,
       "team": "ΑΣ ΣΕ.ΛΕ.ΣΤΕ.",
       "isOurTeam": false,
       "points": 10,
@@ -201,7 +215,21 @@
       "markerColor": null
     },
     {
-      "position": 15,
+      "position": 16,
+      "team": "ΣΚΙΟΥΡΟΙ",
+      "isOurTeam": false,
+      "points": 10,
+      "played": 6,
+      "won": 3,
+      "drawn": 1,
+      "lost": 2,
+      "gf": 17,
+      "ga": 17,
+      "gd": 0,
+      "markerColor": null
+    },
+    {
+      "position": 17,
       "team": "ΠΟ ΜΑΛΑΚΟΠΗΣ ΠΥΛΑΙΑΣ",
       "isOurTeam": false,
       "points": 9,
@@ -215,7 +243,7 @@
       "markerColor": null
     },
     {
-      "position": 16,
+      "position": 18,
       "team": "ΑΠΟΛΛΩΝ ΚΑΛΑΜΑΡΙΑΣ",
       "isOurTeam": false,
       "points": 9,
@@ -229,7 +257,7 @@
       "markerColor": null
     },
     {
-      "position": 17,
+      "position": 19,
       "team": "ΑΓΙΟΣ ΝΙΚΟΛΑΟΣ",
       "isOurTeam": false,
       "points": 9,
@@ -243,21 +271,7 @@
       "markerColor": null
     },
     {
-      "position": 18,
-      "team": "ΠΟ ΞΗΡΟΚΡΗΝΗΣ",
-      "isOurTeam": false,
-      "points": 9,
-      "played": 5,
-      "won": 3,
-      "drawn": 0,
-      "lost": 2,
-      "gf": 8,
-      "ga": 8,
-      "gd": 0,
-      "markerColor": null
-    },
-    {
-      "position": 19,
+      "position": 20,
       "team": "ΑΝΑΓΕΝΝΗΣΗ ΑΓ. ΙΩΑΝΝΗ",
       "isOurTeam": false,
       "points": 8,
@@ -268,20 +282,6 @@
       "gf": 10,
       "ga": 8,
       "gd": 2,
-      "markerColor": null
-    },
-    {
-      "position": 20,
-      "team": "ΠΑΝΟΡΑΜΑ",
-      "isOurTeam": false,
-      "points": 7,
-      "played": 5,
-      "won": 2,
-      "drawn": 1,
-      "lost": 2,
-      "gf": 20,
-      "ga": 17,
-      "gd": 3,
       "markerColor": null
     },
     {
@@ -300,16 +300,16 @@
     },
     {
       "position": 22,
-      "team": "ΣΚΙΟΥΡΟΙ",
+      "team": "ΠΑΝΟΡΑΜΑ",
       "isOurTeam": false,
       "points": 7,
       "played": 5,
       "won": 2,
       "drawn": 1,
       "lost": 2,
-      "gf": 14,
+      "gf": 20,
       "ga": 17,
-      "gd": -3,
+      "gd": 3,
       "markerColor": null
     },
     {
@@ -373,13 +373,13 @@
       "team": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
       "isOurTeam": true,
       "points": 4,
-      "played": 4,
+      "played": 5,
       "won": 1,
       "drawn": 1,
-      "lost": 2,
+      "lost": 3,
       "gf": 8,
-      "ga": 16,
-      "gd": -8,
+      "ga": 19,
+      "gd": -11,
       "markerColor": null
     },
     {
@@ -426,20 +426,34 @@
     },
     {
       "position": 31,
-      "team": "ΜΑΡΑΘΩΝ ΚΑΛΑΜΑΡΙΑΣ",
+      "team": "ΠΑΟ ΚΟΥΦΑΛΙΩΝ",
       "isOurTeam": false,
       "points": 3,
       "played": 5,
       "won": 1,
       "drawn": 0,
       "lost": 4,
-      "gf": 5,
-      "ga": 24,
-      "gd": -19,
+      "gf": 4,
+      "ga": 17,
+      "gd": -13,
       "markerColor": null
     },
     {
       "position": 32,
+      "team": "ΜΑΡΑΘΩΝ ΚΑΛΑΜΑΡΙΑΣ",
+      "isOurTeam": false,
+      "points": 3,
+      "played": 6,
+      "won": 1,
+      "drawn": 0,
+      "lost": 5,
+      "gf": 5,
+      "ga": 27,
+      "gd": -22,
+      "markerColor": null
+    },
+    {
+      "position": 33,
       "team": "ΑΟ ΛΑΓΚΑΔΑ",
       "isOurTeam": false,
       "points": 1,
@@ -453,7 +467,7 @@
       "markerColor": null
     },
     {
-      "position": 33,
+      "position": 34,
       "team": "ΔΟΞΑ ΠΕΝΤΑΛΟΦΟΥ",
       "isOurTeam": false,
       "points": 1,
@@ -467,7 +481,7 @@
       "markerColor": null
     },
     {
-      "position": 34,
+      "position": 35,
       "team": "ΑΕΤΟΙ ΘΕΣΣΑΛΟΝΙΚΗΣ 2015",
       "isOurTeam": false,
       "points": 0,
@@ -481,7 +495,7 @@
       "markerColor": null
     },
     {
-      "position": 35,
+      "position": 36,
       "team": "ΑΟΚ ΑΓ.ΑΘΑΝΑΣΙΟΥ",
       "isOurTeam": false,
       "points": 0,
@@ -495,31 +509,17 @@
       "markerColor": null
     },
     {
-      "position": 36,
-      "team": "ΠΑΟ ΚΟΥΦΑΛΙΩΝ",
+      "position": 37,
+      "team": "ΙΩΝΙΚΟΣ",
       "isOurTeam": false,
       "points": 0,
       "played": 4,
       "won": 0,
       "drawn": 0,
       "lost": 4,
-      "gf": 1,
-      "ga": 17,
-      "gd": -16,
-      "markerColor": null
-    },
-    {
-      "position": 37,
-      "team": "ΙΩΝΙΚΟΣ",
-      "isOurTeam": false,
-      "points": 0,
-      "played": 3,
-      "won": 0,
-      "drawn": 0,
-      "lost": 3,
       "gf": 0,
-      "ga": 16,
-      "gd": -16,
+      "ga": 19,
+      "gd": -19,
       "markerColor": null
     },
     {
@@ -541,13 +541,13 @@
       "team": "ΕΘΝΙΚΟΣ ΛΑΓΥΝΩΝ",
       "isOurTeam": false,
       "points": 0,
-      "played": 3,
+      "played": 4,
       "won": 0,
       "drawn": 0,
-      "lost": 3,
+      "lost": 4,
       "gf": 0,
-      "ga": 22,
-      "gd": -22,
+      "ga": 25,
+      "gd": -25,
       "markerColor": null
     },
     {
