@@ -1,22 +1,8 @@
 {
-  "updatedAt": "2026-11-25T17:23:50.715Z",
+  "updatedAt": "2026-11-26T17:04:37.430Z",
   "competition": "Κύπελλο «ΑΝΝΑ-ΜΑΡΙΑ ΠΑΝΤΑΖΩΝΗ»",
   "source": "https://www.epsm.gr/cup.asp",
   "matches": [
-    {
-      "phase": "4η φάση",
-      "gameNumber": 9083,
-      "home": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
-      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
-      "homeScore": null,
-      "awayScore": null,
-      "played": false,
-      "weAreHome": false,
-      "result": null,
-      "venue": "ΝΕΩΝ ΕΠΙΒΑΤΩ Ν",
-      "date": "02.12.2026",
-      "time": "14.30"
-    },
     {
       "phase": "3η φάση",
       "gameNumber": 9075,
@@ -30,6 +16,20 @@
       "venue": "ΤΡΙΑΔΙΟΥ",
       "date": "11.11.2026",
       "time": "14.45"
+    },
+    {
+      "phase": "4η φάση",
+      "gameNumber": 9067,
+      "home": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
+      "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
+      "homeScore": null,
+      "awayScore": null,
+      "played": false,
+      "weAreHome": false,
+      "result": null,
+      "venue": "ΝΕΩΝ ΕΠΙΒΑΤΩ Ν",
+      "date": "02.12.2026",
+      "time": "14.30"
     },
     {
       "phase": "2η φάση",
@@ -62,7 +62,7 @@
   ],
   "next": {
     "phase": "4η φάση",
-    "gameNumber": 9083,
+    "gameNumber": 9067,
     "home": "ΑΝΑΓΕΝΝΗΣΗ ΝΕΩΝ ΕΠΙΒΑΤΩΝ",
     "away": "ΑΤΡΟΜΗΤΟΣ ΠΛΑΓΙΑΡΙΟΥ",
     "homeScore": null,

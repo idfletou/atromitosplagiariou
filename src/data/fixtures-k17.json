@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T17:56:09.208Z",
+  "updatedAt": "2026-11-26T17:04:32.900Z",
   "competition": "Κ17 LEAGUE 1",
   "sources": [
     "https://www.epsm.gr/table_team.asp?diorganosi=%CE%9A17%20LEAGUE%201&team=%CE%91%CE%A4%CE%A1%CE%9F%CE%9C%CE%97%CE%A4%CE%9F%CE%A3%20%CE%A0%CE%9B%CE%91%CE%93%CE%99%CE%91%CE%A1%CE%99%CE%9F%CE%A5"
@@ -99,9 +99,9 @@
       "weAreHome": false,
       "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΕΠΑΝΟΜΗΣ",
       "result": null,
-      "date": null,
-      "time": null,
-      "venue": null
+      "date": "05.12.2026",
+      "time": "12.30",
+      "venue": "ΚΑΡΔΙΑΣ"
     },
     {
       "matchday": 8,
@@ -384,8 +384,8 @@
     "weAreHome": false,
     "opponent": "ΑΝΑΓΕΝΝΗΣΗ ΕΠΑΝΟΜΗΣ",
     "result": null,
-    "date": null,
-    "time": null,
-    "venue": null
+    "date": "05.12.2026",
+    "time": "12.30",
+    "venue": "ΚΑΡΔΙΑΣ"
   }
 }
